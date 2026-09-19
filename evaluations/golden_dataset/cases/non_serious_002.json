@@ -1,0 +1,40 @@
+{
+  "case_id": "non_serious_002",
+  "category": "non_serious",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with mild fatigue\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 35-year-old male patient with a history of hypertension received their first dose of DemoCardolol (dose: 25mg) via subcutaneous injection.\nTreatment started on 2026-07-13.\nApproximately 4 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Petrov (fictional reporter)\nDemo Family Practice\nContact: demo.reporter801@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 35-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 25mg, started 2026-07-13\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "35",
+    "patient.sex": "male",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "S. Petrov",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "25mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-07-13",
+    "event.event_description": "mild fatigue",
+    "event.event_onset_date": "4 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_non_serious_002",
+  "expected_narrative_facts": [
+    "35-year-old male patient with a history of hypertension.",
+    "Received first dose of DemoCardolol (25mg).",
+    "Treatment started on 2026-07-13.",
+    "Approximately 4 day(s) after that dose, developed mild fatigue.",
+    "Outcome: recovering, still under observation."
+  ],
+  "conflicting_fields": [],
+  "notes": "Fully detailed case with no seriousness indicator."
+}

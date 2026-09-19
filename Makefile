@@ -1,4 +1,4 @@
-.PHONY: setup seed run test lint typecheck eval docker-up docker-down
+.PHONY: setup seed dataset run test lint typecheck eval docker-up docker-down
 
 VENV := .venv
 PYTHON := $(VENV)/bin/python
@@ -13,6 +13,9 @@ setup:
 seed:
 	$(PYTHON) scripts/seed_synthetic_data.py
 
+dataset:
+	$(PYTHON) scripts/generate_golden_dataset.py
+
 run:
 	$(VENV)/bin/streamlit run app.py
 
@@ -23,7 +26,7 @@ lint:
 	$(VENV)/bin/ruff check .
 
 typecheck:
-	$(VENV)/bin/mypy src config
+	$(VENV)/bin/mypy src config scripts
 
 eval:
 	$(PYTHON) scripts/run_golden_evaluation.py

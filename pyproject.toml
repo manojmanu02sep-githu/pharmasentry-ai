@@ -20,7 +20,7 @@ ignore = ["UP042"]
 
 [tool.mypy]
 python_version = "3.11"
-packages = ["src", "config"]
+packages = ["src", "config", "scripts"]
 ignore_missing_imports = true
 disallow_untyped_defs = false
 warn_unused_ignores = true

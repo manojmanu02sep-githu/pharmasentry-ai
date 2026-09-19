@@ -1,0 +1,40 @@
+{
+  "case_id": "non_serious_005",
+  "category": "non_serious",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoGluca patient with mild nausea\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 52-year-old female patient with a history of type 2 diabetes received their fourth dose of DemoGluca (dose: 1 tablet twice daily) via oral.\nTreatment started on 2026-07-20.\nApproximately 10 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Kim (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter435@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 52-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 1 tablet twice daily, started 2026-07-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "52",
+    "patient.sex": "female",
+    "reporter.reporter_type": "treating physician",
+    "reporter.name": "D. Kim",
+    "product.product_name": "DemoGluca",
+    "product.dose": "1 tablet twice daily",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-07-20",
+    "event.event_description": "mild nausea",
+    "event.event_onset_date": "10 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_non_serious_005",
+  "expected_narrative_facts": [
+    "52-year-old female patient with a history of type 2 diabetes.",
+    "Received fourth dose of DemoGluca (1 tablet twice daily).",
+    "Treatment started on 2026-07-20.",
+    "Approximately 10 day(s) after that dose, developed mild nausea.",
+    "Outcome: stable, improving."
+  ],
+  "conflicting_fields": [],
+  "notes": "Fully detailed case with no seriousness indicator."
+}

@@ -1,0 +1,45 @@
+{
+  "case_id": "exact_duplicate_05_a",
+  "category": "exact_duplicate",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with sudden difficulty breathing and facial swelling\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 43-year-old female patient with a history of hypertension received their first dose of DemoCardolol (dose: 500mg) via oral.\nTreatment started on 2026-01-18.\nApproximately 2 day(s) after that dose, the patient developed sudden difficulty breathing and facial swelling.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Reyes (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 43-year-old female] (no real identity - demo only)\nAdmitting complaint: sudden difficulty breathing and facial swelling\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 500mg, started 2026-01-18\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with anaphylactic reaction.\n\nDischarge diagnosis: anaphylactic reaction (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "43",
+    "patient.sex": "female",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "J. Reyes",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "500mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-01-18",
+    "event.event_description": "sudden difficulty breathing and facial swelling",
+    "event.event_onset_date": "2 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization",
+    "life_threatening"
+  ],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_exact_05",
+  "expected_narrative_facts": [
+    "43-year-old female patient with a history of hypertension.",
+    "Received first dose of DemoCardolol (500mg).",
+    "Treatment started on 2026-01-18.",
+    "Approximately 2 day(s) after that dose, developed sudden difficulty breathing and facial swelling.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: anaphylactic reaction.",
+    "Outcome: recovering, still under observation."
+  ],
+  "conflicting_fields": [],
+  "notes": "Exact duplicate family fam_exact_05, member a: identical underlying facts, resent/re-transcribed."
+}

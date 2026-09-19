@@ -1,0 +1,44 @@
+{
+  "case_id": "serious_009",
+  "category": "serious",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoZanix patient with severe abdominal pain radiating to the back\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 79-year-old female patient with a history of generalized anxiety disorder received their first dose of DemoZanix (dose: 1 tablet twice daily) via oral.\nTreatment started on 2026-05-18.\nApproximately 8 day(s) after that dose, the patient developed severe abdominal pain radiating to the back.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Novak (fictional reporter)\nDemo Family Practice\nContact: demo.reporter666@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 79-year-old female] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain radiating to the back\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 1 tablet twice daily, started 2026-05-18\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "79",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "M. Novak",
+    "product.product_name": "DemoZanix",
+    "product.dose": "1 tablet twice daily",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-05-18",
+    "event.event_description": "severe abdominal pain radiating to the back",
+    "event.event_onset_date": "8 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization"
+  ],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_serious_009",
+  "expected_narrative_facts": [
+    "79-year-old female patient with a history of generalized anxiety disorder.",
+    "Received first dose of DemoZanix (1 tablet twice daily).",
+    "Treatment started on 2026-05-18.",
+    "Approximately 8 day(s) after that dose, developed severe abdominal pain radiating to the back.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: acute pancreatitis.",
+    "Outcome: recovering, still under observation."
+  ],
+  "conflicting_fields": [],
+  "notes": "Fully detailed case with an explicit seriousness indicator."
+}

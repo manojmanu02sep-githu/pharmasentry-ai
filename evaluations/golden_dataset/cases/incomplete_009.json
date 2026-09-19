@@ -1,0 +1,46 @@
+{
+  "case_id": "incomplete_009",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with chest pain followed by loss of consciousness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 88-year-old male patient with a history of hypertension received their second dose of DemoCardolol (dose: 5mg) via subcutaneous injection.\nApproximately 4 day(s) after that dose, the patient developed chest pain followed by loss of consciousness.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Kim (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter441@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 88-year-old male] (no real identity - demo only)\nAdmitting complaint: chest pain followed by loss of consciousness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 5mg, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with cardiac arrhythmia.\n\nDischarge diagnosis: cardiac arrhythmia (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "88",
+    "patient.sex": "male",
+    "reporter.reporter_type": "treating physician",
+    "reporter.name": "J. Kim",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "5mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": null,
+    "event.event_description": "chest pain followed by loss of consciousness",
+    "event.event_onset_date": "4 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization",
+    "life_threatening"
+  ],
+  "expected_missing_fields": [
+    "product.treatment_start_date"
+  ],
+  "expected_duplicate_family": "fam_incomplete_009",
+  "expected_narrative_facts": [
+    "88-year-old male patient with a history of hypertension.",
+    "Received second dose of DemoCardolol (5mg).",
+    "Approximately 4 day(s) after that dose, developed chest pain followed by loss of consciousness.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: cardiac arrhythmia.",
+    "Outcome: fully recovered."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.treatment_start_date']."
+}

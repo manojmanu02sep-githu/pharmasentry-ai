@@ -1,0 +1,45 @@
+{
+  "case_id": "serious_008",
+  "category": "serious",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoZanix patient with chest pain followed by loss of consciousness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 52-year-old male patient with a history of generalized anxiety disorder received their first dose of DemoZanix (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-08-18.\nApproximately 6 day(s) after that dose, the patient developed chest pain followed by loss of consciousness.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Novak (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter664@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 52-year-old male] (no real identity - demo only)\nAdmitting complaint: chest pain followed by loss of consciousness\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 50mg, started 2026-08-18\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with cardiac arrhythmia.\n\nDischarge diagnosis: cardiac arrhythmia (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "52",
+    "patient.sex": "male",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "K. Novak",
+    "product.product_name": "DemoZanix",
+    "product.dose": "50mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-08-18",
+    "event.event_description": "chest pain followed by loss of consciousness",
+    "event.event_onset_date": "6 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization",
+    "life_threatening"
+  ],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_serious_008",
+  "expected_narrative_facts": [
+    "52-year-old male patient with a history of generalized anxiety disorder.",
+    "Received first dose of DemoZanix (50mg).",
+    "Treatment started on 2026-08-18.",
+    "Approximately 6 day(s) after that dose, developed chest pain followed by loss of consciousness.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: cardiac arrhythmia.",
+    "Outcome: stable, improving."
+  ],
+  "conflicting_fields": [],
+  "notes": "Fully detailed case with an explicit seriousness indicator."
+}

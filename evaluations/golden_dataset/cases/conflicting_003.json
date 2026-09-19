@@ -1,0 +1,42 @@
+{
+  "case_id": "conflicting_003",
+  "category": "conflicting",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with occasional dizziness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 45-year-old female patient with a history of hypertension received their second dose of DemoCardolol (dose: 5mg) via subcutaneous injection.\nTreatment started on 2026-01-07.\nApproximately 3 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Reyes (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 45-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 50mg, started 2026-01-07\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "45",
+    "patient.sex": "female",
+    "reporter.reporter_type": "treating physician",
+    "reporter.name": "J. Reyes",
+    "product.product_name": "DemoCardolol",
+    "product.dose": null,
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-01-07",
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "3 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_conflicting_003",
+  "expected_narrative_facts": [
+    "45-year-old female patient with a history of hypertension.",
+    "Received second dose of DemoCardolol (5mg).",
+    "Treatment started on 2026-01-07.",
+    "Approximately 3 day(s) after that dose, developed occasional dizziness.",
+    "Outcome: stable, improving."
+  ],
+  "conflicting_fields": [
+    "product.dose"
+  ],
+  "notes": "Email states dose '5mg'; attachment states '50mg' for the same patient/product/event."
+}

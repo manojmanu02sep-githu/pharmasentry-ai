@@ -1,0 +1,46 @@
+{
+  "case_id": "incomplete_008",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with high fever and confusion\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 64-year-old female patient with a history of hypertension received their first dose of DemoCardolol via oral.\nTreatment started on 2026-08-16.\nApproximately 9 day(s) after that dose, the patient developed high fever and confusion.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Haddad (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter712@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 64-year-old female] (no real identity - demo only)\nAdmitting complaint: high fever and confusion\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose not documented, started 2026-08-16\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe infection.\n\nDischarge diagnosis: severe infection (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "64",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "D. Haddad",
+    "product.product_name": "DemoCardolol",
+    "product.dose": null,
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-08-16",
+    "event.event_description": "high fever and confusion",
+    "event.event_onset_date": "9 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization"
+  ],
+  "expected_missing_fields": [
+    "product.dose"
+  ],
+  "expected_duplicate_family": "fam_incomplete_008",
+  "expected_narrative_facts": [
+    "64-year-old female patient with a history of hypertension.",
+    "Received first dose of DemoCardolol.",
+    "Treatment started on 2026-08-16.",
+    "Approximately 9 day(s) after that dose, developed high fever and confusion.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: severe infection.",
+    "Outcome: fully recovered."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.dose']."
+}

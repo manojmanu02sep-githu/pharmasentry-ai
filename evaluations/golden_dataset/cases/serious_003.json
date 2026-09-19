@@ -1,0 +1,44 @@
+{
+  "case_id": "serious_003",
+  "category": "serious",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoZanix patient with high fever and confusion\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 45-year-old male patient with a history of generalized anxiety disorder received their second dose of DemoZanix (dose: 25mg) via oral.\nTreatment started on 2026-02-20.\nApproximately 1 day(s) after that dose, the patient developed high fever and confusion.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Petrov (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter800@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 45-year-old male] (no real identity - demo only)\nAdmitting complaint: high fever and confusion\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 25mg, started 2026-02-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe infection.\n\nDischarge diagnosis: severe infection (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "45",
+    "patient.sex": "male",
+    "reporter.reporter_type": "clinical care coordinator",
+    "reporter.name": "R. Petrov",
+    "product.product_name": "DemoZanix",
+    "product.dose": "25mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-02-20",
+    "event.event_description": "high fever and confusion",
+    "event.event_onset_date": "1 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization"
+  ],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_serious_003",
+  "expected_narrative_facts": [
+    "45-year-old male patient with a history of generalized anxiety disorder.",
+    "Received second dose of DemoZanix (25mg).",
+    "Treatment started on 2026-02-20.",
+    "Approximately 1 day(s) after that dose, developed high fever and confusion.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: severe infection.",
+    "Outcome: fully recovered."
+  ],
+  "conflicting_fields": [],
+  "notes": "Fully detailed case with an explicit seriousness indicator."
+}

@@ -1,0 +1,43 @@
+{
+  "case_id": "incomplete_012",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoZanix patient with mild nausea\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 46-year-old female patient with a history of generalized anxiety disorder received their fourth dose of DemoZanix.\nTreatment started on 2026-02-17.\nApproximately 6 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Larsen (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter766@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 46-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose not documented, started 2026-02-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild nausea.\n\nDischarge diagnosis: observation for mild nausea (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "46",
+    "patient.sex": "female",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "K. Larsen",
+    "product.product_name": "DemoZanix",
+    "product.dose": null,
+    "product.route": null,
+    "product.treatment_start_date": "2026-02-17",
+    "event.event_description": "mild nausea",
+    "event.event_onset_date": "6 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "product.dose",
+    "product.route"
+  ],
+  "expected_duplicate_family": "fam_incomplete_012",
+  "expected_narrative_facts": [
+    "46-year-old female patient with a history of generalized anxiety disorder.",
+    "Received fourth dose of DemoZanix.",
+    "Treatment started on 2026-02-17.",
+    "Approximately 6 day(s) after that dose, developed mild nausea.",
+    "Outcome: fully recovered."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.dose', 'product.route']."
+}

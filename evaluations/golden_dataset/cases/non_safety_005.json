@@ -1,0 +1,25 @@
+{
+  "case_id": "non_safety_005",
+  "category": "non_safety",
+  "is_safety_report": false,
+  "email_text": "Subject: General question about tablet appearance\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHello,\n\nThe DemoGluca tablets from my last refill look slightly different in color from the previous batch. Is that expected?\n\nThank you,\nJ. Larsen\nDemo Family Practice (fictional)\n",
+  "attachment_text": "",
+  "expected_extracted_fields": {},
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": false,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": false,
+    "has_adverse_event": false,
+    "missing_criteria": [
+      "patient",
+      "suspect_product",
+      "adverse_event"
+    ]
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_non_safety_005",
+  "expected_narrative_facts": [],
+  "conflicting_fields": [],
+  "notes": "Non-safety inquiry; no case narrative is expected."
+}

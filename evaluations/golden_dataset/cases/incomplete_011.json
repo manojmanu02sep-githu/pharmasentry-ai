@@ -1,0 +1,47 @@
+{
+  "case_id": "incomplete_011",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoGluca patient with severe abdominal pain and vomiting\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 63-year-old male patient with a history of type 2 diabetes received their first dose of DemoGluca.\nTreatment started on 2026-06-09.\nApproximately 6 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Duval (fictional reporter)\nDemo Family Practice\nContact: demo.reporter663@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 63-year-old male] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain and vomiting\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose not documented, started 2026-06-09\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "63",
+    "patient.sex": "male",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "M. Duval",
+    "product.product_name": "DemoGluca",
+    "product.dose": null,
+    "product.route": null,
+    "product.treatment_start_date": "2026-06-09",
+    "event.event_description": "severe abdominal pain and vomiting",
+    "event.event_onset_date": "6 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "true"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization"
+  ],
+  "expected_missing_fields": [
+    "product.dose",
+    "product.route"
+  ],
+  "expected_duplicate_family": "fam_incomplete_011",
+  "expected_narrative_facts": [
+    "63-year-old male patient with a history of type 2 diabetes.",
+    "Received first dose of DemoGluca.",
+    "Treatment started on 2026-06-09.",
+    "Approximately 6 day(s) after that dose, developed severe abdominal pain and vomiting.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: acute pancreatitis.",
+    "Outcome: recovering, still under observation."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.dose', 'product.route']."
+}

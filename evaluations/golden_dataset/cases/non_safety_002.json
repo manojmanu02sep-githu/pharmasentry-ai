@@ -1,0 +1,25 @@
+{
+  "case_id": "non_safety_002",
+  "category": "non_safety",
+  "is_safety_report": false,
+  "email_text": "Subject: Question about DemoGluca packaging\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHello,\n\nI noticed the box design for DemoGluca changed recently and wanted to confirm it's still the same product before my next refill.\n\nThank you,\nS. Petrov\nFictional Community Clinic (fictional)\n",
+  "attachment_text": "",
+  "expected_extracted_fields": {},
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": false,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": false,
+    "has_adverse_event": false,
+    "missing_criteria": [
+      "patient",
+      "suspect_product",
+      "adverse_event"
+    ]
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_non_safety_002",
+  "expected_narrative_facts": [],
+  "conflicting_fields": [],
+  "notes": "Non-safety inquiry; no case narrative is expected."
+}

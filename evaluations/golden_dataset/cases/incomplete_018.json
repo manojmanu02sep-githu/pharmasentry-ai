@@ -1,0 +1,41 @@
+{
+  "case_id": "incomplete_018",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoZanix patient with occasional dizziness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old male patient with a history of generalized anxiety disorder received their first dose of DemoZanix (dose: 500mg) via subcutaneous injection.\nApproximately 10 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Duval (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter669@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old male] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 500mg, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "30",
+    "patient.sex": "male",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "S. Duval",
+    "product.product_name": "DemoZanix",
+    "product.dose": "500mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": null,
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "10 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "product.treatment_start_date"
+  ],
+  "expected_duplicate_family": "fam_incomplete_018",
+  "expected_narrative_facts": [
+    "30-year-old male patient with a history of generalized anxiety disorder.",
+    "Received first dose of DemoZanix (500mg).",
+    "Approximately 10 day(s) after that dose, developed occasional dizziness.",
+    "Outcome: fully recovered."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.treatment_start_date']."
+}

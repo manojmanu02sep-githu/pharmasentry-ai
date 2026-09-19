@@ -52,7 +52,7 @@ fallback or manual review.
 | 4 | LLM | `src/services/llm/` provider abstraction: configured cloud provider + deterministic mock (Phase 6) |
 | 5 | Memory | `src/memory/{working,episodic,semantic,procedural}.py` (Phase 4) |
 | 6 | Tools | `src/tools/` — typed, timeout-bound, audited (Phase 3) |
-| 7 | Evaluation | `src/evaluation/` — Evaluator Agent, retry-once-then-escalate (Phase 6/11) |
+| 7 | Evaluation | `src/evaluation/` — golden dataset + baseline metrics framework (done, Phase 2); Evaluator Agent + retry-once-then-escalate (Phase 6/11) |
 | 8 | Observability/Traceability | `src/observability/`, `src/models/audit.py` (Phase 9) |
 
 ### Repository structure
@@ -72,7 +72,7 @@ pharmasentry-ai/
     tools/                 deterministic tools (Phase 3)
     memory/                working/episodic/semantic/procedural (Phase 4)
     retrieval/             hybrid BM25 + vector retrieval (Phase 5)
-    evaluation/             evaluator agent + metrics (Phase 6/11)
+    evaluation/             golden dataset schemas/loader/metrics (done, Phase 2); Evaluator Agent (Phase 6)
     guardrails/            validation, sanitization, injection detection (Phase 3)
     observability/         tracing, metrics, trace viewer (Phase 9)
     services/               LLM provider abstraction, DB access (Phase 4/6)
@@ -80,11 +80,13 @@ pharmasentry-ai/
   data/
     synthetic_emails/        synthetic demo case email
     synthetic_attachments/   synthetic demo case attachment
-    synthetic_cases/         synthetic retrieval corpus (Phase 2)
+    synthetic_cases/         synthetic retrieval corpus (Phase 5; not yet populated)
   tests/{unit,integration,e2e,security,evaluation}/
-  evaluations/{golden_dataset,results}/
+  evaluations/
+    golden_dataset/          100 generated cases + manifest.json + split.json (done, Phase 2)
+    results/                 evaluation run output (regenerated, not committed)
   config/                   settings.py (env config), config.yaml (policy)
-  scripts/                  seed / evaluation entry points
+  scripts/                  generate_golden_dataset.py, run_golden_evaluation.py, seed_synthetic_data.py
   docs/{architecture,governance,threat-model,runbooks}/
   .claude/{agents,skills,hooks,rules}/
   .github/workflows/
@@ -96,11 +98,12 @@ Requires Python 3.11+ (developed/tested on 3.14).
 
 ```bash
 make setup      # creates .venv, installs requirements.txt, copies .env.example -> .env
-make seed       # verifies/prepares synthetic demo data
+make seed       # verifies/prepares the synthetic demo case files
+make dataset    # (re)generates the 100-case golden dataset (deterministic, seed=42)
 make test       # runs pytest
 make lint       # ruff
 make typecheck  # mypy
-make eval       # golden evaluation (placeholder until Phase 2/11)
+make eval       # runs the baseline metrics framework against the golden test split
 make run        # streamlit run app.py (placeholder pages until Phase 8)
 make docker-up  # docker compose up --build
 ```
@@ -110,7 +113,7 @@ tests run fully offline with deterministic outputs. Set
 `LLM_PROVIDER=anthropic` and `ANTHROPIC_API_KEY` only if you intend to
 exercise the real provider once it is wired up (Phase 6).
 
-## Current status (Phase 1)
+## Current status (Phase 1 + Phase 2)
 
 Implemented and tested:
 - Full repository scaffold matching the structure above.
@@ -126,27 +129,52 @@ Implemented and tested:
 - Configuration: `.env.example`, `config/settings.py`
   (`pydantic-settings`), `config/config.yaml` (agent tool allowlists,
   graph node order, limits).
-- Initial unit tests for the above (`tests/unit/`) — see **Tests actually
-  executed** below.
+- **Golden evaluation dataset**: `scripts/generate_golden_dataset.py`
+  deterministically generates 100 synthetic cases (20 complete, 20
+  incomplete, 15 serious, 15 non-serious, 10 exact-duplicate + 10
+  near-duplicate in 10 two-member families, 5 conflicting
+  email-vs-attachment, 5 non-safety) into
+  `evaluations/golden_dataset/cases/*.json`, with a duplicate-family-aware
+  80/20 train/test split (`split.json`) that never puts members of the
+  same family on both sides. Schemas and read-only loaders live in
+  `src/evaluation/schemas.py` / `golden_loader.py`.
+- **Baseline metrics framework** (`src/evaluation/metrics.py`):
+  classification P/R/F1, field-level extraction P/R/F1, seriousness
+  sensitivity/specificity, duplicate precision@5/recall@5 (+MRR),
+  citation coverage, and unsupported-claim rate — pure functions, unit
+  tested, and exercised end-to-end by `scripts/run_golden_evaluation.py`
+  against a clearly-labeled **naive baseline** (not an agent — see
+  **Evaluation metrics** below).
+- Unit + integration tests for all of the above (`tests/unit/`,
+  `tests/integration/`) — see **Tests actually executed** below.
 
 Not yet implemented (see `progress.md` for the full phase plan): agents,
 LangGraph graph wiring, tools, memory layers, hybrid retrieval, Streamlit
-UI, observability instrumentation, golden dataset, security/red-team
-suite. `app.py` currently renders a placeholder page list only.
+UI, observability instrumentation, security/red-team suite. `app.py`
+currently renders a placeholder page list only.
 
 ## Tests actually executed
 
-Run in this environment via `pytest -v` inside `.venv` on 2026-09-19.
-Exact command and result are reported at the end of this build turn — see
-the assistant's final summary for that run's pass/fail count. Do not trust
-a stale count here if you have re-run the suite yourself; run `make test`.
+Run in this environment via `pytest -v` inside `.venv` on 2026-09-19
+(Phase 2): **60 passed**, 0 failed — covering models, state, settings,
+demo-data fixtures, golden dataset schemas/loader/integrity, the metrics
+framework, and both scripts (generator determinism, evaluation runner).
+`ruff check .` and `mypy src config scripts` both clean. Re-run `make test`
+/ `make lint` / `make typecheck` yourself rather than trusting a stale
+count here.
 
 ## Evaluation metrics
 
-None yet — the golden dataset (Phase 2) and Evaluator Agent (Phase 6) do
-not exist yet, so no classification/retrieval/quality metrics can be
-honestly reported. `scripts/run_golden_evaluation.py` currently exits
-without inventing numbers, in line with the "never invented" requirement.
+`make eval` runs `scripts/run_golden_evaluation.py`, which computes real
+numbers from the golden test split (20 cases) using a **naive, non-agent
+baseline** (always-safety-report, always-empty-extraction,
+always-not-serious, fixed-order duplicate candidates) — this exists to
+prove the metrics framework executes correctly end-to-end, not to
+represent PharmaSentry AI's actual performance (there are no agents yet;
+see Phase 6). Results are written to
+`evaluations/results/phase2_baseline_metrics.json` (regenerated on every
+run, not committed). Meaningful, non-baseline metrics are reported once
+real agents and retrieval exist (Phase 6/11).
 
 ## Security controls
 

@@ -1,0 +1,43 @@
+{
+  "case_id": "incomplete_014",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoGluca patient with occasional dizziness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 25-year-old female patient with a history of type 2 diabetes received their fourth dose of DemoGluca.\nTreatment started on 2026-07-19.\nApproximately 5 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Duval (fictional reporter)\nDemo Family Practice\nContact: demo.reporter666@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 25-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose not documented, started 2026-07-19\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "25",
+    "patient.sex": "female",
+    "reporter.reporter_type": "clinical care coordinator",
+    "reporter.name": "P. Duval",
+    "product.product_name": "DemoGluca",
+    "product.dose": null,
+    "product.route": null,
+    "product.treatment_start_date": "2026-07-19",
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "5 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "product.dose",
+    "product.route"
+  ],
+  "expected_duplicate_family": "fam_incomplete_014",
+  "expected_narrative_facts": [
+    "25-year-old female patient with a history of type 2 diabetes.",
+    "Received fourth dose of DemoGluca.",
+    "Treatment started on 2026-07-19.",
+    "Approximately 5 day(s) after that dose, developed occasional dizziness.",
+    "Outcome: stable, improving."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.dose', 'product.route']."
+}

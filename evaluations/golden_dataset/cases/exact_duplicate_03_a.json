@@ -1,0 +1,40 @@
+{
+  "case_id": "exact_duplicate_03_a",
+  "category": "exact_duplicate",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoGluca patient with occasional dizziness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 25-year-old female patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 5mg) via oral.\nTreatment started on 2026-08-19.\nApproximately 1 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Kim (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter435@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 25-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 5mg, started 2026-08-19\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "25",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "D. Kim",
+    "product.product_name": "DemoGluca",
+    "product.dose": "5mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-08-19",
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "1 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_duplicate_family": "fam_exact_03",
+  "expected_narrative_facts": [
+    "25-year-old female patient with a history of type 2 diabetes.",
+    "Received second dose of DemoGluca (5mg).",
+    "Treatment started on 2026-08-19.",
+    "Approximately 1 day(s) after that dose, developed occasional dizziness.",
+    "Outcome: fully recovered."
+  ],
+  "conflicting_fields": [],
+  "notes": "Exact duplicate family fam_exact_03, member a: identical underlying facts, resent/re-transcribed."
+}

@@ -1,0 +1,42 @@
+{
+  "case_id": "incomplete_019",
+  "category": "incomplete",
+  "is_safety_report": true,
+  "email_text": "Subject: Possible adverse event report - DemoGluca patient with a mild headache\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 52-year-old female patient with a history of type 2 diabetes received their fourth dose of DemoGluca (dose: 25mg).\nTreatment started on 2026-02-17.\nApproximately 8 day(s) after that dose, the patient developed a mild headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Tanaka (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter747@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 52-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild headache\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 25mg, started 2026-02-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild headache.\n\nDischarge diagnosis: observation for a mild headache (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "52",
+    "patient.sex": "female",
+    "reporter.reporter_type": "clinical care coordinator",
+    "reporter.name": "M. Tanaka",
+    "product.product_name": "DemoGluca",
+    "product.dose": "25mg",
+    "product.route": null,
+    "product.treatment_start_date": "2026-02-17",
+    "event.event_description": "a mild headache",
+    "event.event_onset_date": "8 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": []
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "product.route"
+  ],
+  "expected_duplicate_family": "fam_incomplete_019",
+  "expected_narrative_facts": [
+    "52-year-old female patient with a history of type 2 diabetes.",
+    "Received fourth dose of DemoGluca (25mg).",
+    "Treatment started on 2026-02-17.",
+    "Approximately 8 day(s) after that dose, developed a mild headache.",
+    "Outcome: stable, improving."
+  ],
+  "conflicting_fields": [],
+  "notes": "Missing fields (not stated in email or attachment): ['product.route']."
+}

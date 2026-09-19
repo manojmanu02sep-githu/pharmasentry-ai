@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "seed": 42,
+  "generated_at": "2026-09-19T08:49:52.033659Z",
+  "total_cases": 100,
+  "category_counts": {
+    "complete": 20,
+    "incomplete": 20,
+    "serious": 15,
+    "non_serious": 15,
+    "exact_duplicate": 10,
+    "near_duplicate": 10,
+    "conflicting": 5,
+    "non_safety": 5
+  },
+  "synthetic_notice": "All records are fabricated for this educational prototype. No real patient, reporter, product, or company data is present."
+}
