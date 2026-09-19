@@ -6,24 +6,31 @@ verified (tests executed, not assumed).
 
 Legend: `[x]` done and verified · `[~]` partially done · `[ ]` not started
 
-## Phase 1 — Architecture, Scaffold, Models, State, Demo Case, Initial Tests
+## Phase 1 — Architecture, Scaffold, Models, State, Demo Case, Initial Tests — DONE
 - [x] Repository directory structure (matches CLAUDE.md `Repository` section)
 - [x] `progress.md` (this file)
-- [ ] `README.md`
-- [ ] `.env.example`
-- [ ] `requirements.txt`
-- [ ] `Makefile`
-- [ ] `docker-compose.yml` (skeleton; full service wiring in later phases)
-- [ ] `config/` — settings loader (`config/settings.py`), `config/config.yaml`
-- [ ] `src/models/` — typed Pydantic domain models (goal, plan, decisions, evidence,
+- [x] `README.md`
+- [x] `.env.example`
+- [x] `requirements.txt`
+- [x] `Makefile`
+- [x] `docker-compose.yml` (skeleton; app image/full service wiring in Phase 8)
+- [x] `config/` — settings loader (`config/settings.py`), `config/config.yaml`
+- [x] `src/models/` — typed Pydantic domain models (goal, plan, decisions, evidence,
       extracted fields, minimum criteria, seriousness, duplicates, missing info,
       narrative, evaluation, review, trace/audit events)
-- [ ] `src/graph/state.py` — typed LangGraph `CaseState`
-- [ ] Synthetic demo case (DemoGluca) — email + attachment under `data/synthetic_*`
-- [ ] `app.py` — placeholder entry point
-- [ ] `tests/unit/` — model + state construction tests
-- [ ] Run pytest, ruff, mypy on what exists; fix failures
-- [ ] `.gitignore`, git init, initial commit
+- [x] `src/graph/state.py` — typed LangGraph `CaseState` with `operator.add`
+      reducers on every append-only list field
+- [x] Synthetic demo case (DemoGluca) — email + attachment under `data/synthetic_*`
+- [x] `app.py` — placeholder entry point (Streamlit page list only)
+- [x] `tests/unit/` — model, state, settings, and demo-data tests (22 tests)
+- [x] Ran pytest (22/22 passed), ruff (clean after fixes), mypy (clean, 29 files)
+- [x] `.gitignore`, git init, initial commit (`c2aaede`)
+
+Deferred from the literal Phase 1 file list, tracked as later phases instead:
+`scripts/seed_synthetic_data.py` and `scripts/run_golden_evaluation.py` exist
+as honest placeholders (no invented output) so `make seed` / `make eval` run;
+full implementations land in Phase 2 and Phase 6/11. `docs/*` subfolders and
+`.claude/*` exist with `.gitkeep` only — populated in Phase 12 / as needed.
 
 ## Phase 2 — Synthetic Data & Golden Dataset
 - [ ] Synthetic data generator script
