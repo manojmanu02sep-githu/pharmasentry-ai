@@ -1,0 +1,62 @@
+{
+  "case_id": "missing_identifiable_patient_003",
+  "case_type": "missing_identifiable_patient",
+  "duplicate_family_id": "fam_missing_identifiable_patient_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with mild fatigue",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nOne of our patients received their second dose of DemoZanix (dose: 1 tablet twice daily) via subcutaneous injection.\nTreatment started on 2026-07-05.\nApproximately 2 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Tanaka (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter747@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 606,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [not specified in this excerpt]\nAdmitting complaint: mild fatigue\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 1 tablet twice daily, started 2026-07-05\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": null,
+    "patient.sex": null,
+    "reporter.reporter_type": "clinical care coordinator",
+    "reporter.name": "M. Tanaka",
+    "product.product_name": "DemoZanix",
+    "product.dose": "1 tablet twice daily",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-07-05",
+    "event.event_description": "mild fatigue",
+    "event.event_onset_date": "2 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": false,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [
+      "patient"
+    ],
+    "status": "incomplete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "patient.age",
+    "patient.sex"
+  ],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
+  "expected_narrative_facts": [],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "A specific patient identity or demographic has been established."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "No age, sex, or other patient descriptor given in either source."
+}

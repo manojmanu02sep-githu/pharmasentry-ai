@@ -1,29 +1,45 @@
 {
   "case_id": "near_duplicate_03_a",
-  "category": "near_duplicate",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with chest pain followed by loss of consciousness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 40-year-old female patient with a history of hypertension received their second dose of DemoCardolol via subcutaneous injection.\nTreatment started on 2026-08-21.\nApproximately 9 day(s) after that dose, the patient developed chest pain followed by loss of consciousness.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nT. Petrov (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter802@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 40-year-old female] (no real identity - demo only)\nAdmitting complaint: chest pain followed by loss of consciousness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose not documented, started 2026-08-21\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with cardiac arrhythmia.\n\nDischarge diagnosis: cardiac arrhythmia (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "near_duplicate",
+  "duplicate_family_id": "fam_near_03",
+  "expected_duplicate_matches": [
+    "near_duplicate_03_b"
+  ],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with sudden difficulty breathing and facial swelling",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 72-year-old male patient with a history of generalized anxiety disorder received their fourth dose of DemoZanix via oral.\nTreatment started on 2026-06-13.\nApproximately 2 day(s) after that dose, the patient developed sudden difficulty breathing and facial swelling.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Larsen (fictional reporter)\nDemo Family Practice\nContact: demo.reporter759@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 635,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 72-year-old male] (no real identity - demo only)\nAdmitting complaint: sudden difficulty breathing and facial swelling\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose not documented, started 2026-06-13\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with anaphylactic reaction.\n\nDischarge diagnosis: anaphylactic reaction (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "40",
-    "patient.sex": "female",
+    "patient.age": "72",
+    "patient.sex": "male",
     "reporter.reporter_type": "clinical care coordinator",
-    "reporter.name": "T. Petrov",
-    "product.product_name": "DemoCardolol",
+    "reporter.name": "D. Larsen",
+    "product.product_name": "DemoZanix",
     "product.dose": null,
-    "product.route": "subcutaneous injection",
-    "product.treatment_start_date": "2026-08-21",
-    "event.event_description": "chest pain followed by loss of consciousness",
-    "event.event_onset_date": "9 day(s) after dose",
-    "outcome.outcome_description": "stable, improving",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-06-13",
+    "event.event_description": "sudden difficulty breathing and facial swelling",
+    "event.event_onset_date": "2 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
     "outcome.hospitalized": "true"
   },
+  "expected_source_evidence": [],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [
     "hospitalization",
@@ -32,16 +48,25 @@
   "expected_missing_fields": [
     "product.dose"
   ],
-  "expected_duplicate_family": "fam_near_03",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "potential_duplicate",
   "expected_narrative_facts": [
-    "40-year-old female patient with a history of hypertension.",
-    "Received second dose of DemoCardolol.",
-    "Treatment started on 2026-08-21.",
-    "Approximately 9 day(s) after that dose, developed chest pain followed by loss of consciousness.",
+    "72-year-old male patient with a history of generalized anxiety disorder.",
+    "Received fourth dose of DemoZanix.",
+    "Treatment started on 2026-06-13.",
+    "Approximately 2 day(s) after that dose, developed sudden difficulty breathing and facial swelling.",
     "Patient was hospitalized.",
-    "Discharge diagnosis: cardiac arrhythmia.",
-    "Outcome: stable, improving."
+    "Discharge diagnosis: anaphylactic reaction.",
+    "Outcome: fully recovered."
   ],
-  "conflicting_fields": [],
-  "notes": "Near-duplicate family fam_near_03, member a: same underlying case, reworded and/or missing a secondary field."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "These reports have been merged into a single case."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Near-duplicate family fam_near_03: same underlying case, reworded and/or missing a secondary field. Never auto-merge."
 }

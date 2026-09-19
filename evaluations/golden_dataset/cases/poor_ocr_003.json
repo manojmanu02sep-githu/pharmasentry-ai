@@ -1,0 +1,63 @@
+{
+  "case_id": "poor_ocr_003",
+  "case_type": "poor_ocr",
+  "duplicate_family_id": "fam_poor_ocr_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with a mild headache",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 23-year-old female patient with a history of hypertension received their third dose of DemoCardolol (dose: 50mg) via oral.\nTreatment started on 2026-02-19.\nApproximately 8 day(s) after that dose, the patient developed a mild headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Tanaka (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter738@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 615,
+    "page_count": 1,
+    "ocr_applied": true,
+    "ocr_quality": "degraded"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL H0SPITAL (DEMO) (demo) - DISCHARGE 5UMMARY\nPage 1 of 1\n\nPatient: [synthctic patient, 23-year-old fem@le] (no rcal identity - demo only)\nAdmitting complaint: a mild headache\nRclevant history: hypcrtcnsion\nSuspect product: DemoCardolo1, dose 50mg, started 2026-02-19\n\nCourse of care:\nPatient was evalu@ted and treated. Findings were consistent with obscrv@tion for a mild headache.\n\nDischarge di@gnosis: [illegible] for a mild headache (fiction@l case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summ@ry --\n",
+  "expected_extracted_fields": {
+    "patient.age": "23",
+    "patient.sex": "female",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "D. Tanaka",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "50mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-02-19",
+    "event.event_description": "a mild headache",
+    "event.event_onset_date": "8 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "low_ocr_quality",
+  "expected_narrative_facts": [
+    "23-year-old female patient with a history of hypertension.",
+    "Received third dose of DemoCardolol (50mg).",
+    "Treatment started on 2026-02-19.",
+    "Approximately 8 day(s) after that dose, developed a mild headache.",
+    "Outcome: fully recovered."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "The garbled attachment text has been read with full confidence."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Attachment is a deterministically corrupted (simulated poor OCR) scan; email text is reliable, attachment is not — route to manual document review."
+}

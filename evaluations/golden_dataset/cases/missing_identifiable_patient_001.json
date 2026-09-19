@@ -1,0 +1,62 @@
+{
+  "case_id": "missing_identifiable_patient_001",
+  "case_type": "missing_identifiable_patient",
+  "duplicate_family_id": "fam_missing_identifiable_patient_001",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoGluca patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nOne of our patients received their first dose of DemoGluca (dose: 50mg) via oral.\nTreatment started on 2026-02-27.\nApproximately 7 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Novak (fictional reporter)\nDemo Family Practice\nContact: demo.reporter664@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 606,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [not specified in this excerpt]\nAdmitting complaint: occasional dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 50mg, started 2026-02-27\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": null,
+    "patient.sex": null,
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "K. Novak",
+    "product.product_name": "DemoGluca",
+    "product.dose": "50mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-02-27",
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "7 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": false,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [
+      "patient"
+    ],
+    "status": "incomplete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "patient.age",
+    "patient.sex"
+  ],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
+  "expected_narrative_facts": [],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "A specific patient identity or demographic has been established."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "No age, sex, or other patient descriptor given in either source."
+}

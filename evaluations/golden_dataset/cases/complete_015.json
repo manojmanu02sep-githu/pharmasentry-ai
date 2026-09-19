@@ -1,8 +1,20 @@
 {
   "case_id": "complete_015",
-  "category": "complete",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoZanix patient with occasional dizziness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 53-year-old female patient with a history of generalized anxiety disorder received their second dose of DemoZanix (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-07-28.\nApproximately 8 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nL. Tanaka (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter746@fictionalclinic-demo.example (synthetic contact info)\n",
+  "case_type": "complete",
+  "duplicate_family_id": "fam_complete_015",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 53-year-old female patient with a history of generalized anxiety disorder received their second dose of DemoZanix (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-07-28.\nApproximately 8 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nL. Tanaka (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter746@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 652,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
   "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 53-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 50mg, started 2026-07-28\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "53",
@@ -18,16 +30,23 @@
     "outcome.outcome_description": "recovering, still under observation",
     "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "53-year-old female patient",
+    "dose: 50mg",
+    "Discharge diagnosis: observation for occasional dizziness"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_complete_015",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
   "expected_narrative_facts": [
     "53-year-old female patient with a history of generalized anxiety disorder.",
     "Received second dose of DemoZanix (50mg).",
@@ -35,6 +54,13 @@
     "Approximately 8 day(s) after that dose, developed occasional dizziness.",
     "Outcome: recovering, still under observation."
   ],
-  "conflicting_fields": [],
-  "notes": "Fully detailed, non-serious case."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Fully detailed, non-serious case; standard end-of-pipeline review only."
 }

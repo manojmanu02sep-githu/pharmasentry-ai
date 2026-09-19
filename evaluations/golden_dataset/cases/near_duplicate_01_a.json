@@ -1,46 +1,67 @@
 {
   "case_id": "near_duplicate_01_a",
-  "category": "near_duplicate",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoZanix patient with severe abdominal pain and vomiting\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old male patient with a history of generalized anxiety disorder received their third dose of DemoZanix via oral.\nTreatment started on 2026-06-06.\nApproximately 9 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Tanaka (fictional reporter)\nDemo Family Practice\nContact: demo.reporter745@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old male] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain and vomiting\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose not documented, started 2026-06-06\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
-  "expected_extracted_fields": {
-    "patient.age": "30",
-    "patient.sex": "male",
-    "reporter.reporter_type": "staff pharmacist",
-    "reporter.name": "K. Tanaka",
-    "product.product_name": "DemoZanix",
-    "product.dose": null,
-    "product.route": "oral",
-    "product.treatment_start_date": "2026-06-06",
-    "event.event_description": "severe abdominal pain and vomiting",
-    "event.event_onset_date": "9 day(s) after dose",
-    "outcome.outcome_description": "recovering, still under observation",
-    "outcome.hospitalized": "true"
+  "case_type": "near_duplicate",
+  "duplicate_family_id": "fam_near_01",
+  "expected_duplicate_matches": [
+    "near_duplicate_01_b"
+  ],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 21-year-old female patient with a history of hypertension received their first dose of DemoCardolol via subcutaneous injection.\nTreatment started on 2026-04-17.\nApproximately 9 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Silva (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 621,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
   },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 21-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose not documented, started 2026-04-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild skin rash.\n\nDischarge diagnosis: observation for a mild skin rash (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "21",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "S. Silva",
+    "product.product_name": "DemoCardolol",
+    "product.dose": null,
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-04-17",
+    "event.event_description": "a mild skin rash",
+    "event.event_onset_date": "9 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
-  "expected_seriousness_indicators": [
-    "hospitalization"
-  ],
+  "expected_seriousness_indicators": [],
   "expected_missing_fields": [
     "product.dose"
   ],
-  "expected_duplicate_family": "fam_near_01",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "potential_duplicate",
   "expected_narrative_facts": [
-    "30-year-old male patient with a history of generalized anxiety disorder.",
-    "Received third dose of DemoZanix.",
-    "Treatment started on 2026-06-06.",
-    "Approximately 9 day(s) after that dose, developed severe abdominal pain and vomiting.",
-    "Patient was hospitalized.",
-    "Discharge diagnosis: acute pancreatitis.",
-    "Outcome: recovering, still under observation."
+    "21-year-old female patient with a history of hypertension.",
+    "Received first dose of DemoCardolol.",
+    "Treatment started on 2026-04-17.",
+    "Approximately 9 day(s) after that dose, developed a mild skin rash.",
+    "Outcome: fully recovered."
   ],
-  "conflicting_fields": [],
-  "notes": "Near-duplicate family fam_near_01, member a: same underlying case, reworded and/or missing a secondary field."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "These reports have been merged into a single case."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Near-duplicate family fam_near_01: same underlying case, reworded and/or missing a secondary field. Never auto-merge."
 }

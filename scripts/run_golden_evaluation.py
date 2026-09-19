@@ -72,11 +72,11 @@ def run() -> dict[str, object]:
     all_test_ids = sorted(c.case_id for c in test_cases)
     families: dict[str, list[str]] = {}
     for c in test_cases:
-        families.setdefault(c.expected_duplicate_family, []).append(c.case_id)
+        families.setdefault(c.duplicate_family_id, []).append(c.case_id)
 
     duplicate_queries = []
     for c in test_cases:
-        relevant = {cid for cid in families[c.expected_duplicate_family] if cid != c.case_id}
+        relevant = {cid for cid in families[c.duplicate_family_id] if cid != c.case_id}
         if not relevant:
             continue
         naive_candidates = [cid for cid in all_test_ids if cid != c.case_id]

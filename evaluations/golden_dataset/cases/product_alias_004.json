@@ -1,0 +1,64 @@
+{
+  "case_id": "product_alias_004",
+  "case_type": "product_alias",
+  "duplicate_family_id": "fam_product_alias_004",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - Demo-Gluca patient with mild nausea",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 65-year-old female patient with a history of type 2 diabetes received their first dose of Demo-Gluca (dose: 10mg) via subcutaneous injection.\nTreatment started on 2026-01-10.\nApproximately 10 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Petrov (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter786@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 601,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 65-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 2 diabetes\nSuspect product: Demo-Gluca, dose 10mg, started 2026-01-10\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "65",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "D. Petrov",
+    "product.product_name": "DemoGluca",
+    "product.dose": "10mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-01-10",
+    "event.event_description": "mild nausea",
+    "event.event_onset_date": "10 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [
+    "Demo-Gluca"
+  ],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
+  "expected_narrative_facts": [
+    "65-year-old female patient with a history of type 2 diabetes.",
+    "Received first dose of DemoGluca (10mg).",
+    "Treatment started on 2026-01-10.",
+    "Approximately 10 day(s) after that dose, developed mild nausea.",
+    "Outcome: fully recovered."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Source text names the product as 'Demo-Gluca'; the product/event lookup tool must resolve this to the canonical name 'DemoGluca'."
+}

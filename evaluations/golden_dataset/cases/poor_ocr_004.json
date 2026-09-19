@@ -1,0 +1,67 @@
+{
+  "case_id": "poor_ocr_004",
+  "case_type": "poor_ocr",
+  "duplicate_family_id": "fam_poor_ocr_004",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoGluca patient with severe abdominal pain and vomiting",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 72-year-old female patient with a history of type 2 diabetes received their third dose of DemoGluca (dose: 5mg) via oral.\nTreatment started on 2026-01-14.\nApproximately 10 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nT. Tanaka (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter754@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 626,
+    "page_count": 1,
+    "ocr_applied": true,
+    "ocr_quality": "degraded"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTI0NAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPaticnt: [synthetic paticnt, 72-year-old female] (no real identity - demo only)\nAdmitting complaint: scvere abdominal pain and vomiting\nRelevant history: type 2 diabetes\nSuspect product: DcmoG1uca, dose 5mg, started 2026-01-14\n\nCourse of c@re:\nPaticnt was ev@luated and treated. Findings wcre consistcnt with acute pancre@titis.\n\nDischarge diagnosis: acute pancreatitis (fictiona1 case).\nOutcome at disch@rge: recovering, [illegible] under observation.\n\n-- End of synthetic dischargc summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "72",
+    "patient.sex": "female",
+    "reporter.reporter_type": "treating physician",
+    "reporter.name": "T. Tanaka",
+    "product.product_name": "DemoGluca",
+    "product.dose": "5mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-01-14",
+    "event.event_description": "severe abdominal pain and vomiting",
+    "event.event_onset_date": "10 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "true"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization"
+  ],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "low_ocr_quality",
+  "expected_narrative_facts": [
+    "72-year-old female patient with a history of type 2 diabetes.",
+    "Received third dose of DemoGluca (5mg).",
+    "Treatment started on 2026-01-14.",
+    "Approximately 10 day(s) after that dose, developed severe abdominal pain and vomiting.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: acute pancreatitis.",
+    "Outcome: recovering, still under observation."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "The garbled attachment text has been read with full confidence."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Attachment is a deterministically corrupted (simulated poor OCR) scan; email text is reliable, attachment is not — route to manual document review."
+}

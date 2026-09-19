@@ -29,7 +29,7 @@ def _run_generator() -> subprocess.CompletedProcess[str]:
 def test_generator_runs_successfully() -> None:
     result = _run_generator()
     assert result.returncode == 0, result.stderr
-    assert "Wrote 100 golden cases" in result.stdout
+    assert "Wrote 138 golden cases" in result.stdout
 
 
 def test_generator_is_deterministic_for_the_default_seed() -> None:

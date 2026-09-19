@@ -1,0 +1,68 @@
+{
+  "case_id": "missing_reporter_001",
+  "case_type": "missing_reporter",
+  "duplicate_family_id": "fam_missing_reporter_001",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am an a member of staff at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 74-year-old female patient with a history of generalized anxiety disorder received their fourth dose of DemoZanix (dose: 500mg) via oral.\nTreatment started on 2026-02-16.\nApproximately 1 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\n[Message forwarded from a shared inbox; original sender identity was not preserved.]\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 660,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 74-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 500mg, started 2026-02-16\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "74",
+    "patient.sex": "female",
+    "reporter.reporter_type": null,
+    "reporter.name": null,
+    "product.product_name": "DemoZanix",
+    "product.dose": "500mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-02-16",
+    "event.event_description": "a mild skin rash",
+    "event.event_onset_date": "1 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": false,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [
+      "reporter"
+    ],
+    "status": "uncertain"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "reporter.name",
+    "reporter.reporter_type"
+  ],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
+  "expected_narrative_facts": [
+    "74-year-old female patient with a history of generalized anxiety disorder.",
+    "Received fourth dose of DemoZanix (500mg).",
+    "Treatment started on 2026-02-16.",
+    "Approximately 1 day(s) after that dose, developed a mild skin rash.",
+    "Outcome: recovering, still under observation."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "The reporter's identity has been determined from this message."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Forwarded from a shared inbox with no identifiable reporter; ambiguous rather than definitively absent, hence 'uncertain'."
+}

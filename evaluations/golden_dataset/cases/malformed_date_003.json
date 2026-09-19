@@ -1,0 +1,67 @@
+{
+  "case_id": "malformed_date_003",
+  "case_type": "malformed_date",
+  "duplicate_family_id": "fam_malformed_date_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 34-year-old female patient with a history of hypertension received their third dose of DemoCardolol (dose: 500mg) via oral.\nTreatment started on 2026.13.40.\nApproximately 3 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Okafor (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter763@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 628,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 34-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 500mg, started 2026.13.40\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "34",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "K. Okafor",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "500mg",
+    "product.route": "oral",
+    "product.treatment_start_date": null,
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "3 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [
+    "2026.13.40"
+  ],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "product.treatment_start_date"
+  ],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
+  "expected_narrative_facts": [
+    "34-year-old female patient with a history of hypertension.",
+    "Received third dose of DemoCardolol (500mg).",
+    "Treatment started on 2026-05-24.",
+    "Approximately 3 day(s) after that dose, developed occasional dizziness.",
+    "Outcome: fully recovered."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "An ambiguous date has been silently guessed rather than flagged."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Treatment start date written as '2026.13.40'; expected normalized value is None (None means genuinely ambiguous/invalid and must be flagged, not guessed)."
+}

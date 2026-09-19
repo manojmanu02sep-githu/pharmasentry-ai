@@ -1,0 +1,68 @@
+{
+  "case_id": "missing_reporter_003",
+  "case_type": "missing_reporter",
+  "duplicate_family_id": "fam_missing_reporter_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoGluca patient with mild nausea",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am an a member of staff at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 81-year-old male patient with a history of type 2 diabetes received their third dose of DemoGluca (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-05-07.\nApproximately 6 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\n[Message forwarded from a shared inbox; original sender identity was not preserved.]\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 611,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 81-year-old male] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 50mg, started 2026-05-07\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "81",
+    "patient.sex": "male",
+    "reporter.reporter_type": null,
+    "reporter.name": null,
+    "product.product_name": "DemoGluca",
+    "product.dose": "50mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-05-07",
+    "event.event_description": "mild nausea",
+    "event.event_onset_date": "6 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": false,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [
+      "reporter"
+    ],
+    "status": "uncertain"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "reporter.name",
+    "reporter.reporter_type"
+  ],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
+  "expected_narrative_facts": [
+    "81-year-old male patient with a history of type 2 diabetes.",
+    "Received third dose of DemoGluca (50mg).",
+    "Treatment started on 2026-05-07.",
+    "Approximately 6 day(s) after that dose, developed mild nausea.",
+    "Outcome: stable, improving."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "The reporter's identity has been determined from this message."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Forwarded from a shared inbox with no identifiable reporter; ambiguous rather than definitively absent, hence 'uncertain'."
+}

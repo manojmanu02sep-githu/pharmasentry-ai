@@ -1,0 +1,65 @@
+{
+  "case_id": "malformed_date_002",
+  "case_type": "malformed_date",
+  "duplicate_family_id": "fam_malformed_date_002",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoGluca patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 33-year-old female patient with a history of type 2 diabetes received their first dose of DemoGluca (dose: 25mg) via oral.\nTreatment started on the fourth of March.\nApproximately 2 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Silva (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 644,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 33-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 25mg, started the fourth of March\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "33",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "R. Silva",
+    "product.product_name": "DemoGluca",
+    "product.dose": "25mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-03-04",
+    "event.event_description": "a mild skin rash",
+    "event.event_onset_date": "2 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [
+    "the fourth of March"
+  ],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
+  "expected_narrative_facts": [
+    "33-year-old female patient with a history of type 2 diabetes.",
+    "Received first dose of DemoGluca (25mg).",
+    "Treatment started on 2026-05-08.",
+    "Approximately 2 day(s) after that dose, developed a mild skin rash.",
+    "Outcome: recovering, still under observation."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "An ambiguous date has been silently guessed rather than flagged."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Treatment start date written as 'the fourth of March'; expected normalized value is '2026-03-04' (None means genuinely ambiguous/invalid and must be flagged, not guessed)."
+}

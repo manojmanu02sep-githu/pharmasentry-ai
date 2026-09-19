@@ -15,6 +15,7 @@ from src.evaluation.golden_loader import (
     load_split,
     load_test_cases,
     load_train_cases,
+    load_validation_cases,
     validate_no_family_leakage,
 )
 from src.evaluation.metrics import (
@@ -33,15 +34,18 @@ from src.evaluation.metrics import (
 )
 from src.evaluation.schemas import (
     FIELD_KEYS,
+    AttachmentMetadata,
     DatasetManifest,
     DatasetSplit,
     ExpectedMinimumCriteria,
     GoldenCase,
     GoldenCaseCategory,
+    SafetyClassification,
 )
 
 __all__ = [
     "FIELD_KEYS",
+    "AttachmentMetadata",
     "DatasetManifest",
     "DatasetSplit",
     "ExpectedMinimumCriteria",
@@ -49,6 +53,7 @@ __all__ = [
     "GoldenCaseCategory",
     "GoldenDatasetError",
     "PrecisionRecallF1",
+    "SafetyClassification",
     "SensitivitySpecificity",
     "cases_by_family",
     "citation_coverage",
@@ -64,6 +69,7 @@ __all__ = [
     "load_split",
     "load_test_cases",
     "load_train_cases",
+    "load_validation_cases",
     "mean_duplicate_precision_at_k",
     "mean_duplicate_recall_at_k",
     "mean_reciprocal_rank",

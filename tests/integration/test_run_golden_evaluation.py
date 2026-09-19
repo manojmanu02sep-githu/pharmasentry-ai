@@ -24,7 +24,7 @@ def test_run_golden_evaluation_script_executes_and_writes_results() -> None:
     assert results_path.exists()
 
     data = json.loads(results_path.read_text(encoding="utf-8"))
-    assert data["dataset"]["total_cases"] == 100
+    assert data["dataset"]["total_cases"] == 138
     assert "classification_precision_recall_f1" in data
     assert "extraction_precision_recall_f1" in data
     assert "seriousness_sensitivity_specificity" in data

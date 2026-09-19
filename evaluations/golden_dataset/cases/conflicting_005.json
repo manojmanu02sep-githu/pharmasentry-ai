@@ -1,42 +1,67 @@
 {
   "case_id": "conflicting_005",
-  "category": "conflicting",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoZanix patient with a mild skin rash\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 54-year-old male patient with a history of generalized anxiety disorder received their first dose of DemoZanix (dose: 5mg) via oral.\nTreatment started on 2026-03-24.\nApproximately 7 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Duval (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter666@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 54-year-old male] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 25mg, started 2026-03-24\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "conflicting",
+  "duplicate_family_id": "fam_conflicting_005",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old female patient with a history of generalized anxiety disorder received their second dose of DemoZanix (dose: 25mg) via oral.\nTreatment started on 2026-05-20.\nApproximately 7 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter663@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 642,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 500mg, started 2026-05-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "54",
-    "patient.sex": "male",
-    "reporter.reporter_type": "staff pharmacist",
-    "reporter.name": "P. Duval",
+    "patient.age": "30",
+    "patient.sex": "female",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "A. Reyes",
     "product.product_name": "DemoZanix",
     "product.dose": null,
     "product.route": "oral",
-    "product.treatment_start_date": "2026-03-24",
+    "product.treatment_start_date": "2026-05-20",
     "event.event_description": "a mild skin rash",
     "event.event_onset_date": "7 day(s) after dose",
-    "outcome.outcome_description": "fully recovered",
+    "outcome.outcome_description": "stable, improving",
     "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "dose: 25mg",
+    "dose 500mg"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_conflicting_005",
-  "expected_narrative_facts": [
-    "54-year-old male patient with a history of generalized anxiety disorder.",
-    "Received first dose of DemoZanix (5mg).",
-    "Treatment started on 2026-03-24.",
-    "Approximately 7 day(s) after that dose, developed a mild skin rash.",
-    "Outcome: fully recovered."
-  ],
-  "conflicting_fields": [
+  "expected_conflicting_fields": [
     "product.dose"
   ],
-  "notes": "Email states dose '5mg'; attachment states '25mg' for the same patient/product/event."
+  "expected_routing_decision": "validation_failure",
+  "expected_narrative_facts": [
+    "30-year-old female patient with a history of generalized anxiety disorder.",
+    "Received second dose of DemoZanix (25mg).",
+    "Treatment started on 2026-05-20.",
+    "Approximately 7 day(s) after that dose, developed a mild skin rash.",
+    "Outcome: stable, improving."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Email states dose '25mg'; attachment states '500mg' for the same patient/product/event."
 }

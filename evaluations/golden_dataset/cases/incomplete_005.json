@@ -1,46 +1,65 @@
 {
   "case_id": "incomplete_005",
-  "category": "incomplete",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoGluca patient with high fever and confusion\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 69-year-old female patient with a history of type 2 diabetes received their third dose of DemoGluca (dose: 1 tablet twice daily).\nApproximately 9 day(s) after that dose, the patient developed high fever and confusion.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Duval (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter651@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 69-year-old female] (no real identity - demo only)\nAdmitting complaint: high fever and confusion\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 1 tablet twice daily, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe infection.\n\nDischarge diagnosis: severe infection (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "incomplete",
+  "duplicate_family_id": "fam_incomplete_005",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with a mild headache",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 43-year-old female patient with a history of hypertension received their first dose of DemoCardolol (dose: 500mg) via oral.\nApproximately 2 day(s) after that dose, the patient developed a mild headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Reyes (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 629,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 43-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild headache\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 500mg, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild headache.\n\nDischarge diagnosis: observation for a mild headache (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "69",
+    "patient.age": "43",
     "patient.sex": "female",
     "reporter.reporter_type": "nurse practitioner",
-    "reporter.name": "A. Duval",
-    "product.product_name": "DemoGluca",
-    "product.dose": "1 tablet twice daily",
-    "product.route": null,
+    "reporter.name": "J. Reyes",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "500mg",
+    "product.route": "oral",
     "product.treatment_start_date": null,
-    "event.event_description": "high fever and confusion",
-    "event.event_onset_date": "9 day(s) after dose",
-    "outcome.outcome_description": "stable, improving",
-    "outcome.hospitalized": "true"
+    "event.event_description": "a mild headache",
+    "event.event_onset_date": "2 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "43-year-old female patient"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
-  "expected_seriousness_indicators": [
-    "hospitalization"
-  ],
+  "expected_seriousness_indicators": [],
   "expected_missing_fields": [
-    "product.route",
     "product.treatment_start_date"
   ],
-  "expected_duplicate_family": "fam_incomplete_005",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
   "expected_narrative_facts": [
-    "69-year-old female patient with a history of type 2 diabetes.",
-    "Received third dose of DemoGluca (1 tablet twice daily).",
-    "Approximately 9 day(s) after that dose, developed high fever and confusion.",
-    "Patient was hospitalized.",
-    "Discharge diagnosis: severe infection.",
-    "Outcome: stable, improving."
+    "43-year-old female patient with a history of hypertension.",
+    "Received first dose of DemoCardolol (500mg).",
+    "Approximately 2 day(s) after that dose, developed a mild headache.",
+    "Outcome: recovering, still under observation."
   ],
-  "conflicting_fields": [],
-  "notes": "Missing fields (not stated in email or attachment): ['product.route', 'product.treatment_start_date']."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Missing fields (not stated in email or attachment): ['product.treatment_start_date']."
 }

@@ -1,0 +1,64 @@
+{
+  "case_id": "event_synonym_005",
+  "case_type": "event_synonym",
+  "duplicate_family_id": "fam_event_synonym_005",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoGluca patient with a pounding headache",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 58-year-old male patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 50mg) via oral.\nTreatment started on 2026-08-27.\nApproximately 1 day(s) after that dose, the patient developed a pounding headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nT. Kim (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter451@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 618,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 58-year-old male] (no real identity - demo only)\nAdmitting complaint: a pounding headache\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 50mg, started 2026-08-27\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a severe headache.\n\nDischarge diagnosis: clinical review for a severe headache (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "58",
+    "patient.sex": "male",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "T. Kim",
+    "product.product_name": "DemoGluca",
+    "product.dose": "50mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-08-27",
+    "event.event_description": "a severe headache",
+    "event.event_onset_date": "1 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [
+    "a pounding headache"
+  ],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
+  "expected_narrative_facts": [
+    "58-year-old male patient with a history of type 2 diabetes.",
+    "Received second dose of DemoGluca (50mg).",
+    "Treatment started on 2026-08-27.",
+    "Approximately 1 day(s) after that dose, developed a severe headache.",
+    "Outcome: fully recovered."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Source text describes the event as 'a pounding headache'; the event-term lookup tool must resolve this to the canonical term 'a severe headache'."
+}

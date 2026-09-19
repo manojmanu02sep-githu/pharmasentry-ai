@@ -1,46 +1,70 @@
 {
   "case_id": "incomplete_010",
-  "category": "incomplete",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with high fever and confusion\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 73-year-old male patient with a history of hypertension received their second dose of DemoCardolol (dose: 10mg).\nTreatment started on 2026-01-17.\nApproximately 5 day(s) after that dose, the patient developed high fever and confusion.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Duval (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter651@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 73-year-old male] (no real identity - demo only)\nAdmitting complaint: high fever and confusion\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 10mg, started 2026-01-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe infection.\n\nDischarge diagnosis: severe infection (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "incomplete",
+  "duplicate_family_id": "fam_incomplete_010",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with severe abdominal pain radiating to the back",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 38-year-old male patient with a history of hypertension received their second dose of DemoCardolol via subcutaneous injection.\nTreatment started on 2026-06-04.\nApproximately 3 day(s) after that dose, the patient developed severe abdominal pain radiating to the back.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Silva (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter663@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 645,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 38-year-old male] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain radiating to the back\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose not documented, started 2026-06-04\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "73",
+    "patient.age": "38",
     "patient.sex": "male",
-    "reporter.reporter_type": "treating physician",
-    "reporter.name": "A. Duval",
+    "reporter.reporter_type": "clinical care coordinator",
+    "reporter.name": "J. Silva",
     "product.product_name": "DemoCardolol",
-    "product.dose": "10mg",
-    "product.route": null,
-    "product.treatment_start_date": "2026-01-17",
-    "event.event_description": "high fever and confusion",
-    "event.event_onset_date": "5 day(s) after dose",
-    "outcome.outcome_description": "fully recovered",
+    "product.dose": null,
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-06-04",
+    "event.event_description": "severe abdominal pain radiating to the back",
+    "event.event_onset_date": "3 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
     "outcome.hospitalized": "true"
   },
+  "expected_source_evidence": [
+    "38-year-old male patient"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [
     "hospitalization"
   ],
   "expected_missing_fields": [
-    "product.route"
+    "product.dose"
   ],
-  "expected_duplicate_family": "fam_incomplete_010",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
   "expected_narrative_facts": [
-    "73-year-old male patient with a history of hypertension.",
-    "Received second dose of DemoCardolol (10mg).",
-    "Treatment started on 2026-01-17.",
-    "Approximately 5 day(s) after that dose, developed high fever and confusion.",
+    "38-year-old male patient with a history of hypertension.",
+    "Received second dose of DemoCardolol.",
+    "Treatment started on 2026-06-04.",
+    "Approximately 3 day(s) after that dose, developed severe abdominal pain radiating to the back.",
     "Patient was hospitalized.",
-    "Discharge diagnosis: severe infection.",
-    "Outcome: fully recovered."
+    "Discharge diagnosis: acute pancreatitis.",
+    "Outcome: recovering, still under observation."
   ],
-  "conflicting_fields": [],
-  "notes": "Missing fields (not stated in email or attachment): ['product.route']."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Missing fields (not stated in email or attachment): ['product.dose']."
 }

@@ -1,0 +1,61 @@
+{
+  "case_id": "missing_adverse_event_001",
+  "case_type": "missing_adverse_event",
+  "duplicate_family_id": "fam_missing_adverse_event_001",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "uncertain",
+  "email_subject": "Possible adverse event report - DemoZanix patient with an unspecified concern",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 78-year-old female patient with a history of generalized anxiety disorder received their third dose of DemoZanix (dose: 10mg) via subcutaneous injection.\nTreatment started on 2026-05-08.\nApproximately 6 day(s) after that dose, the patient contacted the clinic, but no specific symptom or event was described.\n\nThe patient contacted the clinic but the reporter did not specify what specifically happened.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Petrov (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter792@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": false,
+    "filename": "",
+    "media_type": "",
+    "size_bytes": 0,
+    "page_count": 0,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "",
+  "expected_extracted_fields": {
+    "patient.age": "78",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "J. Petrov",
+    "product.product_name": "DemoZanix",
+    "product.dose": "10mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-05-08",
+    "event.event_description": null,
+    "event.event_onset_date": null,
+    "outcome.outcome_description": null,
+    "outcome.hospitalized": null
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": false,
+    "missing_criteria": [
+      "adverse_event"
+    ],
+    "status": "uncertain"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [
+    "event.event_description"
+  ],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
+  "expected_narrative_facts": [],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "A specific adverse event occurred for this case."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Reporter did not describe any specific event; fails minimum criteria."
+}

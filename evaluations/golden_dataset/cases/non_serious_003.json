@@ -1,40 +1,64 @@
 {
   "case_id": "non_serious_003",
-  "category": "non_serious",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with mild nausea\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 84-year-old male patient with a history of hypertension received their fourth dose of DemoCardolol (dose: 25mg) via subcutaneous injection.\nTreatment started on 2026-03-26.\nApproximately 7 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Silva (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter664@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 84-year-old male] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 25mg, started 2026-03-26\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "non_serious",
+  "duplicate_family_id": "fam_non_serious_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 45-year-old female patient with a history of hypertension received their second dose of DemoCardolol (dose: 5mg) via subcutaneous injection.\nTreatment started on 2026-01-07.\nApproximately 3 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Reyes (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 632,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 45-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 5mg, started 2026-01-07\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "84",
-    "patient.sex": "male",
+    "patient.age": "45",
+    "patient.sex": "female",
     "reporter.reporter_type": "treating physician",
-    "reporter.name": "K. Silva",
+    "reporter.name": "J. Reyes",
     "product.product_name": "DemoCardolol",
-    "product.dose": "25mg",
+    "product.dose": "5mg",
     "product.route": "subcutaneous injection",
-    "product.treatment_start_date": "2026-03-26",
-    "event.event_description": "mild nausea",
-    "event.event_onset_date": "7 day(s) after dose",
+    "product.treatment_start_date": "2026-01-07",
+    "event.event_description": "occasional dizziness",
+    "event.event_onset_date": "3 day(s) after dose",
     "outcome.outcome_description": "stable, improving",
     "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "dose: 5mg"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_non_serious_003",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
   "expected_narrative_facts": [
-    "84-year-old male patient with a history of hypertension.",
-    "Received fourth dose of DemoCardolol (25mg).",
-    "Treatment started on 2026-03-26.",
-    "Approximately 7 day(s) after that dose, developed mild nausea.",
+    "45-year-old female patient with a history of hypertension.",
+    "Received second dose of DemoCardolol (5mg).",
+    "Treatment started on 2026-01-07.",
+    "Approximately 3 day(s) after that dose, developed occasional dizziness.",
     "Outcome: stable, improving."
   ],
-  "conflicting_fields": [],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
   "notes": "Fully detailed case with no seriousness indicator."
 }

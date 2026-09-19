@@ -1,44 +1,65 @@
 {
   "case_id": "exact_duplicate_04_b",
-  "category": "exact_duplicate",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoGluca patient with severe abdominal pain and vomiting\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nThis is a resend of my earlier report in case it did not arrive.\n\nA 24-year-old female patient with a history of type 2 diabetes received their first dose of DemoGluca (dose: 5mg) via subcutaneous injection.\nTreatment started on 2026-04-10.\nApproximately 9 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Novak (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter669@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 24-year-old female] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain and vomiting\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 5mg, started 2026-04-10\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
-  "expected_extracted_fields": {
-    "patient.age": "24",
-    "patient.sex": "female",
-    "reporter.reporter_type": "nurse practitioner",
-    "reporter.name": "P. Novak",
-    "product.product_name": "DemoGluca",
-    "product.dose": "5mg",
-    "product.route": "subcutaneous injection",
-    "product.treatment_start_date": "2026-04-10",
-    "event.event_description": "severe abdominal pain and vomiting",
-    "event.event_onset_date": "9 day(s) after dose",
-    "outcome.outcome_description": "stable, improving",
-    "outcome.hospitalized": "true"
+  "case_type": "exact_duplicate",
+  "duplicate_family_id": "fam_exact_04",
+  "expected_duplicate_matches": [
+    "exact_duplicate_04_a"
+  ],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with mild nausea",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nThis is a resend of my earlier report in case it did not arrive.\n\nA 71-year-old female patient with a history of hypertension received their third dose of DemoCardolol (dose: 500mg) via subcutaneous injection.\nTreatment started on 2026-04-27.\nApproximately 5 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Larsen (fictional reporter)\nDemo Family Practice\nContact: demo.reporter766@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 593,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
   },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 71-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 500mg, started 2026-04-27\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild nausea.\n\nDischarge diagnosis: observation for mild nausea (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "71",
+    "patient.sex": "female",
+    "reporter.reporter_type": "clinical care coordinator",
+    "reporter.name": "K. Larsen",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "500mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-04-27",
+    "event.event_description": "mild nausea",
+    "event.event_onset_date": "5 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
-  "expected_seriousness_indicators": [
-    "hospitalization"
-  ],
+  "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_exact_04",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "potential_duplicate",
   "expected_narrative_facts": [
-    "24-year-old female patient with a history of type 2 diabetes.",
-    "Received first dose of DemoGluca (5mg).",
-    "Treatment started on 2026-04-10.",
-    "Approximately 9 day(s) after that dose, developed severe abdominal pain and vomiting.",
-    "Patient was hospitalized.",
-    "Discharge diagnosis: acute pancreatitis.",
+    "71-year-old female patient with a history of hypertension.",
+    "Received third dose of DemoCardolol (500mg).",
+    "Treatment started on 2026-04-27.",
+    "Approximately 5 day(s) after that dose, developed mild nausea.",
     "Outcome: stable, improving."
   ],
-  "conflicting_fields": [],
-  "notes": "Exact duplicate family fam_exact_04, member b: identical underlying facts, resent/re-transcribed."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "These reports have been merged into a single case."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Exact duplicate family fam_exact_04: identical underlying facts, resent/re-transcribed. Never auto-merge."
 }

@@ -1,10 +1,23 @@
 {
   "case_id": "non_safety_005",
-  "category": "non_safety",
-  "is_safety_report": false,
-  "email_text": "Subject: General question about tablet appearance\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHello,\n\nThe DemoGluca tablets from my last refill look slightly different in color from the previous batch. Is that expected?\n\nThank you,\nJ. Larsen\nDemo Family Practice (fictional)\n",
+  "case_type": "non_safety",
+  "duplicate_family_id": "fam_non_safety_005",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "non_safety",
+  "email_subject": "General question about tablet appearance",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHello,\n\nThe DemoGluca tablets from my last refill look slightly different in color from the previous batch. Is that expected?\n\nThank you,\nJ. Larsen\nDemo Family Practice (fictional)\n",
+  "attachment_metadata": {
+    "has_attachment": false,
+    "filename": "",
+    "media_type": "",
+    "size_bytes": 0,
+    "page_count": 0,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
   "attachment_text": "",
   "expected_extracted_fields": {},
+  "expected_source_evidence": [],
   "expected_minimum_criteria": {
     "has_identifiable_patient": false,
     "has_identifiable_reporter": true,
@@ -14,12 +27,21 @@
       "patient",
       "suspect_product",
       "adverse_event"
-    ]
+    ],
+    "status": "incomplete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_non_safety_005",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "non_safety_content",
   "expected_narrative_facts": [],
-  "conflicting_fields": [],
-  "notes": "Non-safety inquiry; no case narrative is expected."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Non-safety inquiry; requires only a human closure confirmation, not a case narrative."
 }

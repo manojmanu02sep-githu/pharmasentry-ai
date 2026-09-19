@@ -1,8 +1,20 @@
 {
   "case_id": "complete_002",
-  "category": "complete",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with occasional dizziness\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 62-year-old female patient with a history of hypertension received their third dose of DemoCardolol (dose: 10mg) via oral.\nTreatment started on 2026-02-20.\nApproximately 4 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Kim (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter442@fictionalclinic-demo.example (synthetic contact info)\n",
+  "case_type": "complete",
+  "duplicate_family_id": "fam_complete_002",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 62-year-old female patient with a history of hypertension received their third dose of DemoCardolol (dose: 10mg) via oral.\nTreatment started on 2026-02-20.\nApproximately 4 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Kim (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter442@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 643,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
   "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 62-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 10mg, started 2026-02-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "62",
@@ -18,16 +30,23 @@
     "outcome.outcome_description": "recovering, still under observation",
     "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "62-year-old female patient",
+    "dose: 10mg",
+    "Discharge diagnosis: observation for occasional dizziness"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_complete_002",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
   "expected_narrative_facts": [
     "62-year-old female patient with a history of hypertension.",
     "Received third dose of DemoCardolol (10mg).",
@@ -35,6 +54,13 @@
     "Approximately 4 day(s) after that dose, developed occasional dizziness.",
     "Outcome: recovering, still under observation."
   ],
-  "conflicting_fields": [],
-  "notes": "Fully detailed, non-serious case."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Fully detailed, non-serious case; standard end-of-pipeline review only."
 }

@@ -77,6 +77,11 @@ def load_train_cases() -> list[GoldenCase]:
     return load_cases(split.train)
 
 
+def load_validation_cases() -> list[GoldenCase]:
+    split = load_split()
+    return load_cases(split.validation)
+
+
 def load_test_cases() -> list[GoldenCase]:
     split = load_split()
     return load_cases(split.test)
@@ -85,29 +90,28 @@ def load_test_cases() -> list[GoldenCase]:
 def cases_by_family(cases: tuple[GoldenCase, ...] | None = None) -> dict[str, list[GoldenCase]]:
     families: dict[str, list[GoldenCase]] = defaultdict(list)
     for case in cases if cases is not None else load_all_cases():
-        families[case.expected_duplicate_family].append(case)
+        families[case.duplicate_family_id].append(case)
     return dict(families)
 
 
 def validate_no_family_leakage(split: DatasetSplit | None = None) -> list[str]:
-    """Return family_ids (if any) whose members straddle train and test.
-
-    An empty list means the split is leakage-free.
+    """Return family_ids (if any) whose members straddle more than one of
+    train/validation/test. An empty list means the split is leakage-free.
     """
     resolved_split = split or load_split()
     all_cases = {c.case_id: c for c in load_all_cases()}
 
-    train_families = {
-        all_cases[cid].expected_duplicate_family
-        for cid in resolved_split.train
-        if cid in all_cases
-    }
-    test_families = {
-        all_cases[cid].expected_duplicate_family
-        for cid in resolved_split.test
-        if cid in all_cases
-    }
-    return sorted(train_families & test_families)
+    families_by_slice = []
+    for ids in (resolved_split.train, resolved_split.validation, resolved_split.test):
+        families_by_slice.append(
+            {all_cases[cid].duplicate_family_id for cid in ids if cid in all_cases}
+        )
+
+    leaked: set[str] = set()
+    for i in range(len(families_by_slice)):
+        for j in range(i + 1, len(families_by_slice)):
+            leaked |= families_by_slice[i] & families_by_slice[j]
+    return sorted(leaked)
 
 
 def dataset_as_json_dict() -> dict[str, object]:

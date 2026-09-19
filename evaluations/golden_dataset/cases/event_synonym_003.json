@@ -1,0 +1,64 @@
+{
+  "case_id": "event_synonym_003",
+  "case_type": "event_synonym",
+  "duplicate_family_id": "fam_event_synonym_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with passed out",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 31-year-old female patient with a history of hypertension received their first dose of DemoCardolol (dose: 25mg) via subcutaneous injection.\nTreatment started on 2026-07-06.\nApproximately 9 day(s) after that dose, the patient developed passed out.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Reyes (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter678@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 639,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 31-year-old female] (no real identity - demo only)\nAdmitting complaint: passed out\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 25mg, started 2026-07-06\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for loss of consciousness.\n\nDischarge diagnosis: clinical review for loss of consciousness (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "31",
+    "patient.sex": "female",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "P. Reyes",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "25mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-07-06",
+    "event.event_description": "loss of consciousness",
+    "event.event_onset_date": "9 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [
+    "passed out"
+  ],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
+  "expected_narrative_facts": [
+    "31-year-old female patient with a history of hypertension.",
+    "Received first dose of DemoCardolol (25mg).",
+    "Treatment started on 2026-07-06.",
+    "Approximately 9 day(s) after that dose, developed loss of consciousness.",
+    "Outcome: recovering, still under observation."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Source text describes the event as 'passed out'; the event-term lookup tool must resolve this to the canonical term 'loss of consciousness'."
+}

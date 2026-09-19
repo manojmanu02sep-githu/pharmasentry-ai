@@ -1,44 +1,69 @@
 {
   "case_id": "serious_005",
-  "category": "serious",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoZanix patient with severe abdominal pain and vomiting\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 55-year-old female patient with a history of generalized anxiety disorder received their first dose of DemoZanix (dose: 1 tablet twice daily) via oral.\nTreatment started on 2026-06-05.\nApproximately 9 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nT. Larsen (fictional reporter)\nDemo Family Practice\nContact: demo.reporter775@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 55-year-old female] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain and vomiting\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 1 tablet twice daily, started 2026-06-05\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "serious",
+  "duplicate_family_id": "fam_serious_005",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoCardolol patient with high fever and confusion",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 40-year-old female patient with a history of hypertension received their fourth dose of DemoCardolol (dose: 10mg) via subcutaneous injection.\nTreatment started on 2026-05-17.\nApproximately 2 day(s) after that dose, the patient developed high fever and confusion.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Tanaka (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter747@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 596,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 40-year-old female] (no real identity - demo only)\nAdmitting complaint: high fever and confusion\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 10mg, started 2026-05-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe infection.\n\nDischarge diagnosis: severe infection (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "55",
+    "patient.age": "40",
     "patient.sex": "female",
     "reporter.reporter_type": "clinical care coordinator",
-    "reporter.name": "T. Larsen",
-    "product.product_name": "DemoZanix",
-    "product.dose": "1 tablet twice daily",
-    "product.route": "oral",
-    "product.treatment_start_date": "2026-06-05",
-    "event.event_description": "severe abdominal pain and vomiting",
-    "event.event_onset_date": "9 day(s) after dose",
+    "reporter.name": "M. Tanaka",
+    "product.product_name": "DemoCardolol",
+    "product.dose": "10mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-05-17",
+    "event.event_description": "high fever and confusion",
+    "event.event_onset_date": "2 day(s) after dose",
     "outcome.outcome_description": "stable, improving",
     "outcome.hospitalized": "true"
   },
+  "expected_source_evidence": [
+    "Discharge diagnosis: severe infection"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [
     "hospitalization"
   ],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_serious_005",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
   "expected_narrative_facts": [
-    "55-year-old female patient with a history of generalized anxiety disorder.",
-    "Received first dose of DemoZanix (1 tablet twice daily).",
-    "Treatment started on 2026-06-05.",
-    "Approximately 9 day(s) after that dose, developed severe abdominal pain and vomiting.",
+    "40-year-old female patient with a history of hypertension.",
+    "Received fourth dose of DemoCardolol (10mg).",
+    "Treatment started on 2026-05-17.",
+    "Approximately 2 day(s) after that dose, developed high fever and confusion.",
     "Patient was hospitalized.",
-    "Discharge diagnosis: acute pancreatitis.",
+    "Discharge diagnosis: severe infection.",
     "Outcome: stable, improving."
   ],
-  "conflicting_fields": [],
-  "notes": "Fully detailed case with an explicit seriousness indicator."
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "This event is (or is not) life-threatening as a final determination."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Fully detailed case with an explicit seriousness indicator; AI triage suggestion only, human confirmation mandatory."
 }

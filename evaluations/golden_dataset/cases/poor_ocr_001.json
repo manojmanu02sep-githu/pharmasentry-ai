@@ -1,0 +1,68 @@
+{
+  "case_id": "poor_ocr_001",
+  "case_type": "poor_ocr",
+  "duplicate_family_id": "fam_poor_ocr_001",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with chest pain followed by loss of consciousness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 75-year-old female patient with a history of generalized anxiety disorder received their fourth dose of DemoZanix (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-08-02.\nApproximately 6 day(s) after that dose, the patient developed chest pain followed by loss of consciousness.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Novak (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter654@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 656,
+    "page_count": 1,
+    "ocr_applied": true,
+    "ocr_quality": "degraded"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthctic patient, 75-ye@r-old femalc] (no real identity - demo on1y)\nAdmitting compl@int: chest pain fo1lowed by loss of consciousncss\nRelevant history: gcner@lized anxicty disorder\nSuspcct product: DemoZanix, dose 50mg, started 2026-08-02\n\nCourse of carc:\nPatient was [illegible] and treated. [illegible] wcre consistcnt with cardiac @rrhythmia.\n\nDischarge diagnosis: cardiac arrhythmia (fictional case).\nOutcome at discharge: recovering, still undcr observation.\n\n-- End of synthctic dischargc summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "75",
+    "patient.sex": "female",
+    "reporter.reporter_type": "treating physician",
+    "reporter.name": "A. Novak",
+    "product.product_name": "DemoZanix",
+    "product.dose": "50mg",
+    "product.route": "subcutaneous injection",
+    "product.treatment_start_date": "2026-08-02",
+    "event.event_description": "chest pain followed by loss of consciousness",
+    "event.event_onset_date": "6 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "true"
+  },
+  "expected_source_evidence": [],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [
+    "hospitalization",
+    "life_threatening"
+  ],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "low_ocr_quality",
+  "expected_narrative_facts": [
+    "75-year-old female patient with a history of generalized anxiety disorder.",
+    "Received fourth dose of DemoZanix (50mg).",
+    "Treatment started on 2026-08-02.",
+    "Approximately 6 day(s) after that dose, developed chest pain followed by loss of consciousness.",
+    "Patient was hospitalized.",
+    "Discharge diagnosis: cardiac arrhythmia.",
+    "Outcome: recovering, still under observation."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system.",
+    "The garbled attachment text has been read with full confidence."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Attachment is a deterministically corrupted (simulated poor OCR) scan; email text is reliable, attachment is not — route to manual document review."
+}

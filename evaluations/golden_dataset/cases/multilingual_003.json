@@ -1,0 +1,65 @@
+{
+  "case_id": "multilingual_003",
+  "case_type": "multilingual",
+  "duplicate_family_id": "fam_multilingual_003",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report / Posible evento adverso - DemoZanix",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHola equipo de seguridad,\n\nQuiero reportar un posible evento adverso. Mi paciente, de 40 años, una mujer, tomó DemoZanix y luego presentó náuseas leves.\n\nIn English: the patient developed mild nausea after taking DemoZanix.\n\nRegards,\nP. Haddad (fictional reporter)\nDemo Family Practice\nContact: demo.reporter724@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 630,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 40-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 5mg, started 2026-06-06\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "expected_extracted_fields": {
+    "patient.age": "40",
+    "patient.sex": "female",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "P. Haddad",
+    "product.product_name": "DemoZanix",
+    "product.dose": "5mg",
+    "product.route": "oral",
+    "product.treatment_start_date": "2026-06-06",
+    "event.event_description": "mild nausea",
+    "event.event_onset_date": "5 day(s) after dose",
+    "outcome.outcome_description": "recovering, still under observation",
+    "outcome.hospitalized": "false"
+  },
+  "expected_source_evidence": [
+    "náuseas leves",
+    "mild nausea"
+  ],
+  "expected_minimum_criteria": {
+    "has_identifiable_patient": true,
+    "has_identifiable_reporter": true,
+    "has_suspect_product": true,
+    "has_adverse_event": true,
+    "missing_criteria": [],
+    "status": "complete"
+  },
+  "expected_seriousness_indicators": [],
+  "expected_missing_fields": [],
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "normal",
+  "expected_narrative_facts": [
+    "40-year-old female patient with a history of generalized anxiety disorder.",
+    "Received third dose of DemoZanix (5mg).",
+    "Treatment started on 2026-06-06.",
+    "Approximately 5 day(s) after that dose, developed mild nausea.",
+    "Outcome: recovering, still under observation."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": false,
+  "synthetic_data": true,
+  "notes": "Mixed Spanish/English email body; the Spanish event phrase and its English gloss both appear, so extraction must not depend on English-only text."
+}

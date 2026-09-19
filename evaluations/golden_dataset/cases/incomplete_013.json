@@ -1,42 +1,66 @@
 {
   "case_id": "incomplete_013",
-  "category": "incomplete",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoCardolol patient with a mild headache\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 73-year-old female patient with a history of hypertension received their third dose of DemoCardolol via oral.\nApproximately 5 day(s) after that dose, the patient developed a mild headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Novak (fictional reporter)\nDemo Family Practice\nContact: demo.reporter666@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 73-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild headache\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose not documented, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild headache.\n\nDischarge diagnosis: observation for a mild headache (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "incomplete",
+  "duplicate_family_id": "fam_incomplete_013",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with mild fatigue",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 34-year-old male patient with a history of generalized anxiety disorder received their first dose of DemoZanix via subcutaneous injection.\nApproximately 1 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Reyes (fictional reporter)\nDemo Family Practice\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 618,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 34-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose not documented, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild fatigue.\n\nDischarge diagnosis: observation for mild fatigue (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "73",
-    "patient.sex": "female",
-    "reporter.reporter_type": "clinical care coordinator",
-    "reporter.name": "M. Novak",
-    "product.product_name": "DemoCardolol",
+    "patient.age": "34",
+    "patient.sex": "male",
+    "reporter.reporter_type": "nurse practitioner",
+    "reporter.name": "J. Reyes",
+    "product.product_name": "DemoZanix",
     "product.dose": null,
-    "product.route": "oral",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": null,
-    "event.event_description": "a mild headache",
-    "event.event_onset_date": "5 day(s) after dose",
-    "outcome.outcome_description": "recovering, still under observation",
+    "event.event_description": "mild fatigue",
+    "event.event_onset_date": "1 day(s) after dose",
+    "outcome.outcome_description": "fully recovered",
     "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "34-year-old male patient"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [
     "product.dose",
     "product.treatment_start_date"
   ],
-  "expected_duplicate_family": "fam_incomplete_013",
+  "expected_conflicting_fields": [],
+  "expected_routing_decision": "missing_minimum_criteria",
   "expected_narrative_facts": [
-    "73-year-old female patient with a history of hypertension.",
-    "Received third dose of DemoCardolol.",
-    "Approximately 5 day(s) after that dose, developed a mild headache.",
-    "Outcome: recovering, still under observation."
+    "34-year-old male patient with a history of generalized anxiety disorder.",
+    "Received first dose of DemoZanix.",
+    "Approximately 1 day(s) after that dose, developed mild fatigue.",
+    "Outcome: fully recovered."
   ],
-  "conflicting_fields": [],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
   "notes": "Missing fields (not stated in email or attachment): ['product.dose', 'product.treatment_start_date']."
 }

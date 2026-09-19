@@ -6,140 +6,127 @@ verified (tests executed, not assumed).
 
 Legend: `[x]` done and verified · `[~]` partially done · `[ ]` not started
 
+This file was restructured on 2026-09-19 to follow the 15-phase plan given in
+that day's build instruction (superseding the shorter Phase 3–12 placeholder
+list that used to appear below Phase 2). Phase 1 and Phase 2 below reflect
+what was actually built in earlier sessions; Phase 2 is being *extended* in
+this session to meet the fuller spec (120+ records, more categories, more
+per-record fields, 3-way split) given now.
+
 ## Phase 1 — Architecture, Scaffold, Models, State, Demo Case, Initial Tests — DONE
 - [x] Repository directory structure (matches CLAUDE.md `Repository` section)
-- [x] `progress.md` (this file)
-- [x] `README.md`
-- [x] `.env.example`
-- [x] `requirements.txt`
-- [x] `Makefile`
-- [x] `docker-compose.yml` (skeleton; app image/full service wiring in Phase 8)
+- [x] `README.md`, `.env.example`, `requirements.txt`, `Makefile`,
+      `docker-compose.yml` (skeleton)
 - [x] `config/` — settings loader (`config/settings.py`), `config/config.yaml`
-- [x] `src/models/` — typed Pydantic domain models (goal, plan, decisions, evidence,
-      extracted fields, minimum criteria, seriousness, duplicates, missing info,
-      narrative, evaluation, review, trace/audit events)
-- [x] `src/graph/state.py` — typed LangGraph `CaseState` with `operator.add`
-      reducers on every append-only list field
-- [x] Synthetic demo case (DemoGluca) — email + attachment under `data/synthetic_*`
-- [x] `app.py` — placeholder entry point (Streamlit page list only)
-- [x] `tests/unit/` — model, state, settings, and demo-data tests (22 tests)
-- [x] Ran pytest (22/22 passed), ruff (clean after fixes), mypy (clean, 29 files)
-- [x] `.gitignore`, git init, initial commit (`c2aaede`)
+- [x] `src/models/` — typed Pydantic domain models
+- [x] `src/graph/state.py` — typed LangGraph `CaseState`
+- [x] Synthetic demo case (DemoGluca) under `data/synthetic_*`
+- [x] `app.py` placeholder, `tests/unit/` (22 tests)
+- [x] pytest 22/22, ruff clean, mypy clean — commit `c2aaede`
 
-Deferred from the literal Phase 1 file list, tracked as later phases instead:
-`scripts/seed_synthetic_data.py` and `scripts/run_golden_evaluation.py` exist
-as honest placeholders (no invented output) so `make seed` / `make eval` run;
-full implementations land in Phase 2 and Phase 6/11. `docs/*` subfolders and
-`.claude/*` exist with `.gitkeep` only — populated in Phase 12 / as needed.
+## Phase 2 — Synthetic Dataset and Golden Dataset — DONE (extended)
+First pass (commit `4810751`): 100 records / 8 categories / train+test split.
+This session extended it to the fuller spec given in the 2026-09-19
+autonomous-build instruction. Old field names (`category`,
+`expected_duplicate_family`, `conflicting_fields`, `is_safety_report` as a
+stored field) were renamed/replaced in place rather than duplicated,
+per the "extend, don't duplicate" project rule.
 
-## Phase 2 — Synthetic Data & Golden Dataset — DONE
-- [x] Synthetic data generator script (`scripts/generate_golden_dataset.py`) —
-      deterministic (seeded RNG, `--seed` default 42), fully offline, no LLM
-      calls; re-running reproduces byte-identical output (verified: sha256 of
-      a sample case file matched across two runs)
-- [x] 100 labeled records: 20 complete, 20 incomplete, 15 serious, 15
-      non-serious, 10 exact-duplicate + 10 near-duplicate (5 two-member
-      families each), 5 conflicting email-vs-attachment, 5 non-safety —
-      matches the distribution given for this phase exactly
-- [x] Duplicate-family-aware 80/20 train/test split (`family_aware_split` in
-      the generator) — verified zero family leakage
-      (`validate_no_family_leakage() == []`) and full coverage (every
-      case_id appears in exactly one of train/test)
-- [x] Golden dataset schemas (`src/evaluation/schemas.py`: `GoldenCase`,
-      `GoldenCaseCategory`, `ExpectedMinimumCriteria`, `DatasetSplit`,
-      `DatasetManifest`) and read-only loaders (`src/evaluation/golden_loader.py`)
-- [x] Baseline metrics framework (`src/evaluation/metrics.py`): classification
-      P/R/F1, field-level extraction P/R/F1, seriousness
-      sensitivity/specificity, duplicate precision@5/recall@5 (+ MRR as a
-      bonus, anticipating Phase 5), citation coverage, unsupported-claim rate
-- [x] `scripts/run_golden_evaluation.py` rewritten to actually run the
-      metrics framework against the golden test split (20 cases) using a
-      clearly-labeled **naive, non-agent baseline**; writes real computed
-      numbers to `evaluations/results/phase2_baseline_metrics.json`
-      (regenerated each run, gitignored — not a claim about agent quality)
-- [x] Tests: `tests/unit/test_evaluation_schemas.py`,
-      `tests/unit/test_metrics.py`,
-      `tests/integration/test_golden_dataset_integrity.py`,
-      `tests/integration/test_generate_golden_dataset.py`,
-      `tests/integration/test_run_golden_evaluation.py` (38 new tests)
-- [x] Ran pytest (60/60 passed total), ruff (clean), mypy (clean, 35 files
-      incl. `scripts/`)
-- [x] `pyproject.toml`/Makefile updated (`mypy` now also checks `scripts/`;
-      new `make dataset` target)
+- [x] Deterministic, offline generator (`scripts/generate_golden_dataset.py`),
+      re-verified byte-identical across two runs via sha256 of the full
+      `cases/` directory listing
+- [x] **138 records** (>=120 required) across **21 case types**: complete
+      (15), incomplete (15), serious (12), non_serious (12), non_safety (5),
+      exact_duplicate (8, 4 families), near_duplicate (8, 4 families),
+      similar_non_duplicate (6, 3 look-alike-but-not-duplicate pairs),
+      conflicting (5), missing_suspect_product (4), missing_adverse_event
+      (4), missing_reporter (4), missing_identifiable_patient (4), poor_ocr
+      (5, deterministically corrupted attachment text), multilingual (5,
+      Spanish/English), product_alias (5), event_synonym (5),
+      malformed_date (5, some genuinely unresolvable by design),
+      prompt_injection (5), tool_injection (3), approval_bypass_attempt (3)
+- [x] Extended `GoldenCase` schema (`src/evaluation/schemas.py`):
+      `case_type` (renamed from `category`), `duplicate_family_id` (renamed
+      from `expected_duplicate_family`), `expected_duplicate_matches`,
+      `expected_safety_classification` (3-way: safety_report/non_safety/
+      uncertain, replacing a bare `is_safety_report` field — now a computed
+      property), `email_subject`/`email_body` (with `email_text` as a
+      computed convenience property), `attachment_metadata`
+      (`AttachmentMetadata` model: has_attachment, filename, media_type,
+      size_bytes, page_count, ocr_applied, ocr_quality),
+      `expected_source_evidence`, `expected_conflicting_fields` (renamed
+      from `conflicting_fields`), `expected_routing_decision` (reuses the
+      existing `RouteReason` enum from `src/models/enums.py` rather than
+      duplicating it), `prohibited_conclusions`, `expected_human_review_required`,
+      `synthetic_data: Literal[True]`. `ExpectedMinimumCriteria` gained a
+      `status: complete|incomplete|uncertain` field with a model validator
+      enforcing consistency with the four boolean criteria.
+- [x] Deterministic train/validation/test split (`family_aware_split`):
+      84 train / 27 validation / 27 test. Fixed a real bug found while
+      verifying: allocating train and validation independently via
+      `round()` could leave a small category (e.g. the 4-family
+      exact-duplicate category) with zero families in test; rewrote the
+      allocator to assign test first and guarantee >=1 family in both test
+      and validation whenever the category has enough families — every one
+      of the 21 categories now has real representation in all three splits.
+- [x] Zero duplicate-family leakage verified
+      (`validate_no_family_leakage() == []`) and a dedicated test
+      (`test_no_duplicate_family_straddles_splits`) proves it; every
+      case_id appears in exactly one of train/validation/test
+      (`test_split_covers_every_case_exactly_once`)
+- [x] `scripts/seed_synthetic_data.py` rewritten as a real executable: runs
+      the generator, then validates record counts, unique case IDs, split
+      isolation, label completeness, evidence validity (every
+      `expected_source_evidence` snippet is checked to actually appear in
+      that case's own email/attachment text — not just asserted), synthetic
+      markers, and duplicate-family consistency. All seven checks pass.
+- [x] Found and fixed a second real bug during validation: OCR corruption
+      for `poor_ocr` cases could occasionally mangle the
+      "[SYNTHETIC / FICTIONAL DOCUMENT ...]" marker itself; the corruption
+      routine now leaves the marker line untouched.
+- [x] `tests/unit/test_evaluation_schemas.py`,
+      `tests/integration/test_golden_dataset_integrity.py` (23 tests,
+      rewritten for the new schema/counts + new checks for the new
+      categories), `tests/integration/test_generate_golden_dataset.py`,
+      `tests/integration/test_run_golden_evaluation.py` updated for the new
+      field names/counts
+- [x] pytest **71/71 passed**, ruff clean, mypy clean (35 files) after the
+      extension (commands and exact output in the session transcript)
 
-Deviations/assumptions logged:
-- CLAUDE.md's fuller category list also mentions poor-OCR, multilingual, and
-  prompt-injection golden cases. This phase's explicit instruction gave a
-  concrete 8-category/100-case distribution that does not include those
-  three; deferred them to Phase 3 (added alongside the OCR quality checker
-  and prompt-injection guardrail they need to be meaningfully labeled and
-  scored against) and to the Phase 10 security/red-team suite.
-  `expected_extracted_fields` uses plain expected string/None values (not
-  runtime `FieldValue` objects with citations) since there is no run to
-  cite yet; runtime citation grounding is scored once the agents exist.
-- Within this dataset's category taxonomy, "serious" and "incomplete" are
-  kept as separate dimensions from each other and from "complete" (each
-  category isolates one signal cleanly for metric testing) rather than
-  modeling every real-world combination (e.g. a serious case with missing
-  dose) — a deliberate simplification of the synthetic distribution, not a
-  constraint on future agents.
-- Citation coverage / unsupported-claim rate are demonstrated on the golden
-  dataset's own `expected_narrative_facts` (grounded by construction, so
-  coverage=1.0/unsupported=0.0), since there is no Narrative Agent yet to
-  generate real narratives to score (Phase 6).
+## Notes / deviations logged during Phase 2 extension
+- CLAUDE.md's Hybrid RAG section calls for MRR too; not part of this
+  message's explicit metric list but already implemented
+  (`mean_reciprocal_rank` in `src/evaluation/metrics.py`) from the prior
+  session, kept for Phase 5.
+- `expected_human_review_required` marks cases needing **escalated/early**
+  human attention (seriousness, duplicates, conflicts, incomplete minimum
+  criteria, injection/bypass attempts) — not the same as "will a human
+  approve this case eventually," which is true for every case per the
+  Absolute Boundaries (final review is mandatory regardless of this flag).
+- `similar_non_duplicate` cases are each their own singleton family
+  (`expected_duplicate_matches == []`); the two members of a pair are
+  cross-referenced only in free-text `notes`, since they are, by design,
+  NOT a duplicate-family match.
+- Old `evaluations/results/phase2_baseline_metrics.json` numbers from the
+  100-case dataset are stale and were regenerated against the 138-case
+  dataset; the file itself is gitignored (regenerated by `make eval`, never
+  committed).
 
-## Phase 3 — Deterministic Tools & Guardrails
-- [ ] Email parser, attachment extractor, file validator, filename sanitizer
-- [ ] PDF extractor, OCR adapter + quality checker
-- [ ] Citation builder, citation checker, unsupported-claim checker
-- [ ] Product/event lookup, date normalizer
-- [ ] State reader, review pause, audit logger tools
-- [ ] Prompt-injection detection guardrail, output encoding
+## Phase 3 — Deterministic Tool Layer — [ ]
+## Phase 4 — Memory — [ ]
+## Phase 5 — Hybrid RAG — [ ]
+## Phase 6 — LLM Provider Abstraction — [ ]
+## Phase 7 — Agents — [ ]
+## Phase 8 — LangGraph Orchestration — [ ]
+## Phase 9 — Evaluation Framework — [ ]
+## Phase 10 — Observability and Traceability — [ ]
+## Phase 11 — Security, Guardrails, and Red Teaming — [ ]
+## Phase 12 — Streamlit User Interface — [ ]
+## Phase 13 — API and Service Layer — [ ]
+## Phase 14 — CI/CD and Continuous Evaluation — [ ]
+## Phase 15 — Documentation — [ ]
+## Final Verification — [ ]
 
-## Phase 4 — Memory Layers & Isolation
-- [ ] Working memory (LangGraph state)
-- [ ] Episodic memory (run status, errors, reviewer corrections, versions)
-- [ ] Semantic memory (synthetic cases, aliases, vocabulary, retrieval)
-- [ ] Procedural memory (prompts, schemas, policies)
-- [ ] Case isolation + access logging enforcement tests
-
-## Phase 5 — Hybrid Retrieval & Evaluation
-- [ ] BM25 index, vector index (FAISS), metadata filter
-- [ ] Deterministic hybrid ranker, top-5 candidates w/ evidence
-- [ ] Retrieval metrics: precision@5, recall@5, MRR
-
-## Phase 6 — Agents (one at a time, mock-LLM tested)
-- [ ] Goal Manager, Planner, Supervisor
-- [ ] Intake, Document, Medical Extraction
-- [ ] Minimum Criteria, Seriousness Triage
-- [ ] Duplicate Agent, Missing Information Agent
-- [ ] Narrative Agent, Evaluator Agent, Human Review Controller
-
-## Phase 7 — Graph Wiring
-- [ ] Full LangGraph conditional graph + checkpointing
-- [ ] HITL pause/resume
-- [ ] Retry-once-then-escalate enforcement
-
-## Phase 8 — Streamlit UI
-- [ ] Dashboard, New Case Intake, Case Workspace, Planning/Agent Progress,
-      Duplicate Review, Human Review Queue, Evaluation, Observability,
-      System Configuration, About/Limitations
-
-## Phase 9 — Observability
-- [ ] OTel instrumentation, `/health`, Prometheus metrics, Grafana config
-- [ ] In-app trace viewer, audit JSON export, PHI-safe structured logs
-
-## Phase 10 — Full Test Suite
-- [ ] Security/red-team suite (injection, tool-arg injection, cross-case access,
-      approval bypass, endless-loop, unauthorized external action)
-- [ ] Load test script
-
-## Phase 11 — Quality Gate
-- [ ] Ruff, mypy, pytest, golden evaluation, smoke test all passing — fix failures
-
-## Phase 12 — Governance & Docs
-- [ ] Threat model, governance docs, runbook, limitations, README finalization,
-      screenshots
-
-## Notes / Deviations From Spec
-(Record any safe-default assumptions here as they are made.)
+(Each phase above gets its own detailed section, filled in as completed —
+see below. Sections are appended in order; nothing is marked `[x]` above
+until its detailed section below has actually been executed and verified.)

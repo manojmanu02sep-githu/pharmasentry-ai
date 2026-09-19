@@ -1,42 +1,67 @@
 {
   "case_id": "conflicting_002",
-  "category": "conflicting",
-  "is_safety_report": true,
-  "email_text": "Subject: Possible adverse event report - DemoGluca patient with a mild skin rash\n\n[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 56-year-old female patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 5mg) via subcutaneous injection.\nTreatment started on 2026-05-01.\nApproximately 9 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Reyes (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter673@fictionalclinic-demo.example (synthetic contact info)\n",
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 56-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 1 tablet twice daily, started 2026-05-01\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "case_type": "conflicting",
+  "duplicate_family_id": "fam_conflicting_002",
+  "expected_duplicate_matches": [],
+  "expected_safety_classification": "safety_report",
+  "email_subject": "Possible adverse event report - DemoZanix patient with mild fatigue",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 51-year-old female patient with a history of generalized anxiety disorder received their fourth dose of DemoZanix (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-01-24.\nApproximately 6 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Tanaka (fictional reporter)\nDemo Family Practice\nContact: demo.reporter735@fictionalclinic-demo.example (synthetic contact info)\n",
+  "attachment_metadata": {
+    "has_attachment": true,
+    "filename": "discharge_summary.txt",
+    "media_type": "text/plain",
+    "size_bytes": 632,
+    "page_count": 1,
+    "ocr_applied": false,
+    "ocr_quality": "not_applicable"
+  },
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 51-year-old female] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 1 tablet twice daily, started 2026-01-24\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
-    "patient.age": "56",
+    "patient.age": "51",
     "patient.sex": "female",
-    "reporter.reporter_type": "nurse practitioner",
-    "reporter.name": "K. Reyes",
-    "product.product_name": "DemoGluca",
+    "reporter.reporter_type": "staff pharmacist",
+    "reporter.name": "A. Tanaka",
+    "product.product_name": "DemoZanix",
     "product.dose": null,
     "product.route": "subcutaneous injection",
-    "product.treatment_start_date": "2026-05-01",
-    "event.event_description": "a mild skin rash",
-    "event.event_onset_date": "9 day(s) after dose",
-    "outcome.outcome_description": "recovering, still under observation",
+    "product.treatment_start_date": "2026-01-24",
+    "event.event_description": "mild fatigue",
+    "event.event_onset_date": "6 day(s) after dose",
+    "outcome.outcome_description": "stable, improving",
     "outcome.hospitalized": "false"
   },
+  "expected_source_evidence": [
+    "dose: 50mg",
+    "dose 1 tablet twice daily"
+  ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
     "has_identifiable_reporter": true,
     "has_suspect_product": true,
     "has_adverse_event": true,
-    "missing_criteria": []
+    "missing_criteria": [],
+    "status": "complete"
   },
   "expected_seriousness_indicators": [],
   "expected_missing_fields": [],
-  "expected_duplicate_family": "fam_conflicting_002",
-  "expected_narrative_facts": [
-    "56-year-old female patient with a history of type 2 diabetes.",
-    "Received second dose of DemoGluca (5mg).",
-    "Treatment started on 2026-05-01.",
-    "Approximately 9 day(s) after that dose, developed a mild skin rash.",
-    "Outcome: recovering, still under observation."
-  ],
-  "conflicting_fields": [
+  "expected_conflicting_fields": [
     "product.dose"
   ],
-  "notes": "Email states dose '5mg'; attachment states '1 tablet twice daily' for the same patient/product/event."
+  "expected_routing_decision": "validation_failure",
+  "expected_narrative_facts": [
+    "51-year-old female patient with a history of generalized anxiety disorder.",
+    "Received fourth dose of DemoZanix (50mg).",
+    "Treatment started on 2026-01-24.",
+    "Approximately 6 day(s) after that dose, developed mild fatigue.",
+    "Outcome: stable, improving."
+  ],
+  "prohibited_conclusions": [
+    "This adverse event was caused by the suspect product.",
+    "This case is (or is not) reportable to a regulator.",
+    "This case's seriousness has been finally determined.",
+    "The patient should receive a specific treatment or diagnosis from this system."
+  ],
+  "expected_human_review_required": true,
+  "synthetic_data": true,
+  "notes": "Email states dose '50mg'; attachment states '1 tablet twice daily' for the same patient/product/event."
 }
