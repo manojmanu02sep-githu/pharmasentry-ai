@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_incomplete_004",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with mild nausea",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 24-year-old female patient with a history of type 2 diabetes received their first dose of DemoGluca (dose: 5mg).\nTreatment started on 2026-04-10.\nApproximately 9 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Novak (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter669@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with mild nausea",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 24-year-old female patient with a history of type 1 diabetes received their first dose of DemoInsulex (dose: 0.5 mg).\nTreatment started on 2026-04-10.\nApproximately 9 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Novak (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter669@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 611,
+    "size_bytes": 616,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 24-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 5mg, started 2026-04-10\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild nausea.\n\nDischarge diagnosis: observation for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 24-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 0.5 mg, started 2026-04-10\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild nausea.\n\nDischarge diagnosis: observation for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "24",
     "patient.sex": "female",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "P. Novak",
-    "product.product_name": "DemoGluca",
-    "product.dose": "5mg",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "0.5 mg",
     "product.route": null,
     "product.treatment_start_date": "2026-04-10",
     "event.event_description": "mild nausea",
@@ -41,15 +41,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "product.route"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [
-    "24-year-old female patient with a history of type 2 diabetes.",
-    "Received first dose of DemoGluca (5mg).",
+  "expected_report_facts": [
+    "24-year-old female patient with a history of type 1 diabetes.",
+    "Received first dose of DemoInsulex (0.5 mg).",
     "Treatment started on 2026-04-10.",
     "Approximately 9 day(s) after that dose, developed mild nausea.",
     "Outcome: recovering, still under observation."
@@ -57,7 +58,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,

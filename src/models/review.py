@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field
 
-from src.models.enums import ReviewDecision
+from src.models.enums import ReviewDecision, TriagePriority
 
 
 class ReviewerChange(BaseModel):
@@ -24,3 +25,17 @@ class ReviewStatus(BaseModel):
     reviewer_id: str | None = None
     notes: str | None = None
     decided_at: datetime | None = None
+
+
+class ReviewTask(BaseModel):
+    """One queued item in the Human Review Queue — created before any
+    reviewer decision exists (that's `ReviewStatus`, above, once decided)."""
+
+    task_id: str
+    case_id: str
+    reason: str
+    evidence_summary: str
+    ai_suggestion: str | None = None
+    ai_suggested_priority: TriagePriority | None = None
+    status: Literal["pending", "in_review", "resolved"] = "pending"
+    created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))

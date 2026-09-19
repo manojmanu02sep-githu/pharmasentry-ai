@@ -4,34 +4,34 @@
   "duplicate_family_id": "fam_serious_008",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with severe abdominal pain radiating to the back",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 60-year-old male patient with a history of hypertension received their second dose of DemoCardolol (dose: 25mg) via subcutaneous injection.\nTreatment started on 2026-06-06.\nApproximately 10 day(s) after that dose, the patient developed severe abdominal pain radiating to the back.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Silva (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with a severe injection site reaction with necrosis at the inject",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 60-year-old male patient with a history of type 2 diabetes received their second dose of DemoBasalin (dose: 2 mg) via subcutaneous injection.\nTreatment started on 2026-06-06.\nApproximately 10 day(s) after that dose, the patient developed a severe injection site reaction with necrosis at the injection site.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Silva (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 608,
+    "size_bytes": 669,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 60-year-old male] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain radiating to the back\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 25mg, started 2026-06-06\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 60-year-old male] (no real identity - demo only)\nAdmitting complaint: a severe injection site reaction with necrosis at the injection site\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 2 mg, started 2026-06-06\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with necrotizing injection site reaction.\n\nDischarge diagnosis: necrotizing injection site reaction (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "60",
     "patient.sex": "male",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "R. Silva",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "25mg",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "2 mg",
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-06-06",
-    "event.event_description": "severe abdominal pain radiating to the back",
+    "event.event_description": "a severe injection site reaction with necrosis at the injection site",
     "event.event_onset_date": "10 day(s) after dose",
     "outcome.outcome_description": "fully recovered",
     "outcome.hospitalized": "true"
   },
   "expected_source_evidence": [
-    "Discharge diagnosis: acute pancreatitis"
+    "Discharge diagnosis: necrotizing injection site reaction"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -41,29 +41,31 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [
-    "hospitalization"
+  "expected_triage_indicators": [
+    "hospitalization",
+    "severe_injection_site_reaction"
   ],
+  "expected_triage_priority": "high",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "60-year-old male patient with a history of hypertension.",
-    "Received second dose of DemoCardolol (25mg).",
+  "expected_report_facts": [
+    "60-year-old male patient with a history of type 2 diabetes.",
+    "Received second dose of DemoBasalin (2 mg).",
     "Treatment started on 2026-06-06.",
-    "Approximately 10 day(s) after that dose, developed severe abdominal pain radiating to the back.",
+    "Approximately 10 day(s) after that dose, developed a severe injection site reaction with necrosis at the injection site.",
     "Patient was hospitalized.",
-    "Discharge diagnosis: acute pancreatitis.",
+    "Discharge diagnosis: necrotizing injection site reaction.",
     "Outcome: fully recovered."
   ],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "This event is (or is not) life-threatening as a final determination."
   ],
   "expected_human_review_required": true,
   "synthetic_data": true,
-  "notes": "Fully detailed case with an explicit seriousness indicator; AI triage suggestion only, human confirmation mandatory."
+  "notes": "Fully detailed case with an explicit triage indicator; AI triage suggestion only, human confirmation mandatory."
 }

@@ -29,7 +29,7 @@ from src.evaluation.metrics import (
     mean_duplicate_precision_at_k,
     mean_duplicate_recall_at_k,
     mean_reciprocal_rank,
-    seriousness_sensitivity_specificity,
+    triage_escalation_sensitivity_specificity,
     unsupported_claim_rate,
 )
 from src.evaluation.schemas import (
@@ -73,7 +73,7 @@ __all__ = [
     "mean_duplicate_precision_at_k",
     "mean_duplicate_recall_at_k",
     "mean_reciprocal_rank",
-    "seriousness_sensitivity_specificity",
+    "triage_escalation_sensitivity_specificity",
     "unsupported_claim_rate",
     "validate_no_family_leakage",
 ]

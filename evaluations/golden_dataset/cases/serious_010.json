@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_serious_010",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with severe abdominal pain and vomiting",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 20-year-old male patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 500mg) via subcutaneous injection.\nTreatment started on 2026-05-24.\nApproximately 5 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Tanaka (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter750@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with severe abdominal pain and vomiting",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 20-year-old male patient with a history of type 1 diabetes received their second dose of DemoInsulex (dose: 10 mg) via subcutaneous injection.\nTreatment started on 2026-05-24.\nApproximately 5 day(s) after that dose, the patient developed severe abdominal pain and vomiting.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nP. Tanaka (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter750@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 609,
+    "size_bytes": 611,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 20-year-old male] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain and vomiting\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 500mg, started 2026-05-24\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 20-year-old male] (no real identity - demo only)\nAdmitting complaint: severe abdominal pain and vomiting\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 10 mg, started 2026-05-24\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with acute pancreatitis.\n\nDischarge diagnosis: acute pancreatitis (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "20",
     "patient.sex": "male",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "P. Tanaka",
-    "product.product_name": "DemoGluca",
-    "product.dose": "500mg",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "10 mg",
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-05-24",
     "event.event_description": "severe abdominal pain and vomiting",
@@ -41,15 +41,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [
+  "expected_triage_indicators": [
     "hospitalization"
   ],
+  "expected_triage_priority": "high",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "20-year-old male patient with a history of type 2 diabetes.",
-    "Received second dose of DemoGluca (500mg).",
+  "expected_report_facts": [
+    "20-year-old male patient with a history of type 1 diabetes.",
+    "Received second dose of DemoInsulex (10 mg).",
     "Treatment started on 2026-05-24.",
     "Approximately 5 day(s) after that dose, developed severe abdominal pain and vomiting.",
     "Patient was hospitalized.",
@@ -59,11 +60,11 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "This event is (or is not) life-threatening as a final determination."
   ],
   "expected_human_review_required": true,
   "synthetic_data": true,
-  "notes": "Fully detailed case with an explicit seriousness indicator; AI triage suggestion only, human confirmation mandatory."
+  "notes": "Fully detailed case with an explicit triage indicator; AI triage suggestion only, human confirmation mandatory."
 }

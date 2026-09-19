@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_incomplete_007",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with sudden difficulty breathing and facial swelling",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 81-year-old male patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 500mg).\nTreatment started on 2026-04-16.\nApproximately 6 day(s) after that dose, the patient developed sudden difficulty breathing and facial swelling.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Novak (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter654@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with sudden difficulty breathing and facial swelling",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 81-year-old male patient with a history of type 1 diabetes received their second dose of DemoInsulex (dose: 10 mg).\nTreatment started on 2026-04-16.\nApproximately 6 day(s) after that dose, the patient developed sudden difficulty breathing and facial swelling.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Novak (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter654@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 639,
+    "size_bytes": 641,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 81-year-old male] (no real identity - demo only)\nAdmitting complaint: sudden difficulty breathing and facial swelling\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 500mg, started 2026-04-16\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with anaphylactic reaction.\n\nDischarge diagnosis: anaphylactic reaction (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 81-year-old male] (no real identity - demo only)\nAdmitting complaint: sudden difficulty breathing and facial swelling\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 10 mg, started 2026-04-16\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with anaphylactic reaction.\n\nDischarge diagnosis: anaphylactic reaction (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "81",
     "patient.sex": "male",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "A. Novak",
-    "product.product_name": "DemoGluca",
-    "product.dose": "500mg",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "10 mg",
     "product.route": null,
     "product.treatment_start_date": "2026-04-16",
     "event.event_description": "sudden difficulty breathing and facial swelling",
@@ -41,18 +41,19 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [
+  "expected_triage_indicators": [
     "hospitalization",
     "life_threatening"
   ],
+  "expected_triage_priority": "critical",
   "expected_missing_fields": [
     "product.route"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [
-    "81-year-old male patient with a history of type 2 diabetes.",
-    "Received second dose of DemoGluca (500mg).",
+  "expected_report_facts": [
+    "81-year-old male patient with a history of type 1 diabetes.",
+    "Received second dose of DemoInsulex (10 mg).",
     "Treatment started on 2026-04-16.",
     "Approximately 6 day(s) after that dose, developed sudden difficulty breathing and facial swelling.",
     "Patient was hospitalized.",
@@ -62,7 +63,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,

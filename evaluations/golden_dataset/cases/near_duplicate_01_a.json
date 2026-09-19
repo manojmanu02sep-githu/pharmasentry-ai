@@ -6,24 +6,24 @@
     "near_duplicate_01_b"
   ],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with a mild skin rash",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 21-year-old female patient with a history of hypertension received their first dose of DemoCardolol via subcutaneous injection.\nTreatment started on 2026-04-17.\nApproximately 9 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Silva (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 21-year-old female patient with a history of type 2 diabetes received their first dose of DemoBasalin via subcutaneous injection.\nTreatment started on 2026-04-17.\nApproximately 9 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Silva (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter672@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 621,
+    "size_bytes": 623,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 21-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose not documented, started 2026-04-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild skin rash.\n\nDischarge diagnosis: observation for a mild skin rash (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 21-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose not documented, started 2026-04-17\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild skin rash.\n\nDischarge diagnosis: observation for a mild skin rash (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "21",
     "patient.sex": "female",
     "reporter.reporter_type": "staff pharmacist",
     "reporter.name": "S. Silva",
-    "product.product_name": "DemoCardolol",
+    "product.product_name": "DemoBasalin",
     "product.dose": null,
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-04-17",
@@ -41,15 +41,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "product.dose"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "potential_duplicate",
-  "expected_narrative_facts": [
-    "21-year-old female patient with a history of hypertension.",
-    "Received first dose of DemoCardolol.",
+  "expected_report_facts": [
+    "21-year-old female patient with a history of type 2 diabetes.",
+    "Received first dose of DemoBasalin.",
     "Treatment started on 2026-04-17.",
     "Approximately 9 day(s) after that dose, developed a mild skin rash.",
     "Outcome: fully recovered."
@@ -57,7 +58,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "These reports have been merged into a single case."
   ],

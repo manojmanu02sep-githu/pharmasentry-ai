@@ -26,15 +26,15 @@ from src.models import (
     GoalStatus,
     MemoryEvent,
     MinimumCriteriaResult,
-    NarrativeDraft,
     PlanRevision,
     RetrievalEvent,
     ReviewerChange,
     ReviewStatus,
-    SeriousnessTriageResult,
     SourcePassage,
     SuccessCriterion,
     ToolEvent,
+    TriageReport,
+    TriageResult,
 )
 from src.models.duplicates import DuplicateCandidate
 from src.models.missing_info import MissingInformationItem
@@ -63,11 +63,11 @@ class CaseState(TypedDict):
     # Extraction and downstream analysis
     extracted_fields: ExtractedFields | None
     minimum_criteria: MinimumCriteriaResult | None
-    seriousness_triage: SeriousnessTriageResult | None
+    triage_result: TriageResult | None
     duplicate_candidates: list[DuplicateCandidate]
     missing_information: list[MissingInformationItem]
     follow_up_draft: FollowUpDraft | None
-    narrative_draft: NarrativeDraft | None
+    triage_report: TriageReport | None
 
     # Evaluation
     evaluation_results: Annotated[list[EvaluationResult], operator.add]
@@ -121,11 +121,11 @@ def create_initial_state(
         source_passages=[],
         extracted_fields=None,
         minimum_criteria=None,
-        seriousness_triage=None,
+        triage_result=None,
         duplicate_candidates=[],
         missing_information=[],
         follow_up_draft=None,
-        narrative_draft=None,
+        triage_report=None,
         evaluation_results=[],
         retry_counts={},
         review_status=None,

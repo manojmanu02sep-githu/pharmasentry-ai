@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_incomplete_008",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with a mild headache",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 20-year-old male patient with a history of hypertension received their second dose of DemoCardolol (dose: 50mg).\nApproximately 2 day(s) after that dose, the patient developed a mild headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Okafor (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter770@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with a mild headache",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 20-year-old male patient with a history of type 2 diabetes received their second dose of DemoBasalin (dose: 5 mg).\nApproximately 2 day(s) after that dose, the patient developed a mild headache.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Okafor (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter770@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 626,
+    "size_bytes": 628,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 20-year-old male] (no real identity - demo only)\nAdmitting complaint: a mild headache\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 50mg, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild headache.\n\nDischarge diagnosis: observation for a mild headache (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 20-year-old male] (no real identity - demo only)\nAdmitting complaint: a mild headache\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 5 mg, started not documented\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild headache.\n\nDischarge diagnosis: observation for a mild headache (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "20",
     "patient.sex": "male",
     "reporter.reporter_type": "treating physician",
     "reporter.name": "R. Okafor",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "50mg",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "5 mg",
     "product.route": null,
     "product.treatment_start_date": null,
     "event.event_description": "a mild headache",
@@ -41,23 +41,24 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "product.route",
     "product.treatment_start_date"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [
-    "20-year-old male patient with a history of hypertension.",
-    "Received second dose of DemoCardolol (50mg).",
+  "expected_report_facts": [
+    "20-year-old male patient with a history of type 2 diabetes.",
+    "Received second dose of DemoBasalin (5 mg).",
     "Approximately 2 day(s) after that dose, developed a mild headache.",
     "Outcome: recovering, still under observation."
   ],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,

@@ -4,34 +4,34 @@
   "duplicate_family_id": "fam_event_synonym_002",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with a tummy ache",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 64-year-old male patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 10mg) via oral.\nTreatment started on 2026-03-03.\nApproximately 5 day(s) after that dose, the patient developed a tummy ache.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Duval (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter668@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with sugar crashed hard",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 64-year-old male patient with a history of type 1 diabetes received their second dose of DemoInsulex (dose: 1 mg) via subcutaneous injection.\nTreatment started on 2026-03-03.\nApproximately 5 day(s) after that dose, the patient developed sugar crashed hard.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Duval (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter668@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 629,
+    "size_bytes": 647,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 64-year-old male] (no real identity - demo only)\nAdmitting complaint: a tummy ache\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 10mg, started 2026-03-03\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for abdominal pain.\n\nDischarge diagnosis: clinical review for abdominal pain (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 64-year-old male] (no real identity - demo only)\nAdmitting complaint: sugar crashed hard\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 1 mg, started 2026-03-03\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for severe hypoglycemia.\n\nDischarge diagnosis: clinical review for severe hypoglycemia (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "64",
     "patient.sex": "male",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "R. Duval",
-    "product.product_name": "DemoGluca",
-    "product.dose": "10mg",
-    "product.route": "oral",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "1 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-03-03",
-    "event.event_description": "abdominal pain",
+    "event.event_description": "severe hypoglycemia",
     "event.event_onset_date": "5 day(s) after dose",
     "outcome.outcome_description": "recovering, still under observation",
     "outcome.hospitalized": "false"
   },
   "expected_source_evidence": [
-    "a tummy ache"
+    "sugar crashed hard"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -41,24 +41,25 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "64-year-old male patient with a history of type 2 diabetes.",
-    "Received second dose of DemoGluca (10mg).",
+  "expected_report_facts": [
+    "64-year-old male patient with a history of type 1 diabetes.",
+    "Received second dose of DemoInsulex (1 mg).",
     "Treatment started on 2026-03-03.",
-    "Approximately 5 day(s) after that dose, developed abdominal pain.",
+    "Approximately 5 day(s) after that dose, developed severe hypoglycemia.",
     "Outcome: recovering, still under observation."
   ],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,
   "synthetic_data": true,
-  "notes": "Source text describes the event as 'a tummy ache'; the event-term lookup tool must resolve this to the canonical term 'abdominal pain'."
+  "notes": "Source text describes the event as 'sugar crashed hard'; the event-term lookup tool must resolve this to the canonical term 'severe hypoglycemia'."
 }

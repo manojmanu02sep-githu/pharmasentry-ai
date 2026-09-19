@@ -13,7 +13,7 @@ from src.evaluation.metrics import (
     mean_duplicate_precision_at_k,
     mean_duplicate_recall_at_k,
     mean_reciprocal_rank,
-    seriousness_sensitivity_specificity,
+    triage_escalation_sensitivity_specificity,
     unsupported_claim_rate,
 )
 
@@ -48,8 +48,8 @@ def test_classification_prf1_all_negative_precision_default_zero() -> None:
 
 
 def test_extraction_prf1_exact_match() -> None:
-    expected = {"product.product_name": "DemoGluca", "product.dose": "10mg"}
-    predicted = {"product.product_name": "DemoGluca", "product.dose": "10mg"}
+    expected = {"product.product_name": "DemoInsulex", "product.dose": "10 mg"}
+    predicted = {"product.product_name": "DemoInsulex", "product.dose": "10 mg"}
     result = extraction_prf1([(expected, predicted)])
     assert result.true_positives == 2
     assert result.false_positives == 0
@@ -59,8 +59,8 @@ def test_extraction_prf1_exact_match() -> None:
 
 
 def test_extraction_prf1_missing_and_wrong_value() -> None:
-    expected = {"product.product_name": "DemoGluca", "product.dose": "10mg"}
-    predicted = {"product.product_name": "DemoZanix"}  # wrong value; dose missing
+    expected = {"product.product_name": "DemoInsulex", "product.dose": "10 mg"}
+    predicted = {"product.product_name": "DemoBasalin"}  # wrong value; dose missing
     result = extraction_prf1([(expected, predicted)])
     # product_name: predicted but wrong -> FN + FP; dose: missing -> FN only
     assert result.true_positives == 0
@@ -77,10 +77,10 @@ def test_extraction_prf1_hallucinated_field_is_false_positive() -> None:
     assert result.false_negatives == 0
 
 
-def test_seriousness_sensitivity_specificity() -> None:
+def test_triage_escalation_sensitivity_specificity() -> None:
     y_true = [True, True, False, False, False]
     y_pred = [True, False, False, False, True]
-    result = seriousness_sensitivity_specificity(y_true, y_pred)
+    result = triage_escalation_sensitivity_specificity(y_true, y_pred)
     assert result.true_positives == 1
     assert result.false_negatives == 1
     assert result.true_negatives == 2

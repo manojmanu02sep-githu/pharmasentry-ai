@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_conflicting_005",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoZanix patient with a mild skin rash",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old female patient with a history of generalized anxiety disorder received their second dose of DemoZanix (dose: 25mg) via oral.\nTreatment started on 2026-05-20.\nApproximately 7 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter663@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoGlutide patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old female patient with a history of type 2 diabetes received their second dose of DemoGlutide (dose: 2 mg) via subcutaneous injection.\nTreatment started on 2026-05-20.\nApproximately 7 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter663@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 642,
+    "size_bytes": 631,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 500mg, started 2026-05-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: type 2 diabetes\nSuspect product: DemoGlutide, dose 10 mg, started 2026-05-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "30",
     "patient.sex": "female",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "A. Reyes",
-    "product.product_name": "DemoZanix",
+    "product.product_name": "DemoGlutide",
     "product.dose": null,
-    "product.route": "oral",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-05-20",
     "event.event_description": "a mild skin rash",
     "event.event_onset_date": "7 day(s) after dose",
@@ -31,8 +31,8 @@
     "outcome.hospitalized": "false"
   },
   "expected_source_evidence": [
-    "dose: 25mg",
-    "dose 500mg"
+    "dose: 2 mg",
+    "dose 10 mg"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -42,15 +42,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [
     "product.dose"
   ],
   "expected_routing_decision": "validation_failure",
-  "expected_narrative_facts": [
-    "30-year-old female patient with a history of generalized anxiety disorder.",
-    "Received second dose of DemoZanix (25mg).",
+  "expected_report_facts": [
+    "30-year-old female patient with a history of type 2 diabetes.",
+    "Received second dose of DemoGlutide (2 mg).",
     "Treatment started on 2026-05-20.",
     "Approximately 7 day(s) after that dose, developed a mild skin rash.",
     "Outcome: stable, improving."
@@ -58,10 +59,10 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,
   "synthetic_data": true,
-  "notes": "Email states dose '25mg'; attachment states '500mg' for the same patient/product/event."
+  "notes": "Email states dose '2 mg'; attachment states '10 mg' for the same patient/product/event."
 }

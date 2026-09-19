@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_similar_non_duplicate_01_a",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with mild fatigue",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 56-year-old male patient with a history of hypertension received their third dose of DemoCardolol (dose: 10mg) via oral.\nTreatment started on 2026-01-16.\nApproximately 8 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Okafor (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter753@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with mild fatigue",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 56-year-old male patient with a history of type 2 diabetes received their third dose of DemoBasalin (dose: 1 mg) via subcutaneous injection.\nTreatment started on 2026-01-16.\nApproximately 8 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Okafor (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter753@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 601,
+    "size_bytes": 603,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 56-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 10mg, started 2026-01-16\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 56-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 1 mg, started 2026-01-16\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "56",
     "patient.sex": "male",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "A. Okafor",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "10mg",
-    "product.route": "oral",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "1 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-01-16",
     "event.event_description": "mild fatigue",
     "event.event_onset_date": "8 day(s) after dose",
@@ -39,13 +39,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "56-year-old male patient with a history of hypertension.",
-    "Received third dose of DemoCardolol (10mg).",
+  "expected_report_facts": [
+    "56-year-old male patient with a history of type 2 diabetes.",
+    "Received third dose of DemoBasalin (1 mg).",
     "Treatment started on 2026-01-16.",
     "Approximately 8 day(s) after that dose, developed mild fatigue.",
     "Outcome: fully recovered."
@@ -53,7 +54,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "This case is the same patient/event as its lexically similar sibling case."
   ],

@@ -23,16 +23,20 @@ class CaseGoal(BaseModel):
 
     case_id: str
     description: str = (
-        "Produce a preliminary safety-case package with structured evidence-"
-        "grounded fields, a citation-backed narrative draft, and a completed "
-        "human-review task. Never issue a final regulatory or medical decision."
+        "Produce a preliminary triage report for a diabetes-injection "
+        "adverse-event email, with structured evidence-grounded fields, an "
+        "AI-suggested triage priority (LOW/MEDIUM/HIGH/CRITICAL), and a "
+        "completed human-review task. Never issue a final medical or "
+        "regulatory decision."
     )
     success_criteria: list[SuccessCriterion] = Field(default_factory=list)
     boundaries: list[str] = Field(
         default_factory=lambda: [
             "Never diagnose, recommend treatment, or infer causality.",
-            "Never make final expectedness, seriousness, validity, "
-            "reportability, or regulatory decisions.",
+            "The AI triage priority (LOW/MEDIUM/HIGH/CRITICAL) is a "
+            "suggestion only, never a final clinical or regulatory decision.",
+            "Never make final expectedness, validity, reportability, or "
+            "regulatory decisions.",
             "Never merge cases, send email, or submit to a regulator "
             "automatically.",
             "Every consequential output requires human approval.",

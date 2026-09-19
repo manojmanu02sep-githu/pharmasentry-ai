@@ -8,6 +8,7 @@ pydantic>=2.9,<3
 pydantic-settings>=2.5,<3
 langgraph>=0.2,<0.3
 python-dotenv>=1.0,<2
+PyYAML>=6.0,<7
 
 # --- LLM provider ---
 anthropic>=0.40,<1

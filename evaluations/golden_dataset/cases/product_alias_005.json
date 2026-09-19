@@ -4,34 +4,34 @@
   "duplicate_family_id": "fam_product_alias_005",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - Demo Cardolol patient with mild fatigue",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 52-year-old female patient with a history of type 2 diabetes received their first dose of Demo Cardolol (dose: 25mg) via oral.\nTreatment started on 2026-02-11.\nApproximately 9 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Duval (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter651@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - Demo-Glutide patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 52-year-old female patient with a history of type 1 diabetes received their first dose of Demo-Glutide (dose: 2 mg) via subcutaneous injection.\nTreatment started on 2026-02-11.\nApproximately 9 day(s) after that dose, the patient developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nA. Duval (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter651@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 620,
+    "size_bytes": 649,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 52-year-old female] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 2 diabetes\nSuspect product: Demo Cardolol, dose 25mg, started 2026-02-11\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 52-year-old female] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: type 1 diabetes\nSuspect product: Demo-Glutide, dose 2 mg, started 2026-02-11\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for a mild skin rash.\n\nDischarge diagnosis: clinical review for a mild skin rash (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "52",
     "patient.sex": "female",
     "reporter.reporter_type": "treating physician",
     "reporter.name": "A. Duval",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "25mg",
-    "product.route": "oral",
+    "product.product_name": "DemoGlutide",
+    "product.dose": "2 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-02-11",
-    "event.event_description": "mild fatigue",
+    "event.event_description": "a mild skin rash",
     "event.event_onset_date": "9 day(s) after dose",
-    "outcome.outcome_description": "stable, improving",
+    "outcome.outcome_description": "recovering, still under observation",
     "outcome.hospitalized": "false"
   },
   "expected_source_evidence": [
-    "Demo Cardolol"
+    "Demo-Glutide"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -41,24 +41,25 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "52-year-old female patient with a history of type 2 diabetes.",
-    "Received first dose of DemoCardolol (25mg).",
+  "expected_report_facts": [
+    "52-year-old female patient with a history of type 1 diabetes.",
+    "Received first dose of DemoGlutide (2 mg).",
     "Treatment started on 2026-02-11.",
-    "Approximately 9 day(s) after that dose, developed mild fatigue.",
-    "Outcome: stable, improving."
+    "Approximately 9 day(s) after that dose, developed a mild skin rash.",
+    "Outcome: recovering, still under observation."
   ],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,
   "synthetic_data": true,
-  "notes": "Source text names the product as 'Demo Cardolol'; the product/event lookup tool must resolve this to the canonical name 'DemoCardolol'."
+  "notes": "Source text names the product as 'Demo-Glutide'; the product/event lookup tool must resolve this to the canonical name 'DemoGlutide'."
 }

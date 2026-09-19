@@ -18,7 +18,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-from src.models.enums import RouteReason
+from src.models.enums import RouteReason, TriagePriority
 
 # Flattened dotted paths mirroring src/models/extraction.py's structure.
 # A GoldenCase's expected_extracted_fields dict may only use these keys.
@@ -132,11 +132,12 @@ class GoldenCase(BaseModel):
     expected_extracted_fields: dict[str, str | None] = Field(default_factory=dict)
     expected_source_evidence: list[str] = Field(default_factory=list)
     expected_minimum_criteria: ExpectedMinimumCriteria
-    expected_seriousness_indicators: list[str] = Field(default_factory=list)
+    expected_triage_indicators: list[str] = Field(default_factory=list)
+    expected_triage_priority: TriagePriority = TriagePriority.LOW
     expected_missing_fields: list[str] = Field(default_factory=list)
     expected_conflicting_fields: list[str] = Field(default_factory=list)
     expected_routing_decision: RouteReason = RouteReason.NORMAL
-    expected_narrative_facts: list[str] = Field(default_factory=list)
+    expected_report_facts: list[str] = Field(default_factory=list)
     prohibited_conclusions: list[str] = Field(default_factory=list)
     expected_human_review_required: bool = True
 

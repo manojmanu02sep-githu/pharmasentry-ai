@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_conflicting_003",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with occasional dizziness",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 26-year-old female patient with a history of hypertension received their first dose of DemoCardolol (dose: 5mg) via oral.\nTreatment started on 2026-03-28.\nApproximately 6 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter673@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 26-year-old female patient with a history of type 2 diabetes received their first dose of DemoBasalin (dose: 0.5 mg) via subcutaneous injection.\nTreatment started on 2026-03-28.\nApproximately 6 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nK. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter673@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 639,
+    "size_bytes": 641,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 26-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 500mg, started 2026-03-28\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 26-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 10 mg, started 2026-03-28\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "26",
     "patient.sex": "female",
     "reporter.reporter_type": "staff pharmacist",
     "reporter.name": "K. Reyes",
-    "product.product_name": "DemoCardolol",
+    "product.product_name": "DemoBasalin",
     "product.dose": null,
-    "product.route": "oral",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-03-28",
     "event.event_description": "occasional dizziness",
     "event.event_onset_date": "6 day(s) after dose",
@@ -31,8 +31,8 @@
     "outcome.hospitalized": "false"
   },
   "expected_source_evidence": [
-    "dose: 5mg",
-    "dose 500mg"
+    "dose: 0.5 mg",
+    "dose 10 mg"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -42,15 +42,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [
     "product.dose"
   ],
   "expected_routing_decision": "validation_failure",
-  "expected_narrative_facts": [
-    "26-year-old female patient with a history of hypertension.",
-    "Received first dose of DemoCardolol (5mg).",
+  "expected_report_facts": [
+    "26-year-old female patient with a history of type 2 diabetes.",
+    "Received first dose of DemoBasalin (0.5 mg).",
     "Treatment started on 2026-03-28.",
     "Approximately 6 day(s) after that dose, developed occasional dizziness.",
     "Outcome: fully recovered."
@@ -58,10 +59,10 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,
   "synthetic_data": true,
-  "notes": "Email states dose '5mg'; attachment states '500mg' for the same patient/product/event."
+  "notes": "Email states dose '0.5 mg'; attachment states '10 mg' for the same patient/product/event."
 }

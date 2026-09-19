@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_multilingual_001",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report / Posible evento adverso - DemoCardolol",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHola equipo de seguridad,\n\nQuiero reportar un posible evento adverso. Mi paciente, de 74 años, un hombre, tomó DemoCardolol y luego presentó fatiga leve.\n\nIn English: the patient developed mild fatigue after taking DemoCardolol.\n\nRegards,\nJ. Haddad (fictional reporter)\nDemo Family Practice\nContact: demo.reporter718@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report / Posible evento adverso - DemoBasalin",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHola equipo de seguridad,\n\nQuiero reportar un posible evento adverso. Mi paciente, de 74 años, un hombre, tomó DemoBasalin y luego presentó fatiga leve.\n\nIn English: the patient developed mild fatigue after taking DemoBasalin.\n\nRegards,\nJ. Haddad (fictional reporter)\nDemo Family Practice\nContact: demo.reporter718@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 601,
+    "size_bytes": 603,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 74-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 25mg, started 2026-02-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 74-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 2 mg, started 2026-02-20\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "74",
     "patient.sex": "male",
     "reporter.reporter_type": "clinical care coordinator",
     "reporter.name": "J. Haddad",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "25mg",
-    "product.route": "oral",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "2 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-02-20",
     "event.event_description": "mild fatigue",
     "event.event_onset_date": "10 day(s) after dose",
@@ -42,13 +42,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "74-year-old male patient with a history of hypertension.",
-    "Received third dose of DemoCardolol (25mg).",
+  "expected_report_facts": [
+    "74-year-old male patient with a history of type 2 diabetes.",
+    "Received third dose of DemoBasalin (2 mg).",
     "Treatment started on 2026-02-20.",
     "Approximately 10 day(s) after that dose, developed mild fatigue.",
     "Outcome: stable, improving."
@@ -56,7 +57,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,

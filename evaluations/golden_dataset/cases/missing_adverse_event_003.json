@@ -4,8 +4,8 @@
   "duplicate_family_id": "fam_missing_adverse_event_003",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "uncertain",
-  "email_subject": "Possible adverse event report - DemoGluca patient with an unspecified concern",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 39-year-old female patient with a history of type 2 diabetes received their fourth dose of DemoGluca (dose: 1 tablet twice daily) via subcutaneous injection.\nTreatment started on 2026-04-08.\nApproximately 10 day(s) after that dose, the patient contacted the clinic, but no specific symptom or event was described.\n\nThe patient contacted the clinic but the reporter did not specify what specifically happened.\n\nPlease let me know if you need anything else.\n\nRegards,\nL. Tanaka (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter746@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with an unspecified concern",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 39-year-old female patient with a history of type 1 diabetes received their fourth dose of DemoInsulex (dose: 20 mg) via subcutaneous injection.\nTreatment started on 2026-04-08.\nApproximately 10 day(s) after that dose, the patient contacted the clinic, but no specific symptom or event was described.\n\nThe patient contacted the clinic but the reporter did not specify what specifically happened.\n\nPlease let me know if you need anything else.\n\nRegards,\nL. Tanaka (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter746@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": false,
     "filename": "",
@@ -21,8 +21,8 @@
     "patient.sex": "female",
     "reporter.reporter_type": "clinical care coordinator",
     "reporter.name": "L. Tanaka",
-    "product.product_name": "DemoGluca",
-    "product.dose": "1 tablet twice daily",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "20 mg",
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-04-08",
     "event.event_description": null,
@@ -41,17 +41,18 @@
     ],
     "status": "uncertain"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "event.event_description"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [],
+  "expected_report_facts": [],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "A specific adverse event occurred for this case."
   ],

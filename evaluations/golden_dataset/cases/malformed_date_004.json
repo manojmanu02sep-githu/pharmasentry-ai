@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_malformed_date_004",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with occasional dizziness",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old male patient with a history of type 2 diabetes received their fourth dose of DemoGluca (dose: 5mg) via subcutaneous injection.\nTreatment started on last Tuesday-ish, early March.\nApproximately 6 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Silva (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 30-year-old male patient with a history of type 1 diabetes received their fourth dose of DemoInsulex (dose: 0.5 mg) via subcutaneous injection.\nTreatment started on last Tuesday-ish, early March.\nApproximately 6 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Silva (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 643,
+    "size_bytes": 648,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old male] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 5mg, started last Tuesday-ish, early March\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 30-year-old male] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 0.5 mg, started last Tuesday-ish, early March\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for occasional dizziness.\n\nDischarge diagnosis: clinical review for occasional dizziness (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "30",
     "patient.sex": "male",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "R. Silva",
-    "product.product_name": "DemoGluca",
-    "product.dose": "5mg",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "0.5 mg",
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": null,
     "event.event_description": "occasional dizziness",
@@ -41,15 +41,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "product.treatment_start_date"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "30-year-old male patient with a history of type 2 diabetes.",
-    "Received fourth dose of DemoGluca (5mg).",
+  "expected_report_facts": [
+    "30-year-old male patient with a history of type 1 diabetes.",
+    "Received fourth dose of DemoInsulex (0.5 mg).",
     "Treatment started on 2026-02-14.",
     "Approximately 6 day(s) after that dose, developed occasional dizziness.",
     "Outcome: fully recovered."
@@ -57,7 +58,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "An ambiguous date has been silently guessed rather than flagged."
   ],

@@ -70,7 +70,7 @@ def test_agent_events_reducer_merges_across_partial_updates() -> None:
         AgentEvent(
             case_id=state["case_id"],
             trace_id=state["trace_id"],
-            agent=AgentName.GOAL_MANAGER,
+            agent=AgentName.GOAL_AGENT,
             node="goal_manager",
             decision_summary="Goal created.",
         )
@@ -89,5 +89,5 @@ def test_agent_events_reducer_merges_across_partial_updates() -> None:
     merged = operator.add(merged, update_b)
 
     assert len(merged) == 2
-    assert merged[0].agent == AgentName.GOAL_MANAGER
+    assert merged[0].agent == AgentName.GOAL_AGENT
     assert merged[1].agent == AgentName.PLANNER

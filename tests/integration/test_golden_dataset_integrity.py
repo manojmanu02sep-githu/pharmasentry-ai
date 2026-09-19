@@ -139,7 +139,7 @@ def test_non_safety_cases_have_no_attachment_and_are_not_safety_reports() -> Non
         assert case.is_safety_report is False
         assert case.attachment_text == ""
         assert case.attachment_metadata.has_attachment is False
-        assert case.expected_narrative_facts == []
+        assert case.expected_report_facts == []
 
 
 def test_conflicting_cases_flag_a_conflicting_field() -> None:
@@ -157,7 +157,7 @@ def test_serious_cases_all_have_seriousness_indicators() -> None:
     serious = [c for c in cases if c.case_type == GoldenCaseCategory.SERIOUS]
     assert len(serious) == 12
     for case in serious:
-        assert case.expected_seriousness_indicators
+        assert case.expected_triage_indicators
 
 
 def test_non_serious_cases_have_no_seriousness_indicators() -> None:
@@ -165,7 +165,7 @@ def test_non_serious_cases_have_no_seriousness_indicators() -> None:
     non_serious = [c for c in cases if c.case_type == GoldenCaseCategory.NON_SERIOUS]
     assert len(non_serious) == 12
     for case in non_serious:
-        assert case.expected_seriousness_indicators == []
+        assert case.expected_triage_indicators == []
 
 
 def test_every_case_expected_product_name_appears_in_email_text() -> None:
@@ -195,7 +195,7 @@ def test_product_alias_cases_resolve_to_canonical_name() -> None:
     cases = load_all_cases()
     aliased = [c for c in cases if c.case_type == GoldenCaseCategory.PRODUCT_ALIAS]
     assert len(aliased) == 5
-    canonical_products = {"DemoGluca", "DemoCardolol", "DemoZanix"}
+    canonical_products = {"DemoInsulex", "DemoBasalin", "DemoGlutide"}
     for case in aliased:
         resolved = case.expected_extracted_fields.get("product.product_name")
         assert resolved in canonical_products

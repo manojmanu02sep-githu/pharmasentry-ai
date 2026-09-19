@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_complete_005",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with occasional dizziness",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 77-year-old female patient with a history of hypertension received their third dose of DemoCardolol (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-04-24.\nApproximately 2 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Okafor (fictional reporter)\nDemo Family Practice\nContact: demo.reporter762@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 77-year-old female patient with a history of type 2 diabetes received their third dose of DemoBasalin (dose: 5 mg) via subcutaneous injection.\nTreatment started on 2026-04-24.\nApproximately 2 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Okafor (fictional reporter)\nDemo Family Practice\nContact: demo.reporter762@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 619,
+    "size_bytes": 621,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 77-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 50mg, started 2026-04-24\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 77-year-old female] (no real identity - demo only)\nAdmitting complaint: occasional dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 5 mg, started 2026-04-24\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for occasional dizziness.\n\nDischarge diagnosis: observation for occasional dizziness (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "77",
     "patient.sex": "female",
     "reporter.reporter_type": "clinical care coordinator",
     "reporter.name": "J. Okafor",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "50mg",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "5 mg",
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-04-24",
     "event.event_description": "occasional dizziness",
@@ -32,7 +32,7 @@
   },
   "expected_source_evidence": [
     "77-year-old female patient",
-    "dose: 50mg",
+    "dose: 5 mg",
     "Discharge diagnosis: observation for occasional dizziness"
   ],
   "expected_minimum_criteria": {
@@ -43,13 +43,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "77-year-old female patient with a history of hypertension.",
-    "Received third dose of DemoCardolol (50mg).",
+  "expected_report_facts": [
+    "77-year-old female patient with a history of type 2 diabetes.",
+    "Received third dose of DemoBasalin (5 mg).",
     "Treatment started on 2026-04-24.",
     "Approximately 2 day(s) after that dose, developed occasional dizziness.",
     "Outcome: stable, improving."
@@ -57,7 +58,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,

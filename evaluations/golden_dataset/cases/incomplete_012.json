@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_incomplete_012",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with chest pain followed by loss of consciousness",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 53-year-old male patient with a history of type 2 diabetes received their second dose of DemoGluca via oral.\nTreatment started on 2026-03-10.\nApproximately 1 day(s) after that dose, the patient developed chest pain followed by loss of consciousness.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Larsen (fictional reporter)\nDemo Family Practice\nContact: demo.reporter774@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with chest pain followed by loss of consciousness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 53-year-old male patient with a history of type 1 diabetes received their second dose of DemoInsulex via subcutaneous injection.\nTreatment started on 2026-03-10.\nApproximately 1 day(s) after that dose, the patient developed chest pain followed by loss of consciousness.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nS. Larsen (fictional reporter)\nDemo Family Practice\nContact: demo.reporter774@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 613,
+    "size_bytes": 615,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 53-year-old male] (no real identity - demo only)\nAdmitting complaint: chest pain followed by loss of consciousness\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose not documented, started 2026-03-10\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with cardiac arrhythmia.\n\nDischarge diagnosis: cardiac arrhythmia (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 53-year-old male] (no real identity - demo only)\nAdmitting complaint: chest pain followed by loss of consciousness\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose not documented, started 2026-03-10\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with cardiac arrhythmia.\n\nDischarge diagnosis: cardiac arrhythmia (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "53",
     "patient.sex": "male",
     "reporter.reporter_type": "clinical care coordinator",
     "reporter.name": "S. Larsen",
-    "product.product_name": "DemoGluca",
+    "product.product_name": "DemoInsulex",
     "product.dose": null,
-    "product.route": "oral",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-03-10",
     "event.event_description": "chest pain followed by loss of consciousness",
     "event.event_onset_date": "1 day(s) after dose",
@@ -41,18 +41,19 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [
+  "expected_triage_indicators": [
     "hospitalization",
     "life_threatening"
   ],
+  "expected_triage_priority": "critical",
   "expected_missing_fields": [
     "product.dose"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [
-    "53-year-old male patient with a history of type 2 diabetes.",
-    "Received second dose of DemoGluca.",
+  "expected_report_facts": [
+    "53-year-old male patient with a history of type 1 diabetes.",
+    "Received second dose of DemoInsulex.",
     "Treatment started on 2026-03-10.",
     "Approximately 1 day(s) after that dose, developed chest pain followed by loss of consciousness.",
     "Patient was hospitalized.",
@@ -62,7 +63,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,

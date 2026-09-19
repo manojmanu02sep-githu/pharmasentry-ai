@@ -4,34 +4,34 @@
   "duplicate_family_id": "fam_serious_009",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoZanix patient with high fever and confusion",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 21-year-old female patient with a history of generalized anxiety disorder received their third dose of DemoZanix (dose: 50mg) via subcutaneous injection.\nTreatment started on 2026-03-11.\nApproximately 10 day(s) after that dose, the patient developed high fever and confusion.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nL. Duval (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter662@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoGlutide patient with severe hypoglycemia and became unresponsive at home",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a nurse practitioner at Demo Regional Hospital (a fabricated organization) and I would like to report a possible adverse event.\n\nA 21-year-old female patient with a history of type 2 diabetes received their third dose of DemoGlutide (dose: 5 mg) via subcutaneous injection.\nTreatment started on 2026-03-11.\nApproximately 10 day(s) after that dose, the patient developed severe hypoglycemia and became unresponsive at home.\nThe patient was hospitalized as a result.\n\nPlease let me know if you need anything else.\n\nRegards,\nL. Duval (fictional reporter)\nDemo Regional Hospital\nContact: demo.reporter662@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 596,
+    "size_bytes": 634,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 21-year-old female] (no real identity - demo only)\nAdmitting complaint: high fever and confusion\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 50mg, started 2026-03-11\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe infection.\n\nDischarge diagnosis: severe infection (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO REGIONAL HOSPITAL (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 21-year-old female] (no real identity - demo only)\nAdmitting complaint: severe hypoglycemia and became unresponsive at home\nRelevant history: type 2 diabetes\nSuspect product: DemoGlutide, dose 5 mg, started 2026-03-11\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with severe hypoglycemic episode.\n\nDischarge diagnosis: severe hypoglycemic episode (fictional case).\nOutcome at discharge: fully recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "21",
     "patient.sex": "female",
     "reporter.reporter_type": "nurse practitioner",
     "reporter.name": "L. Duval",
-    "product.product_name": "DemoZanix",
-    "product.dose": "50mg",
+    "product.product_name": "DemoGlutide",
+    "product.dose": "5 mg",
     "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-03-11",
-    "event.event_description": "high fever and confusion",
+    "event.event_description": "severe hypoglycemia and became unresponsive at home",
     "event.event_onset_date": "10 day(s) after dose",
     "outcome.outcome_description": "fully recovered",
     "outcome.hospitalized": "true"
   },
   "expected_source_evidence": [
-    "Discharge diagnosis: severe infection"
+    "Discharge diagnosis: severe hypoglycemic episode"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -41,29 +41,31 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [
-    "hospitalization"
+  "expected_triage_indicators": [
+    "hospitalization",
+    "severe_hypoglycemia"
   ],
+  "expected_triage_priority": "high",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "21-year-old female patient with a history of generalized anxiety disorder.",
-    "Received third dose of DemoZanix (50mg).",
+  "expected_report_facts": [
+    "21-year-old female patient with a history of type 2 diabetes.",
+    "Received third dose of DemoGlutide (5 mg).",
     "Treatment started on 2026-03-11.",
-    "Approximately 10 day(s) after that dose, developed high fever and confusion.",
+    "Approximately 10 day(s) after that dose, developed severe hypoglycemia and became unresponsive at home.",
     "Patient was hospitalized.",
-    "Discharge diagnosis: severe infection.",
+    "Discharge diagnosis: severe hypoglycemic episode.",
     "Outcome: fully recovered."
   ],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "This event is (or is not) life-threatening as a final determination."
   ],
   "expected_human_review_required": true,
   "synthetic_data": true,
-  "notes": "Fully detailed case with an explicit seriousness indicator; AI triage suggestion only, human confirmation mandatory."
+  "notes": "Fully detailed case with an explicit triage indicator; AI triage suggestion only, human confirmation mandatory."
 }

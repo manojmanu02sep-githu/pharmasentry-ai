@@ -27,7 +27,7 @@ def test_run_golden_evaluation_script_executes_and_writes_results() -> None:
     assert data["dataset"]["total_cases"] == 138
     assert "classification_precision_recall_f1" in data
     assert "extraction_precision_recall_f1" in data
-    assert "seriousness_sensitivity_specificity" in data
+    assert "triage_escalation_sensitivity_specificity" in data
     assert data["duplicate_queries_evaluated"] > 0
     assert 0.0 <= data["citation_coverage"] <= 1.0
     assert 0.0 <= data["unsupported_claim_rate"] <= 1.0

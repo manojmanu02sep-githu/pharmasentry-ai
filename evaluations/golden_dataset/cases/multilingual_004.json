@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_multilingual_004",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report / Posible evento adverso - DemoGluca",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHola equipo de seguridad,\n\nQuiero reportar un posible evento adverso. Mi paciente, de 62 años, un hombre, tomó DemoGluca y luego presentó fatiga leve.\n\nIn English: the patient developed mild fatigue after taking DemoGluca.\n\nRegards,\nD. Duval (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter654@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report / Posible evento adverso - DemoInsulex",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHola equipo de seguridad,\n\nQuiero reportar un posible evento adverso. Mi paciente, de 62 años, un hombre, tomó DemoInsulex y luego presentó fatiga leve.\n\nIn English: the patient developed mild fatigue after taking DemoInsulex.\n\nRegards,\nD. Duval (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter654@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 608,
+    "size_bytes": 610,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 62-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 500mg, started 2026-07-04\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 62-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 10 mg, started 2026-07-04\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild fatigue.\n\nDischarge diagnosis: clinical review for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "62",
     "patient.sex": "male",
     "reporter.reporter_type": "staff pharmacist",
     "reporter.name": "D. Duval",
-    "product.product_name": "DemoGluca",
-    "product.dose": "500mg",
-    "product.route": "oral",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "10 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-07-04",
     "event.event_description": "mild fatigue",
     "event.event_onset_date": "5 day(s) after dose",
@@ -42,13 +42,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "62-year-old male patient with a history of type 2 diabetes.",
-    "Received third dose of DemoGluca (500mg).",
+  "expected_report_facts": [
+    "62-year-old male patient with a history of type 1 diabetes.",
+    "Received third dose of DemoInsulex (10 mg).",
     "Treatment started on 2026-07-04.",
     "Approximately 5 day(s) after that dose, developed mild fatigue.",
     "Outcome: stable, improving."
@@ -56,7 +57,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,

@@ -19,7 +19,13 @@ select = ["E", "F", "I", "UP", "B"]
 ignore = ["UP042"]
 
 [tool.mypy]
-python_version = "3.11"
+# Deliberately NOT pinned to the project's minimum supported Python
+# (3.11, see requires-python above): numpy's bundled stubs (reached
+# transitively via rank-bm25/pymupdf, never imported directly) use
+# Python 3.12 "type" statements mypy cannot parse under python_version
+# 3.11. Leaving this unset lets mypy use the interpreter it's actually
+# running under (3.14 in this environment), which parses those stubs
+# fine; it does not change what language features our own code may use.
 packages = ["src", "config", "scripts"]
 ignore_missing_imports = true
 disallow_untyped_defs = false

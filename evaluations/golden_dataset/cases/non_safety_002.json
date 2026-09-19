@@ -4,8 +4,8 @@
   "duplicate_family_id": "fam_non_safety_002",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "non_safety",
-  "email_subject": "Question about DemoGluca packaging",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHello,\n\nI noticed the box design for DemoGluca changed recently and wanted to confirm it's still the same product before my next refill.\n\nThank you,\nS. Petrov\nFictional Community Clinic (fictional)\n",
+  "email_subject": "Question about DemoInsulex pen packaging",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only]\n\nHello,\n\nI noticed the injection pen packaging for DemoInsulex changed recently and wanted to confirm it's still the same product before my next refill.\n\nThank you,\nS. Petrov\nFictional Community Clinic (fictional)\n",
   "attachment_metadata": {
     "has_attachment": false,
     "filename": "",
@@ -30,18 +30,19 @@
     ],
     "status": "incomplete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "non_safety_content",
-  "expected_narrative_facts": [],
+  "expected_report_facts": [],
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,
   "synthetic_data": true,
-  "notes": "Non-safety inquiry; requires only a human closure confirmation, not a case narrative."
+  "notes": "Non-safety inquiry; requires only a human closure confirmation, not a case report."
 }

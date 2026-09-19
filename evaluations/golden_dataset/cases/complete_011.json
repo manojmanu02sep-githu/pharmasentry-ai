@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_complete_011",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with mild fatigue",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 65-year-old male patient with a history of type 2 diabetes received their second dose of DemoGluca (dose: 50mg) via oral.\nTreatment started on 2026-07-05.\nApproximately 9 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Novak (fictional reporter)\nDemo Family Practice\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with mild fatigue",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 65-year-old male patient with a history of type 1 diabetes received their second dose of DemoInsulex (dose: 5 mg) via subcutaneous injection.\nTreatment started on 2026-07-05.\nApproximately 9 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Novak (fictional reporter)\nDemo Family Practice\nContact: demo.reporter671@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 593,
+    "size_bytes": 595,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 65-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 50mg, started 2026-07-05\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild fatigue.\n\nDischarge diagnosis: observation for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 65-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 5 mg, started 2026-07-05\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild fatigue.\n\nDischarge diagnosis: observation for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "65",
     "patient.sex": "male",
     "reporter.reporter_type": "treating physician",
     "reporter.name": "R. Novak",
-    "product.product_name": "DemoGluca",
-    "product.dose": "50mg",
-    "product.route": "oral",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "5 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-07-05",
     "event.event_description": "mild fatigue",
     "event.event_onset_date": "9 day(s) after dose",
@@ -32,7 +32,7 @@
   },
   "expected_source_evidence": [
     "65-year-old male patient",
-    "dose: 50mg",
+    "dose: 5 mg",
     "Discharge diagnosis: observation for mild fatigue"
   ],
   "expected_minimum_criteria": {
@@ -43,13 +43,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "65-year-old male patient with a history of type 2 diabetes.",
-    "Received second dose of DemoGluca (50mg).",
+  "expected_report_facts": [
+    "65-year-old male patient with a history of type 1 diabetes.",
+    "Received second dose of DemoInsulex (5 mg).",
     "Treatment started on 2026-07-05.",
     "Approximately 9 day(s) after that dose, developed mild fatigue.",
     "Outcome: stable, improving."
@@ -57,7 +58,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,

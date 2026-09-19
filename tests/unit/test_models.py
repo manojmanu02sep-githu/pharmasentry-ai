@@ -20,15 +20,15 @@ from src.models import (
     GoalStatus,
     MinimumCriteriaResult,
     MissingInformationItem,
-    NarrativeDraft,
-    NarrativeSentence,
     PlanStep,
+    ReportSection,
     ReviewDecision,
     ReviewStatus,
-    SeriousnessFinding,
-    SeriousnessIndicator,
-    SeriousnessTriageResult,
     SuccessCriterion,
+    TriageFinding,
+    TriageIndicator,
+    TriageReport,
+    TriageResult,
 )
 
 
@@ -58,10 +58,12 @@ def test_execution_plan_requires_steps_typed() -> None:
         plan_id="plan_001",
         case_id="case_001",
         steps=[
-            PlanStep(step_id="s1", agent=AgentName.INTAKE, description="parse email"),
+            PlanStep(
+                step_id="s1", agent=AgentName.SUBJECT_READER, description="read email subject"
+            ),
             PlanStep(
                 step_id="s2",
-                agent=AgentName.DOCUMENT,
+                agent=AgentName.ATTACHMENT_READER,
                 description="skip: no attachments",
                 skip=True,
                 skip_reason="no attachments present",
@@ -76,7 +78,7 @@ def test_execution_plan_requires_steps_typed() -> None:
 def test_agent_decision_confidence_bounds_enforced() -> None:
     with pytest.raises(ValidationError):
         AgentDecision(
-            agent=AgentName.MINIMUM_CRITERIA,
+            agent=AgentName.MEDICAL_EXTRACTION,
             case_id="case_001",
             decision="meets_minimum_criteria",
             confidence=1.5,  # out of [0, 1]
@@ -88,7 +90,7 @@ def test_agent_decision_confidence_bounds_enforced() -> None:
 
 def test_agent_decision_valid_construction() -> None:
     decision = AgentDecision(
-        agent=AgentName.SERIOUSNESS_TRIAGE,
+        agent=AgentName.TRIAGE,
         case_id="case_001",
         decision="hospitalization_indicator_present",
         evidence=["passage_003"],
@@ -104,8 +106,8 @@ def test_agent_decision_valid_construction() -> None:
 def test_field_value_carries_citation_and_confidence() -> None:
     field = FieldValue(
         field_name="product.product_name",
-        value="DemoGluca",
-        citations=[Citation(passage_id="p1", quoted_text="DemoGluca", page_number=1)],
+        value="DemoInsulex",
+        citations=[Citation(passage_id="p1", quoted_text="DemoInsulex", page_number=1)],
         confidence=0.95,
     )
     assert field.citations[0].passage_id == "p1"
@@ -132,12 +134,12 @@ def test_minimum_criteria_result_property() -> None:
     assert "suspect_product" in incomplete.missing_criteria
 
 
-def test_seriousness_triage_result_any_indicator_present() -> None:
-    empty = SeriousnessTriageResult()
+def test_triage_result_any_indicator_present() -> None:
+    empty = TriageResult()
     assert not empty.any_indicator_present
 
-    with_finding = SeriousnessTriageResult(
-        findings=[SeriousnessFinding(indicator=SeriousnessIndicator.HOSPITALIZATION)]
+    with_finding = TriageResult(
+        findings=[TriageFinding(indicator=TriageIndicator.HOSPITALIZATION)]
     )
     assert with_finding.any_indicator_present
     assert with_finding.requires_human_confirmation
@@ -171,17 +173,17 @@ def test_missing_information_and_follow_up_draft() -> None:
     assert draft.questions[0].reason == "missing"
 
 
-def test_narrative_draft_full_text() -> None:
-    draft = NarrativeDraft(
-        draft_id="n_001",
+def test_triage_report_full_text() -> None:
+    report = TriageReport(
+        report_id="n_001",
         case_id="case_001",
-        sentences=[
-            NarrativeSentence(text="Patient received DemoGluca."),
-            NarrativeSentence(text="Patient was hospitalized three days later."),
+        sections=[
+            ReportSection(text="Patient received DemoInsulex."),
+            ReportSection(text="Patient was hospitalized three days later."),
         ],
     )
-    expected = "Patient received DemoGluca. Patient was hospitalized three days later."
-    assert draft.full_text == expected
+    expected = "Patient received DemoInsulex. Patient was hospitalized three days later."
+    assert report.full_text == expected
 
 
 def test_evaluation_result_passed_property() -> None:

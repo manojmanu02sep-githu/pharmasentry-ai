@@ -6,13 +6,13 @@ Every number this script prints is computed for real against a trivial,
 clearly-labeled NAIVE baseline predictor, not an LLM or agent:
   - classification: always predicts "safety report" (majority class)
   - extraction: always predicts every field as unknown (empty)
-  - seriousness: always predicts "not serious"
+  - triage: always predicts "no escalation indicator"
   - duplicate retrieval: returns other test-set case_ids in case_id sort
     order (no real search — BM25/vector retrieval is Phase 5)
   - citation coverage / unsupported claim rate: computed on the golden
-    dataset's OWN expected_narrative_facts (which are grounded by
-    construction), not on any generated narrative — this exercises the
-    metric functions honestly, it is not a claim about narrative quality
+    dataset's OWN expected_report_facts (which are grounded by
+    construction), not on any generated report — this exercises the
+    metric functions honestly, it is not a claim about report quality
 
 This exists so `make eval` produces real, executed numbers today instead of
 a placeholder, and so the metrics framework itself is proven to run
@@ -39,7 +39,7 @@ from src.evaluation import (  # noqa: E402
     extraction_prf1,
     load_manifest,
     load_test_cases,
-    seriousness_sensitivity_specificity,
+    triage_escalation_sensitivity_specificity,
     unsupported_claim_rate,
 )
 
@@ -61,10 +61,10 @@ def run() -> dict[str, object]:
     ]
     extraction = extraction_prf1(extraction_pairs)
 
-    # --- Seriousness baseline: always predict "not serious" ---
-    y_true_serious = [bool(c.expected_seriousness_indicators) for c in test_cases]
-    y_pred_serious = [False] * len(test_cases)
-    seriousness = seriousness_sensitivity_specificity(y_true_serious, y_pred_serious)
+    # --- Triage baseline: always predict "no escalation indicator" ---
+    y_true_triage = [bool(c.expected_triage_indicators) for c in test_cases]
+    y_pred_triage = [False] * len(test_cases)
+    triage = triage_escalation_sensitivity_specificity(y_true_triage, y_pred_triage)
 
     # --- Duplicate retrieval baseline: naive fixed-order candidate list ---
     # Only meaningful for test cases that actually have a duplicate family
@@ -93,9 +93,9 @@ def run() -> dict[str, object]:
     )
     duplicate_recall_at_5 = sum(dup_recalls) / len(dup_recalls) if dup_recalls else None
 
-    # --- Citation coverage / unsupported claim rate on gold narrative facts ---
+    # --- Citation coverage / unsupported claim rate on gold report facts ---
     safety_test_cases = [c for c in test_cases if c.is_safety_report]
-    total_claims = sum(len(c.expected_narrative_facts) for c in safety_test_cases)
+    total_claims = sum(len(c.expected_report_facts) for c in safety_test_cases)
     cited_claims = total_claims  # gold facts are grounded by construction
     unsupported_claims = 0
     coverage = citation_coverage(total_claims, cited_claims)
@@ -117,16 +117,16 @@ def run() -> dict[str, object]:
         ),
         "classification_precision_recall_f1": classification.model_dump(),
         "extraction_precision_recall_f1": extraction.model_dump(),
-        "seriousness_sensitivity_specificity": seriousness.model_dump(),
+        "triage_escalation_sensitivity_specificity": triage.model_dump(),
         "duplicate_precision_at_5": duplicate_precision_at_5,
         "duplicate_recall_at_5": duplicate_recall_at_5,
         "duplicate_queries_evaluated": len(duplicate_queries),
         "citation_coverage": coverage,
         "unsupported_claim_rate": unsupported_rate,
         "citation_metrics_note": (
-            "Computed on the golden dataset's own expected_narrative_facts "
-            "(grounded by construction), not on a generated narrative — "
-            "there is no Narrative Agent yet (Phase 6)."
+            "Computed on the golden dataset's own expected_report_facts "
+            "(grounded by construction), not on a generated report — "
+            "there is no Report Generator Agent yet (Phase 6)."
         ),
     }
 

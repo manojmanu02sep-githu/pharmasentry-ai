@@ -26,8 +26,9 @@ from src.models.enums import (
     OCRQuality,
     ReviewDecision,
     RouteReason,
-    SeriousnessIndicator,
     ToolCallStatus,
+    TriageIndicator,
+    TriagePriority,
 )
 from src.models.evaluation import EvaluationCheck, EvaluationResult
 from src.models.evidence import Citation, FieldValue, SourcePassage
@@ -43,11 +44,11 @@ from src.models.extraction import (
 from src.models.goal import CaseGoal, SuccessCriterion
 from src.models.intake import Attachment, EmailMessage
 from src.models.missing_info import FollowUpDraft, MissingInformationItem
-from src.models.narrative import NarrativeDraft, NarrativeSentence
 from src.models.plan import ExecutionPlan, PlanRevision, PlanStep
 from src.models.reasoning import AgentDecision
-from src.models.review import ReviewerChange, ReviewStatus
-from src.models.seriousness import SeriousnessFinding, SeriousnessTriageResult
+from src.models.report import ReportSection, TriageReport
+from src.models.review import ReviewerChange, ReviewStatus, ReviewTask
+from src.models.triage import TriageFinding, TriageResult
 
 __all__ = [
     "AgentDecision",
@@ -75,27 +76,29 @@ __all__ = [
     "MemoryTier",
     "MinimumCriteriaResult",
     "MissingInformationItem",
-    "NarrativeDraft",
-    "NarrativeSentence",
     "OCRQuality",
     "OutcomeInfo",
     "PatientInfo",
     "PlanRevision",
     "PlanStep",
     "ProductInfo",
+    "ReportSection",
     "ReporterInfo",
     "RetrievalEvent",
     "ReviewDecision",
     "ReviewStatus",
+    "ReviewTask",
     "ReviewerChange",
     "RouteReason",
-    "SeriousnessFinding",
-    "SeriousnessIndicator",
-    "SeriousnessTriageResult",
     "SourcePassage",
     "SuccessCriterion",
     "ToolCallStatus",
     "ToolEvent",
     "TraceContext",
     "TreatmentInfo",
+    "TriageFinding",
+    "TriageIndicator",
+    "TriagePriority",
+    "TriageReport",
+    "TriageResult",
 ]

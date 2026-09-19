@@ -4,25 +4,25 @@
   "duplicate_family_id": "fam_incomplete_014",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoZanix patient with mild fatigue",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 84-year-old male patient with a history of generalized anxiety disorder received their first dose of DemoZanix (dose: 1 tablet twice daily).\nTreatment started on 2026-06-11.\nApproximately 8 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter680@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoGlutide patient with mild fatigue",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 84-year-old male patient with a history of type 2 diabetes received their first dose of DemoGlutide (dose: 20 mg).\nTreatment started on 2026-06-11.\nApproximately 8 day(s) after that dose, the patient developed mild fatigue.\n\nPlease let me know if you need anything else.\n\nRegards,\nR. Reyes (fictional reporter)\nFictional General Hospital (demo)\nContact: demo.reporter680@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 635,
+    "size_bytes": 609,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 84-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: generalized anxiety disorder\nSuspect product: DemoZanix, dose 1 tablet twice daily, started 2026-06-11\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild fatigue.\n\nDischarge diagnosis: observation for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 84-year-old male] (no real identity - demo only)\nAdmitting complaint: mild fatigue\nRelevant history: type 2 diabetes\nSuspect product: DemoGlutide, dose 20 mg, started 2026-06-11\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for mild fatigue.\n\nDischarge diagnosis: observation for mild fatigue (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "84",
     "patient.sex": "male",
     "reporter.reporter_type": "staff pharmacist",
     "reporter.name": "R. Reyes",
-    "product.product_name": "DemoZanix",
-    "product.dose": "1 tablet twice daily",
+    "product.product_name": "DemoGlutide",
+    "product.dose": "20 mg",
     "product.route": null,
     "product.treatment_start_date": "2026-06-11",
     "event.event_description": "mild fatigue",
@@ -41,15 +41,16 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "product.route"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [
-    "84-year-old male patient with a history of generalized anxiety disorder.",
-    "Received first dose of DemoZanix (1 tablet twice daily).",
+  "expected_report_facts": [
+    "84-year-old male patient with a history of type 2 diabetes.",
+    "Received first dose of DemoGlutide (20 mg).",
     "Treatment started on 2026-06-11.",
     "Approximately 8 day(s) after that dose, developed mild fatigue.",
     "Outcome: stable, improving."
@@ -57,7 +58,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": true,

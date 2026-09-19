@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_poor_ocr_005",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with occasional dizziness",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 24-year-old female patient with a history of hypertension received their fourth dose of DemoCardolol (dose: 25mg) via oral.\nTreatment started on 2026-06-26.\nApproximately 4 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Okafor (fictional reporter)\nDemo Family Practice\nContact: demo.reporter765@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with occasional dizziness",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a clinical care coordinator at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nA 24-year-old female patient with a history of type 2 diabetes received their fourth dose of DemoBasalin (dose: 2 mg) via subcutaneous injection.\nTreatment started on 2026-06-26.\nApproximately 4 day(s) after that dose, the patient developed occasional dizziness.\n\nPlease let me know if you need anything else.\n\nRegards,\nM. Okafor (fictional reporter)\nDemo Family Practice\nContact: demo.reporter765@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 617,
+    "size_bytes": 619,
     "page_count": 1,
     "ocr_applied": true,
     "ocr_quality": "degraded"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEM0 FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPagc 1 of 1\n\nPatient: [synthctic patient, 24-year-old fem@le] (no rc@l identity - demo only)\nAdmitting comp1aint: occasion@l dizziness\nRelevant history: hypertension\nSuspect product: DemoCardolo1, dose 25mg, started 2026-06-26\n\nCourse of care:\nPatient was evaluated @nd tre@tcd. Findings were consistent with obscrvation for occasional dizziness.\n\nDischargc diagnosis: observation for occ@sional dizziness (fictional case).\nOutcome at discharge: fully recovcred.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEM0 FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPagc 1 of 1\n\nPatient: [synthctic patient, 24-year-old fem@le] (no rc@l identity - demo only)\nAdmitting comp1aint: occasion@l dizziness\nRelevant history: type 2 diabetes\nSuspect product: DemoB@salin, dose 2 mg, started 2026-06-26\n\nCourse of care:\nPatient was evalu@ted @nd trcated. Findings werc consistent with observation for occasional dizzincss.\n\nDischarge diagnosis: obscrvation for occasional dizziness (fictional case).\nOutcome at discharge: ful1y recovered.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "24",
     "patient.sex": "female",
     "reporter.reporter_type": "clinical care coordinator",
     "reporter.name": "M. Okafor",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "25mg",
-    "product.route": "oral",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "2 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-06-26",
     "event.event_description": "occasional dizziness",
     "event.event_onset_date": "4 day(s) after dose",
@@ -39,13 +39,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "low_ocr_quality",
-  "expected_narrative_facts": [
-    "24-year-old female patient with a history of hypertension.",
-    "Received fourth dose of DemoCardolol (25mg).",
+  "expected_report_facts": [
+    "24-year-old female patient with a history of type 2 diabetes.",
+    "Received fourth dose of DemoBasalin (2 mg).",
     "Treatment started on 2026-06-26.",
     "Approximately 4 day(s) after that dose, developed occasional dizziness.",
     "Outcome: fully recovered."
@@ -53,7 +54,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "The garbled attachment text has been read with full confidence."
   ],

@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_missing_reporter_004",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with mild nausea",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am an a member of staff at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 85-year-old female patient with a history of hypertension received their first dose of DemoCardolol (dose: 25mg) via oral.\nTreatment started on 2026-05-09.\nApproximately 2 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\n[Message forwarded from a shared inbox; original sender identity was not preserved.]\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with mild nausea",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am an a member of staff at Fictional General Hospital (demo) (a fabricated organization) and I would like to report a possible adverse event.\n\nA 85-year-old female patient with a history of type 2 diabetes received their first dose of DemoBasalin (dose: 2 mg) via subcutaneous injection.\nTreatment started on 2026-05-09.\nApproximately 2 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\n[Message forwarded from a shared inbox; original sender identity was not preserved.]\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 631,
+    "size_bytes": 633,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 85-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 25mg, started 2026-05-09\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL GENERAL HOSPITAL (DEMO) (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 85-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 2 mg, started 2026-05-09\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "85",
     "patient.sex": "female",
     "reporter.reporter_type": null,
     "reporter.name": null,
-    "product.product_name": "DemoCardolol",
-    "product.dose": "25mg",
-    "product.route": "oral",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "2 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-05-09",
     "event.event_description": "mild nausea",
     "event.event_onset_date": "2 day(s) after dose",
@@ -41,16 +41,17 @@
     ],
     "status": "uncertain"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [
     "reporter.name",
     "reporter.reporter_type"
   ],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "missing_minimum_criteria",
-  "expected_narrative_facts": [
-    "85-year-old female patient with a history of hypertension.",
-    "Received first dose of DemoCardolol (25mg).",
+  "expected_report_facts": [
+    "85-year-old female patient with a history of type 2 diabetes.",
+    "Received first dose of DemoBasalin (2 mg).",
     "Treatment started on 2026-05-09.",
     "Approximately 2 day(s) after that dose, developed mild nausea.",
     "Outcome: recovering, still under observation."
@@ -58,7 +59,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "The reporter's identity has been determined from this message."
   ],

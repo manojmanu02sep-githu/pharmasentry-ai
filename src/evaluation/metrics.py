@@ -91,20 +91,23 @@ def extraction_prf1(
 
 
 class SensitivitySpecificity(BaseModel):
-    sensitivity: float  # recall on the positive ("serious") class
-    specificity: float  # recall on the negative ("not serious") class
+    sensitivity: float  # recall on the positive ("escalate") class
+    specificity: float  # recall on the negative ("no escalation") class
     true_positives: int
     false_negatives: int
     true_negatives: int
     false_positives: int
 
 
-def seriousness_sensitivity_specificity(
+def triage_escalation_sensitivity_specificity(
     y_true: list[bool], y_pred: list[bool]
 ) -> SensitivitySpecificity:
-    """Sensitivity/specificity for the seriousness triage classification.
+    """Sensitivity/specificity for the triage escalation classification.
 
-    ``True`` means "at least one explicit seriousness indicator present".
+    ``True`` means "at least one explicit triage indicator present" (i.e.
+    the AI-suggested priority would be MEDIUM or above). This scores only
+    the AI *suggestion* against the golden label — it never represents a
+    final clinical or regulatory determination.
     """
     if len(y_true) != len(y_pred):
         raise ValueError("y_true and y_pred must be the same length")
@@ -187,9 +190,9 @@ def mean_reciprocal_rank(queries: list[tuple[list[str], set[str]]]) -> float:
 
 
 def citation_coverage(total_claims: int, cited_claims: int) -> float:
-    """Fraction of narrative claims that carry at least one citation.
+    """Fraction of report claims that carry at least one citation.
 
-    A narrative with zero claims is trivially fully covered (1.0).
+    A report with zero claims is trivially fully covered (1.0).
     """
     if cited_claims > total_claims:
         raise ValueError("cited_claims cannot exceed total_claims")
@@ -197,7 +200,7 @@ def citation_coverage(total_claims: int, cited_claims: int) -> float:
 
 
 def unsupported_claim_rate(total_claims: int, unsupported_claims: int) -> float:
-    """Fraction of narrative claims that are not supported by any citation."""
+    """Fraction of report claims that are not supported by any citation."""
     if unsupported_claims > total_claims:
         raise ValueError("unsupported_claims cannot exceed total_claims")
     return _safe_div(unsupported_claims, total_claims, default=0.0)

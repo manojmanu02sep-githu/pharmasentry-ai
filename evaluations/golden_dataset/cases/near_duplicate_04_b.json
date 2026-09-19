@@ -6,26 +6,26 @@
     "near_duplicate_04_a"
   ],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoCardolol patient with a mild skin rash",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nOur patient, a male in their 50s with hypertension, was given DemoCardolol, at a dose of 50mg, (fourth dose).\nTreatment started on 2026-07-26.\nAbout 8 days later, they developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Duval (fictional reporter)\nDemo Family Practice\nContact: demo.reporter660@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoBasalin patient with a mild skin rash",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a treating physician at Demo Family Practice (a fabricated organization) and I would like to report a possible adverse event.\n\nOur patient, a male in their 50s with type 2 diabetes, was given DemoBasalin, at a dose of 5 mg, (fourth dose).\nTreatment started on 2026-07-26.\nAbout 8 days later, they developed a mild skin rash.\n\nPlease let me know if you need anything else.\n\nRegards,\nJ. Duval (fictional reporter)\nDemo Family Practice\nContact: demo.reporter660@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 605,
+    "size_bytes": 607,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 58-year-old male] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: hypertension\nSuspect product: DemoCardolol, dose 50mg, started 2026-07-26\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild skin rash.\n\nDischarge diagnosis: observation for a mild skin rash (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nDEMO FAMILY PRACTICE (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 58-year-old male] (no real identity - demo only)\nAdmitting complaint: a mild skin rash\nRelevant history: type 2 diabetes\nSuspect product: DemoBasalin, dose 5 mg, started 2026-07-26\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with observation for a mild skin rash.\n\nDischarge diagnosis: observation for a mild skin rash (fictional case).\nOutcome at discharge: stable, improving.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "58",
     "patient.sex": "male",
     "reporter.reporter_type": "treating physician",
     "reporter.name": "J. Duval",
-    "product.product_name": "DemoCardolol",
-    "product.dose": "50mg",
-    "product.route": "oral",
+    "product.product_name": "DemoBasalin",
+    "product.dose": "5 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-07-26",
     "event.event_description": "a mild skin rash",
     "event.event_onset_date": "8 day(s) after dose",
@@ -41,13 +41,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "potential_duplicate",
-  "expected_narrative_facts": [
-    "58-year-old male patient with a history of hypertension.",
-    "Received fourth dose of DemoCardolol (50mg).",
+  "expected_report_facts": [
+    "58-year-old male patient with a history of type 2 diabetes.",
+    "Received fourth dose of DemoBasalin (5 mg).",
     "Treatment started on 2026-07-26.",
     "Approximately 8 day(s) after that dose, developed a mild skin rash.",
     "Outcome: stable, improving."
@@ -55,7 +56,7 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system.",
     "These reports have been merged into a single case."
   ],

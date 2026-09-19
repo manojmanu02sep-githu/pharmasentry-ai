@@ -7,49 +7,61 @@ prompt_version: "v1"
 
 graph:
   node_order:
-    - goal_manager
+    - goal_agent
     - planner
     - supervisor
-    - intake
-    - document
+    - subject_reader
+    - email_body_reader
+    - pdf_docx_reader
     - medical_extraction
-    - minimum_criteria
-    - seriousness_triage
+    - triage
     - duplicate_search
-    - missing_information
-    - narrative
+    - report_generator
     - evaluator
     - human_review
 
 agents:
-  goal_manager:
-    tool_allowlist: []
+  goal_agent:
+    tool_allowlist: ["validate_goal_completion", "record_audit_event"]
   planner:
-    tool_allowlist: ["state_reader"]
+    tool_allowlist: ["read_case_state", "record_audit_event"]
   supervisor:
-    tool_allowlist: ["state_reader", "audit_logger"]
-  intake:
-    tool_allowlist: ["email_parser", "file_validator", "filename_sanitizer", "audit_logger"]
-  document:
-    tool_allowlist: ["attachment_extractor", "pdf_extractor", "ocr_adapter", "ocr_quality_checker", "audit_logger"]
+    tool_allowlist: ["read_case_state", "write_case_checkpoint", "route_case", "record_audit_event"]
+  subject_reader:
+    tool_allowlist:
+      ["parse_email", "validate_file", "validate_file_signature", "record_audit_event"]
+  email_body_reader:
+    tool_allowlist:
+      ["parse_email", "sanitize_filename", "enforce_file_size", "record_audit_event"]
+  pdf_docx_reader:
+    tool_allowlist:
+      ["extract_attachments", "extract_pdf_text", "perform_ocr", "assess_ocr_quality",
+       "create_page_citations", "normalize_source_passages", "enforce_page_limit",
+       "record_audit_event"]
   medical_extraction:
-    tool_allowlist: ["citation_builder", "date_normalizer", "product_event_lookup", "audit_logger"]
-  minimum_criteria:
-    tool_allowlist: ["state_reader", "audit_logger"]
-  seriousness_triage:
-    tool_allowlist: ["state_reader", "audit_logger"]
+    tool_allowlist:
+      ["lookup_product_alias", "lookup_event_term", "normalize_date", "validate_medical_field",
+       "check_minimum_case_criteria", "record_audit_event"]
+  triage:
+    tool_allowlist:
+      ["detect_explicit_triage_indicators", "suggest_triage_priority", "record_audit_event"]
   duplicate_search:
     # Reporter contact details are never passed to this agent (see Context
     # Isolation and Delegation in CLAUDE.md).
-    tool_allowlist: ["bm25_search", "vector_search", "metadata_filter", "hybrid_ranker", "audit_logger"]
-  missing_information:
-    tool_allowlist: ["state_reader", "audit_logger"]
-  narrative:
-    tool_allowlist: ["citation_builder", "citation_checker", "unsupported_claim_checker", "audit_logger"]
+    tool_allowlist:
+      ["exact_case_search", "bm25_search", "vector_search", "metadata_filter",
+       "reciprocal_rank_fusion", "retrieve_case_evidence", "record_audit_event"]
+  report_generator:
+    tool_allowlist:
+      ["read_case_state", "validate_citations", "detect_unsupported_claims",
+       "compare_report_with_fields", "record_audit_event"]
   evaluator:
-    tool_allowlist: ["citation_checker", "unsupported_claim_checker", "state_reader", "audit_logger"]
+    tool_allowlist:
+      ["validate_citations", "detect_unsupported_claims", "detect_conflicting_values",
+       "validate_goal_completion", "read_case_state", "record_audit_event"]
   human_review:
-    tool_allowlist: ["review_pause", "state_reader", "audit_logger"]
+    tool_allowlist:
+      ["pause_for_human_review", "create_review_task", "read_case_state", "record_audit_event"]
 
 limits:
   max_delegation_depth: 6

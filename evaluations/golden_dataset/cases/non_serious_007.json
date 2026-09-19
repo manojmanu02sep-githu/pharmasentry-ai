@@ -4,26 +4,26 @@
   "duplicate_family_id": "fam_non_serious_007",
   "expected_duplicate_matches": [],
   "expected_safety_classification": "safety_report",
-  "email_subject": "Possible adverse event report - DemoGluca patient with mild nausea",
-  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 80-year-old female patient with a history of type 2 diabetes received their fourth dose of DemoGluca (dose: 500mg) via oral.\nTreatment started on 2026-02-07.\nApproximately 7 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Haddad (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter712@fictionalclinic-demo.example (synthetic contact info)\n",
+  "email_subject": "Possible adverse event report - DemoInsulex patient with mild nausea",
+  "email_body": "[SYNTHETIC / FICTIONAL DATA — educational prototype only, no real patient or reporter information]\n\nHello Safety Team,\n\n\nI am a staff pharmacist at Fictional Community Clinic (a fabricated organization) and I would like to report a possible adverse event.\n\nA 80-year-old female patient with a history of type 1 diabetes received their fourth dose of DemoInsulex (dose: 10 mg) via subcutaneous injection.\nTreatment started on 2026-02-07.\nApproximately 7 day(s) after that dose, the patient developed mild nausea.\n\nPlease let me know if you need anything else.\n\nRegards,\nD. Haddad (fictional reporter)\nFictional Community Clinic\nContact: demo.reporter712@fictionalclinic-demo.example (synthetic contact info)\n",
   "attachment_metadata": {
     "has_attachment": true,
     "filename": "discharge_summary.txt",
     "media_type": "text/plain",
-    "size_bytes": 625,
+    "size_bytes": 627,
     "page_count": 1,
     "ocr_applied": false,
     "ocr_quality": "not_applicable"
   },
-  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 80-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 2 diabetes\nSuspect product: DemoGluca, dose 500mg, started 2026-02-07\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
+  "attachment_text": "[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]\nFICTIONAL COMMUNITY CLINIC (demo) - DISCHARGE SUMMARY\nPage 1 of 1\n\nPatient: [synthetic patient, 80-year-old female] (no real identity - demo only)\nAdmitting complaint: mild nausea\nRelevant history: type 1 diabetes\nSuspect product: DemoInsulex, dose 10 mg, started 2026-02-07\n\nCourse of care:\nPatient was evaluated and treated. Findings were consistent with clinical review for mild nausea.\n\nDischarge diagnosis: clinical review for mild nausea (fictional case).\nOutcome at discharge: recovering, still under observation.\n\n-- End of synthetic discharge summary --\n",
   "expected_extracted_fields": {
     "patient.age": "80",
     "patient.sex": "female",
     "reporter.reporter_type": "staff pharmacist",
     "reporter.name": "D. Haddad",
-    "product.product_name": "DemoGluca",
-    "product.dose": "500mg",
-    "product.route": "oral",
+    "product.product_name": "DemoInsulex",
+    "product.dose": "10 mg",
+    "product.route": "subcutaneous injection",
     "product.treatment_start_date": "2026-02-07",
     "event.event_description": "mild nausea",
     "event.event_onset_date": "7 day(s) after dose",
@@ -31,7 +31,7 @@
     "outcome.hospitalized": "false"
   },
   "expected_source_evidence": [
-    "dose: 500mg"
+    "dose: 10 mg"
   ],
   "expected_minimum_criteria": {
     "has_identifiable_patient": true,
@@ -41,13 +41,14 @@
     "missing_criteria": [],
     "status": "complete"
   },
-  "expected_seriousness_indicators": [],
+  "expected_triage_indicators": [],
+  "expected_triage_priority": "low",
   "expected_missing_fields": [],
   "expected_conflicting_fields": [],
   "expected_routing_decision": "normal",
-  "expected_narrative_facts": [
-    "80-year-old female patient with a history of type 2 diabetes.",
-    "Received fourth dose of DemoGluca (500mg).",
+  "expected_report_facts": [
+    "80-year-old female patient with a history of type 1 diabetes.",
+    "Received fourth dose of DemoInsulex (10 mg).",
     "Treatment started on 2026-02-07.",
     "Approximately 7 day(s) after that dose, developed mild nausea.",
     "Outcome: recovering, still under observation."
@@ -55,10 +56,10 @@
   "prohibited_conclusions": [
     "This adverse event was caused by the suspect product.",
     "This case is (or is not) reportable to a regulator.",
-    "This case's seriousness has been finally determined.",
+    "This case's triage priority has been finally determined.",
     "The patient should receive a specific treatment or diagnosis from this system."
   ],
   "expected_human_review_required": false,
   "synthetic_data": true,
-  "notes": "Fully detailed case with no seriousness indicator."
+  "notes": "Fully detailed case with no triage indicator."
 }
