@@ -1,0 +1,41 @@
+# PharmaSentry AI — dependencies
+# Phase 1 requires: pydantic, pydantic-settings, langgraph, pytest, ruff, mypy.
+# Remaining packages support later phases (UI, retrieval, OCR, observability, DB)
+# and are pinned loosely to a known-compatible major/minor version.
+
+# --- Core / models / orchestration ---
+pydantic>=2.9,<3
+pydantic-settings>=2.5,<3
+langgraph>=0.2,<0.3
+python-dotenv>=1.0,<2
+
+# --- LLM provider ---
+anthropic>=0.40,<1
+
+# --- UI ---
+streamlit>=1.38,<2
+
+# --- Storage ---
+SQLAlchemy>=2.0,<3
+psycopg[binary]>=3.2,<4
+
+# --- Retrieval ---
+rank-bm25>=0.2.2,<0.3
+faiss-cpu>=1.9,<2
+sentence-transformers>=3.1,<4
+
+# --- Document processing ---
+PyMuPDF>=1.24,<2
+pytesseract>=0.3.13,<0.4
+pillow>=10.4,<11
+
+# --- Observability ---
+opentelemetry-api>=1.27,<2
+opentelemetry-sdk>=1.27,<2
+prometheus-client>=0.21,<0.22
+
+# --- Dev / QA ---
+pytest>=8.3,<9
+pytest-cov>=5.0,<6
+ruff>=0.6,<0.7
+mypy>=1.11,<2

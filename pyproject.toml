@@ -1,0 +1,26 @@
+[project]
+name = "pharmasentry-ai"
+version = "0.1.0"
+description = "Bounded, goal-driven multi-agent pharmacovigilance intake prototype (educational, synthetic data only)."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+# UP042: this codebase deliberately uses `class X(str, Enum)` (not StrEnum) so
+# every enum stays a plain str for logging/serialization compatibility.
+ignore = ["UP042"]
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["src", "config"]
+ignore_missing_imports = true
+disallow_untyped_defs = false
+warn_unused_ignores = true

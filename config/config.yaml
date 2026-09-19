@@ -1,0 +1,66 @@
+# PharmaSentry AI — non-secret application configuration.
+# Secrets and environment-specific values live in .env (see .env.example).
+# This file is procedural-memory-adjacent: it declares policy, not code.
+
+model_version: "phase1-scaffold"
+prompt_version: "v1"
+
+graph:
+  node_order:
+    - goal_manager
+    - planner
+    - supervisor
+    - intake
+    - document
+    - medical_extraction
+    - minimum_criteria
+    - seriousness_triage
+    - duplicate_search
+    - missing_information
+    - narrative
+    - evaluator
+    - human_review
+
+agents:
+  goal_manager:
+    tool_allowlist: []
+  planner:
+    tool_allowlist: ["state_reader"]
+  supervisor:
+    tool_allowlist: ["state_reader", "audit_logger"]
+  intake:
+    tool_allowlist: ["email_parser", "file_validator", "filename_sanitizer", "audit_logger"]
+  document:
+    tool_allowlist: ["attachment_extractor", "pdf_extractor", "ocr_adapter", "ocr_quality_checker", "audit_logger"]
+  medical_extraction:
+    tool_allowlist: ["citation_builder", "date_normalizer", "product_event_lookup", "audit_logger"]
+  minimum_criteria:
+    tool_allowlist: ["state_reader", "audit_logger"]
+  seriousness_triage:
+    tool_allowlist: ["state_reader", "audit_logger"]
+  duplicate_search:
+    # Reporter contact details are never passed to this agent (see Context
+    # Isolation and Delegation in CLAUDE.md).
+    tool_allowlist: ["bm25_search", "vector_search", "metadata_filter", "hybrid_ranker", "audit_logger"]
+  missing_information:
+    tool_allowlist: ["state_reader", "audit_logger"]
+  narrative:
+    tool_allowlist: ["citation_builder", "citation_checker", "unsupported_claim_checker", "audit_logger"]
+  evaluator:
+    tool_allowlist: ["citation_checker", "unsupported_claim_checker", "state_reader", "audit_logger"]
+  human_review:
+    tool_allowlist: ["review_pause", "state_reader", "audit_logger"]
+
+limits:
+  max_delegation_depth: 6
+  max_agent_retries: 1
+  max_runtime_seconds: 300
+  max_tokens_per_case: 200000
+
+retrieval:
+  bm25_weight: 0.5
+  vector_weight: 0.5
+  top_k: 5
+
+retention:
+  default_retention_days: 90

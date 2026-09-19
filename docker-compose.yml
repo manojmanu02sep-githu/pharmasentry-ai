@@ -1,0 +1,35 @@
+# PharmaSentry AI — local Docker Compose stack.
+# Phase 1 scaffold: app image build is deferred to Phase 8 (UI complete).
+# `postgres` provides the optional production-like backend; DB_BACKEND=sqlite
+# in .env.example is the default local fallback and needs no service here.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pharmasentry}
+      POSTGRES_USER: ${POSTGRES_USER:-pharmasentry}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pharmasentry}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pharmasentry_pg_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    profiles:
+      - full  # not started by default until Dockerfile lands (Phase 8): `docker compose --profile full up`
+
+volumes:
+  pharmasentry_pg_data:

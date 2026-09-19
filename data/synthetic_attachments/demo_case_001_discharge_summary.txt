@@ -1,0 +1,23 @@
+[SYNTHETIC / FICTIONAL DOCUMENT — educational prototype only]
+[Placeholder for a scanned/PDF discharge summary. Stored as plain text in
+Phase 1; a real PDF fixture with page-level structure is added when the
+Document Agent / PDF extractor / OCR pipeline is implemented (Phase 3+).]
+
+FICTIONAL GENERAL HOSPITAL (demo) - DISCHARGE SUMMARY
+Page 1 of 1
+
+Patient: [synthetic patient, 62-year-old male] (no real identity - demo only)
+Admitting diagnosis: Severe abdominal pain
+Relevant history: Type 2 diabetes mellitus
+
+Course of care:
+Patient presented with severe abdominal pain three days following
+administration of DemoGluca (third dose; exact dose and treatment start
+date not documented in this synthetic excerpt). Laboratory and imaging
+findings were consistent with acute pancreatitis. Patient was admitted,
+treated supportively, and improved.
+
+Discharge diagnosis: Acute pancreatitis (fictional case).
+Outcome at discharge: Stable, improving.
+
+-- End of synthetic discharge summary --
