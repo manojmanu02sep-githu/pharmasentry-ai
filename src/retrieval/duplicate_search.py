@@ -10,8 +10,16 @@ before this code ever runs (Context Isolation and Delegation).
 
 from __future__ import annotations
 
+import logging
+
+from config.settings import Settings
 from src.models.audit import RetrievalEvent, ToolEvent
 from src.models.duplicates import DuplicateCandidate
+from src.retrieval.embeddings import (
+    DeterministicEmbeddingProvider,
+    EmbeddingProvider,
+    get_embedding_provider,
+)
 from src.retrieval.hybrid_ranker import HybridRanker
 from src.tools.base import ToolContext
 from src.tools.retrieval import (
@@ -24,12 +32,26 @@ from src.tools.retrieval import (
     VectorSearchTool,
 )
 
+logger = logging.getLogger(__name__)
+
 
 class DuplicateSearchService:
-    def __init__(self) -> None:
+    def __init__(self, embedding_provider: EmbeddingProvider | None = None) -> None:
+        self._embedding_provider = embedding_provider or DeterministicEmbeddingProvider()
         self._bm25_tool = Bm25SearchTool()
-        self._vector_tool = VectorSearchTool()
+        self._vector_tool = VectorSearchTool(embed_fn=self._embedding_provider.embed)
         self._evidence_tool = RetrieveCaseEvidenceTool()
+
+    @classmethod
+    def from_settings(cls, settings: Settings) -> DuplicateSearchService:
+        """Build a service using the embedding provider configured in
+        Settings (`EMBEDDING_PROVIDER`/`EMBEDDING_MODEL`) — for real
+        callers. Tests that don't care about the provider should keep
+        using the bare constructor, which defaults to deterministic."""
+        provider = get_embedding_provider(
+            settings.embedding_provider.value, settings.embedding_model
+        )
+        return cls(embedding_provider=provider)
 
     def search(
         self,
@@ -87,5 +109,12 @@ class DuplicateSearchService:
                 candidates_returned=len(candidates),
                 top_k=ranker.top_k,
             )
+        )
+        logger.debug(
+            "duplicate_search case_id=%s provider=%s corpus_size=%d candidates=%d",
+            ctx.case_id,
+            self._embedding_provider.name,
+            len(corpus),
+            len(candidates),
         )
         return candidates, events

@@ -426,16 +426,131 @@ Verification, run from the repository root:
 # Success: no issues found in 58 source files
 ```
 
-## Phase 6 — LLM Provider Abstraction — [ ]
-## Phase 7 — Agents — [ ]
-## Phase 8 — LangGraph Orchestration — [ ]
+## Phase 6 — LLM Provider Abstraction — [~] (mock only)
+- [x] `src/llm/base.py` — `LLMProviderProtocol` with a generic
+      `complete(prompt, response_model: type[T], *, context=None) ->
+      tuple[T, LLMCallMetadata]`, Pydantic structured output throughout.
+- [x] `src/llm/mock.py` — deterministic mock provider (no network calls,
+      reproducible output for tests/CI).
+- [x] `src/llm/factory.py` — `get_llm_provider(settings)`; mock is
+      selectable and works end-to-end (proven by the Phase 8 e2e test).
+- [ ] Real cloud provider (Anthropic) — **not implemented**.
+      `get_llm_provider` raises `LLMUnavailableError` for any non-mock
+      `settings.llm_provider` value rather than fabricating a client; this
+      is an honest not-yet-built gap, not a silent fallback.
+- [ ] No dedicated `tests/unit/test_llm_*` file yet — the mock provider is
+      only exercised indirectly via the agents that call it.
+
+## Phase 7 — Agents — [~] (thin slice, one integration test only)
+- [x] All 12 agents implemented as `run(state: dict) -> dict` partial-state
+      nodes in `src/agents/`: `goal_agent`, `planner`, `supervisor`,
+      `subject_reader`, `email_body_reader`, `pdf_docx_reader`,
+      `medical_extraction`, `triage`, `duplicate_search`,
+      `report_generator`, `evaluator`, `human_review`. Shared LLM-call/audit
+      helpers factored into `src/agents/_common.py`.
+- [x] Each agent returns structured decision/evidence/confidence/
+      decision_summary/next_action/requires_human_review fields per
+      CLAUDE.md's Reasoning requirement (verified by code review and by the
+      e2e test's assertions on citations, confidence, and evaluation
+      output — not by a full per-agent unit-test suite).
+- [x] `human_review.run()` + `apply_review_decision()` implement the
+      pause/approve/reject/request-changes gate; the graph never
+      auto-resumes past human review (hard edge to `END` — see Phase 8).
+- [ ] **No per-agent unit tests exist yet** (`tests/unit/` has no
+      `test_agents_*` files). Coverage today is one integration test
+      (`tests/integration/test_demo_case_e2e.py`) that runs the whole
+      12-node pipeline once, on the one synthetic demo case. This is a real
+      gap: individual agent edge cases (LLM timeout, malformed evidence,
+      conflicting fields) are not yet covered by dedicated tests.
+
+## Phase 8 — LangGraph Orchestration — [~] (demo case only, one e2e test)
+- [x] `src/graph/state.py` — typed `CaseState`; `src/graph/runner.py` —
+      `build_graph()`/`compiled_app()`/`run_case()` wiring the 12 nodes with
+      `MemorySaver` checkpointing (in-memory, process-local — same posture
+      as `InMemoryCaseStateStore`); `src/graph/routing.py` — conditional
+      routing after `subject_reader`/`email_body_reader`/`pdf_docx_reader`
+      (unsupported/unsafe file -> human review); `src/graph/demo_case.py` —
+      `build_demo_case_initial_state()` for CLAUDE.md's synthetic demo case.
+- [x] `ruff check .` and `mypy src config scripts` clean (0 errors) across
+      all of the above, including a first-ever project-wide mypy run this
+      session (fixed 7 real type errors: a non-generic `call_llm_or_none`
+      losing type info, two `Any | None`/`FieldValue | None` narrowing
+      issues in `medical_extraction.py`, and one documented
+      `# type: ignore[call-overload]` for a genuine LangGraph-stub vs.
+      intentional plain-`dict`-node-signature mismatch in `runner.py`).
+- [x] `tests/integration/test_demo_case_e2e.py` (new) — runs
+      `build_demo_case_initial_state()` through `run_case()` and asserts:
+      `goal_status == AWAITING_HUMAN`, `current_step == "human_review"`,
+      zero errors, non-empty evidence passages, grounded citations on
+      `product.product_name` and `outcome.hospitalized`,
+      `meets_minimum_criteria is True`, a real `EvaluationResult` with
+      `passed is True` and `evidence_coverage == 1.0`, and
+      `review_status.decision == "pending"`. Verified:
+      `pytest tests/integration/test_demo_case_e2e.py -q` → **1 passed**.
+- [x] Full suite after all of the above: `pytest -q` → **199 passed**
+      (198 pre-existing + this new test), `ruff check .` → all checks
+      passed, `mypy src config scripts` → no issues in 81 source files.
+- [ ] Only the one demo case has been run through the graph. Conditional
+      routes for unsupported files / low-OCR / non-safety / missing-criteria
+      / duplicate / retry-then-escalate exist in `routing.py` but are not
+      yet each covered by their own integration test.
+
 ## Phase 9 — Evaluation Framework — [ ]
 ## Phase 10 — Observability and Traceability — [ ]
 ## Phase 11 — Security, Guardrails, and Red Teaming — [ ]
-## Phase 12 — Streamlit User Interface — [ ]
+## Phase 12 — Streamlit User Interface — [~] (Case Workspace only, server-boot verified — not interactively click-tested)
+- [x] `app.py` wired to a real sidebar page nav (`st.sidebar.radio`); the
+      other 9 pages (Dashboard, New Case Intake, Planning and Agent
+      Progress, Duplicate Review, Human Review Queue, Evaluation,
+      Observability and Traceability, System Configuration, About and
+      Limitations) are explicit `st.info(...)` placeholders, not
+      implemented.
+- [x] `src/ui/case_workspace.py` (new) — "Run demo case" button calling
+      `build_demo_case_initial_state()` + `run_case()`, state held in
+      `st.session_state`; renders original evidence beside extracted
+      fields (value/confidence/citation-count/conflict-status table per
+      CLAUDE.md's Case Workspace requirement), minimum-criteria status,
+      AI-suggested triage findings, duplicate candidates, missing-info
+      follow-up draft, cited narrative, evaluation results, and
+      Approve/Reject/Request-changes controls gated on
+      `goal_status == AWAITING_HUMAN`. A decision calls
+      `apply_review_decision()` directly (never re-invokes the graph, since
+      `human_review` has a hard edge to `END`) and reruns to show the
+      updated `review_status`.
+- [x] App boot verified twice via background `streamlit run app.py`
+      (project's own `.venv` lacks Streamlit; used
+      `/home/labuser/venv/bin/python3 -m streamlit run app.py
+      --server.headless true`) — server started cleanly (Uvicorn started,
+      static shell served over `curl`), no import/render traceback.
+- [ ] **Not done**: an actual interactive browser click-through (clicking
+      "Run demo case", visually checking the rendered tables/citations,
+      clicking Approve/Reject/Request-changes and confirming the UI
+      updates). Only server-boot-level verification was performed. This
+      was explicitly deprioritized under a user time constraint in favor of
+      the real, executed integration test above, and is flagged here
+      rather than claimed as done.
 ## Phase 13 — API and Service Layer — [ ]
 ## Phase 14 — CI/CD and Continuous Evaluation — [ ]
 ## Phase 15 — Documentation — [ ]
+
+## Session note (2026-09-26): lint/type cleanup + Case Workspace + e2e test
+This session (continuing on top of the already-existing but previously
+undocumented Phase 6/7/8 thin slice): fixed all remaining `ruff` `E501`/
+`I001` violations across `subject_reader.py`, `supervisor.py`, `triage.py`,
+`routing.py`, `runner.py` (73 -> 0 project-wide); ran `mypy` for the first
+time in this project's history and fixed all 7 real errors it found (see
+Phase 8 above) rather than suppressing them, with one narrowly-scoped,
+commented `# type: ignore[call-overload]` for a genuine stub/runtime-design
+mismatch; built and wired the Case Workspace UI page; wrote and ran the
+first pipeline-level integration test. Also confirmed (separately, earlier
+in this session) that the previously-planned RAG retrieval refactor —
+threading the configured `EmbeddingProvider` through `VectorSearchTool`,
+`DuplicateSearchService.from_settings()`, and `run_retrieval_evaluation()`,
+plus PHI-safe structured logging in the retrieval modules — was already
+fully implemented in the working tree (uncommitted); re-verified it still
+passes lint/type/test checks alongside everything else. Explicitly not
+done: real interactive browser verification of the new UI, per-agent unit
+tests, and Phases 9-11/13-15.
 ## Final Verification — [ ]
 
 (Each phase above gets its own detailed section, filled in as completed —

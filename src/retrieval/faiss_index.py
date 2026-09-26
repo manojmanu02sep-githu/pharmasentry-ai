@@ -12,11 +12,14 @@ loading, or searching an actual index requires it.
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 from typing import Any
 
 from src.retrieval.embeddings import EmbeddingProvider
 from src.tools.retrieval import ScoredCandidate
+
+logger = logging.getLogger(__name__)
 
 _INDEX_FILENAME = "index.faiss"
 _META_FILENAME = "meta.json"
@@ -85,6 +88,12 @@ class PersistentFaissIndex:
         faiss.write_index(self._index, str(path / _INDEX_FILENAME))
         meta = {"case_ids": self.case_ids, "dim": self.dim, "provider_name": self.provider_name}
         (path / _META_FILENAME).write_text(json.dumps(meta), encoding="utf-8")
+        logger.info(
+            "faiss_index_saved path=%s documents=%d provider=%s",
+            path,
+            len(self.case_ids),
+            self.provider_name,
+        )
 
     @classmethod
     def load(
@@ -94,11 +103,23 @@ class PersistentFaissIndex:
         path = Path(index_dir)
         meta = json.loads((path / _META_FILENAME).read_text(encoding="utf-8"))
         if expected_provider is not None and meta["provider_name"] != expected_provider:
+            logger.warning(
+                "faiss_index_mismatch path=%s built_with=%s requested=%s",
+                path,
+                meta["provider_name"],
+                expected_provider,
+            )
             raise FaissIndexMismatchError(
                 f"index was built with provider {meta['provider_name']!r}, "
                 f"but {expected_provider!r} was requested"
             )
         index = faiss.read_index(str(path / _INDEX_FILENAME))
+        logger.info(
+            "faiss_index_loaded path=%s documents=%d provider=%s",
+            path,
+            len(meta["case_ids"]),
+            meta["provider_name"],
+        )
         return cls(
             case_ids=meta["case_ids"],
             index=index,

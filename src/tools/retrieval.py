@@ -2,10 +2,12 @@
 reciprocal rank fusion.
 
 These implement the TOOL INTERFACE and a real, deterministic, offline
-working implementation now. Phase 5 builds the persistent FAISS/BM25
-index (`scripts/build_retrieval_index.py`) and swaps in
-sentence-transformers embeddings behind the same `vector_search` shape —
-agents and tests written against this interface do not need to change.
+working implementation. The persistent FAISS/BM25 index
+(`src/retrieval/faiss_index.py`, `bm25_index.py`, built via
+`scripts/build_retrieval_index.py`) and the pluggable embedding provider
+(`src/retrieval/embeddings.py`) build on this same interface —
+`VectorSearchTool` accepts an optional `embed_fn` so callers can swap in
+sentence-transformers embeddings without changing this tool's shape.
 
 Corpus documents are passed in explicitly (`CorpusDocument`) rather than
 read from a hidden global index, keeping every tool here a pure function
@@ -17,6 +19,7 @@ from __future__ import annotations
 import math
 import re
 import zlib
+from collections.abc import Callable
 
 from pydantic import BaseModel, Field
 from rank_bm25 import BM25Okapi
@@ -163,13 +166,16 @@ class VectorSearchTool(BaseTool[VectorSearchInput, VectorSearchOutput]):
     timeout_seconds = 5.0
     max_retries = 1
 
+    def __init__(self, embed_fn: Callable[[str], list[float]] | None = None) -> None:
+        super().__init__()
+        self._embed = embed_fn or deterministic_embedding
+
     def _execute(self, tool_input: VectorSearchInput, ctx: ToolContext) -> VectorSearchOutput:
         if not tool_input.corpus:
             return VectorSearchOutput(results=[])
-        query_vec = deterministic_embedding(tool_input.query_text)
+        query_vec = self._embed(tool_input.query_text)
         scored = [
-            (doc.case_id, _cosine(query_vec, deterministic_embedding(doc.text)))
-            for doc in tool_input.corpus
+            (doc.case_id, _cosine(query_vec, self._embed(doc.text))) for doc in tool_input.corpus
         ]
         scored.sort(key=lambda pair: pair[1], reverse=True)
         results = [

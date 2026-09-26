@@ -9,11 +9,14 @@ memory at load time.
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
 
 from rank_bm25 import BM25Okapi
 
 from src.tools.retrieval import CorpusDocument, ScoredCandidate, tokenize
+
+logger = logging.getLogger(__name__)
 
 _CORPUS_FILENAME = "corpus.json"
 
@@ -39,8 +42,12 @@ class PersistentBm25Index:
         path.mkdir(parents=True, exist_ok=True)
         data = [doc.model_dump() for doc in self.corpus]
         (path / _CORPUS_FILENAME).write_text(json.dumps(data), encoding="utf-8")
+        logger.info("bm25_index_saved path=%s documents=%d", path, len(self.corpus))
 
     @classmethod
     def load(cls, index_dir: str | Path) -> PersistentBm25Index:
-        data = json.loads((Path(index_dir) / _CORPUS_FILENAME).read_text(encoding="utf-8"))
-        return cls([CorpusDocument(**item) for item in data])
+        path = Path(index_dir)
+        data = json.loads((path / _CORPUS_FILENAME).read_text(encoding="utf-8"))
+        index = cls([CorpusDocument(**item) for item in data])
+        logger.info("bm25_index_loaded path=%s documents=%d", path, len(index.corpus))
+        return index

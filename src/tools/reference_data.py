@@ -24,6 +24,8 @@ PRODUCT_ALIASES: dict[str, str] = {
     "Demo Basalin": "DemoBasalin",
     "DemoGlutide Injection": "DemoGlutide",
     "Demo-Glutide": "DemoGlutide",
+    "DemoGluca": "DemoGlutide",
+    "Demo-Gluca": "DemoGlutide",
 }
 
 EVENT_SYNONYMS: dict[str, str] = {

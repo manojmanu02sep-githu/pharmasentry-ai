@@ -60,6 +60,7 @@ from src.tools.retrieval import (
 )
 from src.tools.workflow import (
     CreateReviewTaskTool,
+    InMemoryCaseStateStore,
     PauseForHumanReviewTool,
     ReadCaseStateTool,
     RecordAuditEventTool,
@@ -69,6 +70,11 @@ from src.tools.workflow import (
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 CONFIG_PATH = REPO_ROOT / "config" / "config.yaml"
+
+# Shared so a write_case_checkpoint call is visible to a later read_case_state
+# call within the same process -- each tool defaults to its own private store
+# otherwise, which would make the Supervisor's checkpoint round-trip inert.
+_CASE_STATE_STORE = InMemoryCaseStateStore()
 
 _ALL_TOOL_INSTANCES: list[BaseTool[Any, Any]] = [
     # Intake
@@ -107,8 +113,8 @@ _ALL_TOOL_INSTANCES: list[BaseTool[Any, Any]] = [
     DetectConflictingValuesTool(),
     ValidateGoalCompletionTool(),
     # Workflow
-    ReadCaseStateTool(),
-    WriteCaseCheckpointTool(),
+    ReadCaseStateTool(store=_CASE_STATE_STORE),
+    WriteCaseCheckpointTool(store=_CASE_STATE_STORE),
     PauseForHumanReviewTool(),
     RouteCaseTool(),
     RecordAuditEventTool(),

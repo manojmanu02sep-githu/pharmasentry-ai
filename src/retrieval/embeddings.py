@@ -13,9 +13,12 @@ silently falling back (CLAUDE.md: never fabricate results).
 
 from __future__ import annotations
 
+import logging
 from typing import Any, Protocol
 
 from src.tools.retrieval import deterministic_embedding
+
+logger = logging.getLogger(__name__)
 
 
 class EmbeddingProvider(Protocol):
@@ -56,6 +59,7 @@ class SentenceTransformerEmbeddingProvider:
                     "sentence-transformers is not installed; install it "
                     "(see requirements.txt) or set EMBEDDING_PROVIDER=deterministic"
                 ) from exc
+            logger.info("sentence_transformers_model_loading model=%s", self.model_name)
             self._model = SentenceTransformer(self.model_name)
         return self._model
 

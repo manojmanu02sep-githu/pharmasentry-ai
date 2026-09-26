@@ -12,11 +12,11 @@ from __future__ import annotations
 import streamlit as st
 
 from config.settings import get_settings
+from src.ui import case_workspace
 
-PHASE_1_PAGES = [
+PLACEHOLDER_PAGES = [
     "Dashboard",
     "New Case Intake",
-    "Case Workspace",
     "Planning and Agent Progress",
     "Duplicate Review",
     "Human Review Queue",
@@ -38,17 +38,17 @@ def main() -> None:
         "system, or clinical decision system. No output here is a final "
         "medical or regulatory decision."
     )
-    st.caption(f"LLM provider: {settings.llm_provider.value} · "
-               f"DB backend: {settings.db_backend.value}")
-
-    st.subheader("Build status")
-    st.write(
-        "The full UI is built in later phases. Planned pages, in order:"
+    st.caption(
+        f"LLM provider: {settings.llm_provider.value} · DB backend: {settings.db_backend.value}"
     )
-    for page in PHASE_1_PAGES:
-        st.markdown(f"- {page}")
 
-    st.info("See progress.md in the repository root for phase-by-phase status.")
+    page = st.sidebar.radio("Pages", ["Case Workspace", *PLACEHOLDER_PAGES])
+
+    if page == "Case Workspace":
+        case_workspace.render()
+    else:
+        st.subheader(page)
+        st.info(f"'{page}' is not yet implemented in this prototype. See progress.md.")
 
 
 if __name__ == "__main__":

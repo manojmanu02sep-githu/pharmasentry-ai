@@ -22,6 +22,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from config.settings import get_settings  # noqa: E402
+from src.retrieval.embeddings import get_embedding_provider  # noqa: E402
 from src.retrieval.retrieval_evaluation import run_retrieval_evaluation  # noqa: E402
 
 RESULTS_PATH = REPO_ROOT / "evaluations" / "results" / "phase5_retrieval_metrics.json"
@@ -29,9 +30,12 @@ RESULTS_PATH = REPO_ROOT / "evaluations" / "results" / "phase5_retrieval_metrics
 
 def run() -> dict[str, object]:
     settings = get_settings()
+    provider = get_embedding_provider(settings.embedding_provider.value, settings.embedding_model)
     # bm25_weight/vector_weight mirror config/config.yaml's retrieval policy
     # (HybridRanker.from_config reads the same values for a live case run).
-    results = run_retrieval_evaluation(bm25_weight=0.5, vector_weight=0.5)
+    results = run_retrieval_evaluation(
+        bm25_weight=0.5, vector_weight=0.5, embedding_provider=provider
+    )
     return {
         "generated_at": datetime.now(UTC).isoformat(),
         "note": (

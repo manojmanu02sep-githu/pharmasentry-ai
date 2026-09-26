@@ -15,6 +15,8 @@ case_id-sorted baseline with real BM25/vector/hybrid retrieval.
 
 from __future__ import annotations
 
+import logging
+
 from pydantic import BaseModel
 
 from src.evaluation.golden_loader import load_all_cases
@@ -25,6 +27,7 @@ from src.evaluation.metrics import (
 )
 from src.models.enums import AgentName
 from src.retrieval.corpus import build_corpus_from_golden_dataset
+from src.retrieval.embeddings import DeterministicEmbeddingProvider, EmbeddingProvider
 from src.retrieval.hybrid_ranker import WeightedRanking, weighted_reciprocal_rank_fusion
 from src.tools.base import ToolContext
 from src.tools.retrieval import (
@@ -34,6 +37,8 @@ from src.tools.retrieval import (
     VectorSearchInput,
     VectorSearchTool,
 )
+
+logger = logging.getLogger(__name__)
 
 _EVAL_TOP_K = 5
 _EVAL_FUSION_BREADTH = 10
@@ -54,12 +59,15 @@ class RetrievalEvaluationResult(BaseModel):
 
 
 def _run_queries(
-    corpus: list[CorpusDocument], bm25_weight: float, vector_weight: float
+    corpus: list[CorpusDocument],
+    bm25_weight: float,
+    vector_weight: float,
+    embedding_provider: EmbeddingProvider,
 ) -> dict[str, list[tuple[list[str], set[str]]]]:
     cases = load_all_cases()
     by_id = {doc.case_id: doc for doc in corpus}
     bm25_tool = Bm25SearchTool()
-    vector_tool = VectorSearchTool()
+    vector_tool = VectorSearchTool(embed_fn=embedding_provider.embed)
 
     per_method: dict[str, list[tuple[list[str], set[str]]]] = {
         "bm25": [],
@@ -109,10 +117,16 @@ def _run_queries(
 
 
 def run_retrieval_evaluation(
-    bm25_weight: float = 0.5, vector_weight: float = 0.5
+    bm25_weight: float = 0.5,
+    vector_weight: float = 0.5,
+    embedding_provider: EmbeddingProvider | None = None,
 ) -> dict[str, RetrievalEvaluationResult]:
+    provider = embedding_provider or DeterministicEmbeddingProvider()
     corpus = build_corpus_from_golden_dataset()
-    per_method = _run_queries(corpus, bm25_weight, vector_weight)
+    logger.info(
+        "retrieval_evaluation provider=%s corpus_size=%d", provider.name, len(corpus)
+    )
+    per_method = _run_queries(corpus, bm25_weight, vector_weight, provider)
 
     return {
         method: RetrievalEvaluationResult(
