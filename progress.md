@@ -263,8 +263,169 @@ passing unit test.
 - [x] pytest **152/152 passed**, ruff clean, mypy clean (44 source files
       under `src config scripts`) — commands and output below
 
-## Phase 4 — Memory — [ ]
-## Phase 5 — Hybrid RAG — [ ]
+## Phase 4 — Memory — DONE
+Implemented all four memory tiers required by CLAUDE.md's Memory section as
+thin, logged wrappers (`(result, MemoryEvent)` tuples, same convention as
+`BaseTool`) rather than a new bespoke framework, so each tier stays
+auditable and reuses existing typed models (`MemoryEvent`, `MemoryTier`,
+`MemoryOperation` in `src/models/audit.py` / `src/models/enums.py`).
+- [x] Working memory (`src/memory/working.py`): read/write over the current
+      LangGraph `CaseState` dict passed in by the caller. Case isolation
+      enforced locally (`_enforce_case_isolation`, mirroring
+      `src/tools/workflow.py`'s pattern) — raises `ToolAuthorizationError`
+      on any cross-case read or write.
+- [x] Episodic memory (`src/memory/episodic.py`): `EpisodicMemoryStore`,
+      SQLite-backed (stdlib `sqlite3`, see deviation below) satisfying the
+      same `CaseStateStore` Protocol as `InMemoryCaseStateStore`. Stores
+      approved prior run status, an append-only history of status
+      changes/errors/reviewer corrections, and supports
+      `purge_expired(retention_days)` for the CLAUDE.md-required retention
+      control. Cross-case state and history access both blocked. History
+      summaries are defensively truncated to 2000 chars so a runaway or
+      hostile summary can never be persisted whole (belt-and-suspenders
+      alongside the "no chain-of-thought" rule — callers are expected to
+      pass concise decision summaries only).
+- [x] Semantic memory (`src/memory/semantic.py`): read-only retrieval over
+      synthetic reference content that already exists as a single source
+      of truth — product aliases/canonical names and event vocabulary from
+      `src/tools/reference_data.py`, and the full synthetic case corpus via
+      `src.evaluation.golden_loader.load_all_cases()`. Never forks or
+      duplicates that data; never writes. This is global reference content
+      rather than case state, so there is no case-isolation check here
+      (documented in-module) — access is still logged via `MemoryEvent`.
+      Which fields an agent may see (e.g. never reporter contact details
+      for the Duplicate agent) is enforced downstream in
+      `src.retrieval.corpus`, not here.
+- [x] Procedural memory (`src/memory/procedural.py`): read-only accessors
+      for prompts/schema versions, the LangGraph node order, per-agent tool
+      allowlists, delegation/runtime/token limits, the retrieval weight
+      policy, and the retention policy — all sourced from the single
+      `config/config.yaml`, never hard-coded a second time.
+- [x] pytest: `test_memory_working.py` (4), `test_memory_episodic.py` (9),
+      `test_memory_semantic.py` (3), `test_memory_procedural.py` (6) — 22
+      tests, all passing (see combined Phase 4+5 run below).
+
+Deviation from the CLAUDE.md stack list, documented here as instructed:
+episodic memory uses stdlib `sqlite3` directly rather than SQLAlchemy. The
+CLAUDE.md stack lists "PostgreSQL with SQLite local fallback" for the
+application's persistence generally; for this narrow append-only
+key/history store, a raw `sqlite3` connection satisfies that same SQLite
+requirement with no added dependency, and the store is already isolated
+behind the `CaseStateStore` Protocol so a SQLAlchemy/Postgres-backed
+implementation can be swapped in later without touching callers.
+
+## Phase 5 — Hybrid RAG — DONE
+Implemented the full BM25 + vector + metadata retrieval stack required by
+CLAUDE.md's Hybrid RAG section, on top of (not duplicating) the Phase 3
+placeholder retrieval tools in `src/tools/retrieval.py`.
+- [x] `src/retrieval/embeddings.py`: an `EmbeddingProvider` interface with
+      a deterministic default (hash-based, reproducible, L2-normalized —
+      no ML dependency required to run or test) and a lazy-imported
+      `SentenceTransformerEmbeddingProvider` for real embeddings, selected
+      via `config/settings.py`'s new `EmbeddingProviderName` enum /
+      `embedding_provider` setting. `sentence-transformers`/`torch` are
+      intentionally not installed in this environment — the provider is
+      only imported if actually selected.
+- [x] `src/retrieval/corpus.py`: builds the retrieval corpus from the
+      golden dataset only (CLAUDE.md: "the retrieval corpus must contain
+      synthetic cases only"), combining email + attachment text per case
+      and explicitly excluding `reporter.name` from indexed text.
+- [x] `src/retrieval/bm25_index.py`: `PersistentBm25Index` — corpus
+      persisted as JSON (see deviation below), `BM25Okapi` ranking rebuilt
+      in memory on load/search.
+- [x] `src/retrieval/faiss_index.py`: `PersistentFaissIndex` over
+      `faiss.IndexFlatIP`, native FAISS binary serialization, with
+      `FaissIndexMismatchError` raised if a saved index's embedding
+      provider doesn't match the one loading it. `faiss-cpu` installed
+      into `.venv`; the corresponding test module opens with
+      `pytest.importorskip("faiss")` so the suite still runs (skipping
+      only that file) in an environment without it.
+- [x] `src/retrieval/hybrid_ranker.py`: `weighted_reciprocal_rank_fusion` —
+      the one documented, deterministic combination method CLAUDE.md
+      requires ("combine rankings using a documented deterministic
+      method"), generalizing the existing unweighted RRF tool
+      (`src.tools.retrieval.ReciprocalRankFusionTool`) to per-ranking
+      weights; with all weights at 1.0 it reduces to exactly that tool's
+      formula. `HybridRanker.from_config` reads the real
+      `bm25_weight`/`vector_weight`/`top_k` values from
+      `config/config.yaml` (0.5 / 0.5 / 5) via procedural memory, rather
+      than a second, separately-tuned combiner.
+- [x] `src/retrieval/duplicate_search.py`: `DuplicateSearchService` —
+      returns up to top-5 `DuplicateCandidate` objects (matching fields,
+      conflicting fields, BM25/vector/combined scores, evidence snippets)
+      and a `RetrievalEvent`. Never merges cases and exposes no field that
+      could constitute an auto-merge or final decision — enforced by test
+      (`test_search_returns_candidates_never_merges` asserts no `merged`
+      attribute exists on the result).
+- [x] `src/retrieval/retrieval_evaluation.py` +
+      `scripts/run_retrieval_evaluation.py`: real precision@5, recall@5,
+      and MRR for BM25-only, vector-only, and hybrid retrieval, computed
+      against the full 138-case golden dataset (queries restricted to the
+      cases that actually have a non-empty `expected_duplicate_matches`,
+      per the "don't modify the dataset" constraint — this only reads it
+      via the existing `golden_loader`). RAG never makes the final
+      duplicate decision — it only ever returns ranked candidates for the
+      Duplicate agent / human reviewer.
+- [x] `scripts/build_retrieval_index.py`: builds and persists the BM25 and
+      FAISS indexes from the golden corpus to `evaluations/results/` (or a
+      given path), for reuse outside of tests.
+- [x] pytest: `test_retrieval_corpus.py` (3), `test_retrieval_bm25_index.py`
+      (3), `test_retrieval_faiss_index.py` (4),
+      `test_retrieval_hybrid_ranker.py` (4),
+      `test_retrieval_duplicate_search.py` (2),
+      `test_retrieval_evaluation.py` (3), `test_retrieval_embeddings.py`
+      (5) — 24 tests, all passing.
+- [x] Retrieval evaluation actually executed
+      (`.venv/bin/python scripts/run_retrieval_evaluation.py`, output
+      written to `evaluations/results/phase5_retrieval_metrics.json`):
+      16 queries evaluated (every golden-dataset case with a non-empty
+      `expected_duplicate_matches`); BM25, vector, and hybrid each scored
+      precision@5 = 0.2, recall@5 = 1.0, MRR = 1.0. All three methods
+      land on identical numbers on this dataset because with exactly one
+      expected duplicate per query, every method places it at rank 1 —
+      precision@5 is mechanically capped at 1/5 whenever only one relevant
+      document exists per query. This is a real, executed measurement,
+      not an invented one; it is not evidence that BM25/vector/hybrid are
+      equivalent in general, only on this corpus's current duplicate
+      families.
+
+Deviation from the CLAUDE.md stack list, documented here as instructed:
+`PersistentBm25Index` persists its corpus as JSON rather than a pickled
+`BM25Okapi` object. `rank-bm25`'s index has no native serialization; a
+pickle round-trip would work but means deserializing untrusted or
+corrupted state could execute arbitrary code on load, which conflicts with
+this project's security posture (CLAUDE.md: "treat uploaded content as
+untrusted data"; file validation and path sanitization are required
+elsewhere). Persisting the plain-text corpus as JSON and rebuilding the
+`BM25Okapi` ranking in memory on load avoids that risk entirely and keeps
+the on-disk index human-auditable, at the cost of a small rebuild step on
+load — an acceptable tradeoff at this corpus size (138 synthetic cases).
+
+While running `mypy` for Phase 4/5 (see combined run below), one
+pre-existing, unrelated issue surfaced and was fixed: `config/` had no
+`__init__.py`, which caused mypy to resolve `config/settings.py` as two
+different module names ("settings" and "config.settings") and abort before
+checking anything — added `config/__init__.py` (mirroring the existing
+`src/__init__.py`), matching the `packages = ["src", "config", "scripts"]`
+setting already in `pyproject.toml`. Two genuine type errors in the new
+`src/memory/semantic.py` were also found and fixed: a dict literal that
+mypy widened to a supertype not matching the declared return annotation
+(fixed with an explicit variable annotation), and a `tuple[GoldenCase, ...]`
+returned where `list[GoldenCase]` was declared (fixed by correcting the
+return annotation to match `load_all_cases()`'s actual tuple return type).
+
+Verification, run from the repository root:
+```
+.venv/bin/pytest -q
+# 198 passed in 4.79s   (152 from Phases 1-3 + 46 new: 22 memory + 24 retrieval)
+
+.venv/bin/ruff check .
+# All checks passed!
+
+.venv/bin/mypy src config scripts
+# Success: no issues found in 58 source files
+```
+
 ## Phase 6 — LLM Provider Abstraction — [ ]
 ## Phase 7 — Agents — [ ]
 ## Phase 8 — LangGraph Orchestration — [ ]

@@ -1,0 +1,1 @@
+"""PharmaSentry AI configuration package."""

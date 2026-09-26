@@ -29,6 +29,11 @@ class OCRProvider(str, Enum):
     LOCAL = "local"
 
 
+class EmbeddingProviderName(str, Enum):
+    DETERMINISTIC = "deterministic"
+    SENTENCE_TRANSFORMERS = "sentence_transformers"
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_file=str(REPO_ROOT / ".env"),
@@ -60,6 +65,7 @@ class Settings(BaseSettings):
     # Retrieval
     vector_index_path: str = "./data/vector_index"
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_provider: EmbeddingProviderName = EmbeddingProviderName.DETERMINISTIC
     bm25_index_path: str = "./data/bm25_index"
 
     # OCR

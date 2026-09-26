@@ -30,6 +30,12 @@ def _tokenize(text: str) -> list[str]:
     return _TOKEN_RE.findall(text.lower())
 
 
+def tokenize(text: str) -> list[str]:
+    """Public wrapper around the module's tokenizer, for reuse by
+    src/retrieval (Phase 5) without reaching into a private name."""
+    return _tokenize(text)
+
+
 class CorpusDocument(BaseModel):
     case_id: str
     text: str = ""
